@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+</head>
+<body>
+    <header id="main_header">
+        <div class="contenedor">
+            <div class="sidebar">
+                <img src="imagenes/logo_oscuro.png" alt="Logo del sito">
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="">Sobre esta pagina</a></li>
+                        <li><a href="">Ayuda</a></li>
+                        <li><a href="">Crear cuenta</a></li>
+                        <li><a href="">Ingresar</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <hr>
+    </header>
+    <main>
+        <section id="inicio">
+            <div class="contenedor_inicio">
+                <div class="contenedor">
+                    <p>Bienvenido a</p>
+                    <h1>Legajo</h1>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById(main_header);
+
+        window.addEventListener('scroll', ()=>{
+            if(window.scrollY > lastScrollY){
+                header.style.top = '-100px';
+            } else {
+                header.styke.top = '0';
+            }
+            lastScrollY = window.scrollY;
+        })
+    </script>
+</body>
+</html>
