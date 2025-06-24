@@ -1,27 +1,18 @@
 /* Variables base */
 :root {
-    --bg-dark: #1e1e2f;
-    --card-dark: #392a35;
-    --text-light: #e5fec5;
-    --text-muted: #b9cbb6;
-    --accent: #a9a;
-    --positive: #34d399;
-    --negative: #f87171;
-
-    --bg-light: #f1f1f1;
-    --card-light: #ffffff;
-    --text-dark: #1a1a1a;
-    --text-gray: #555;
-
     --fondo-principal: #392a35;
     --color-texto: #e5fec5;
     --color-secundario: #333;
+    --color-texto-2: #ddd;
+    --negative: #a00;
+    --positive: #0a0;
 }
 
 .modo-claro {
     --fondo-principal: #e5fec5;
     --color-texto: #392a35;
     --color-secundario: #ddd;
+    --color-texto-2: #333;
 }
 
 /* Reset */
@@ -35,7 +26,7 @@
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--color-secundario);
     display: flex;
     min-height: 100vh;
     }
@@ -43,7 +34,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background-color: var(--card-dark);
+    background-color: var(--fondo-principal);
     padding: 2rem 1rem;
     position: fixed;
     height: 100vh;
@@ -56,7 +47,7 @@ body {
     gap: 0.75rem;
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--accent);
+    color: var(--color-texto);
     margin-bottom: 2rem;
     }
 
@@ -72,12 +63,13 @@ body {
     border-radius: 10px;
     cursor: pointer;
     margin: 0.5rem 0;
+    color: var(--color-texto);
 }
 
 .nav-links li:hover,
 .nav-links li.active {
-    background-color: var(--accent);
-    color: #fff;
+    background-color: var(--color-texto-2);
+    color: var(--fondo-principal);
 }
 
 /* Main content */
@@ -97,11 +89,15 @@ header {
 
 .header-left h1 {
     font-size: 2rem;
-    color: var(--text-light);
+    color: var(--color-texto);
 }
 
 .header-left p {
-    color: var(--text-muted);
+    color: var(--color-texto-2);
+}
+
+.header-right span{
+    color: var(--color-texto-2);
 }
 
 .user-profile {
@@ -114,7 +110,7 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--accent);
+    border: 2px solid var(--color-texto);
 }
 
 /* Cards */
@@ -126,7 +122,7 @@ header {
 }
 
 .card {
-    background-color: var(--card-dark);
+    background-color: var(--fondo-principal);
     padding: 1.5rem;
     border-radius: 12px;
     display: flex;
@@ -141,21 +137,23 @@ header {
 }
 
 .card-icon {
-    background-color: var(--accent);
+    background-color: var(--color-texto);
     padding: 1rem;
     border-radius: 10px;
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--color-texto);
 }
 
 .card-info h3 {
     font-size: 1rem;
-    color: var(--text-light);
+    color: var(--color-texto);
 }
 
 .number {
     font-size: 1.6rem;
     font-weight: bold;
+    line-height: 2;
+    color: var(--color-texto-2);
 }
 
 .trend {
@@ -178,7 +176,7 @@ header {
 }
 
 .chart-wrapper {
-    background-color: var(--card-dark);
+    background-color: var(--fondo-principal);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -191,15 +189,7 @@ header {
 .chart-wrapper h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-}
-
-/* Modo Claro */
-.modo-claro {
-    --bg-dark: var(--bg-light);
-    --card-dark: var(--card-light);
-    --text-light: var(--text-dark);
-    --text-muted: var(--text-gray);
-    --accent: #9a4dff;
+    color: var(--color-texto);
 }
 
 /* Responsive */
