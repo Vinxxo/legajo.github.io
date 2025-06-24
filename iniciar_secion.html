@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+</head>
+<body>
+    <button id="modoToggle" class="modo-toggle">☀️ Modo Claro</button>
+    <section class="formulario">
+        <form action="dashboard_admin.html">
+            <h2>Iniciar sesión</h2>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+    </section>
+    <script>
+        const botonModo = document.getElementById("modoToggle");
+        const cuerpo = document.body;
+
+        if (localStorage.getItem("modo") === "claro") {
+            cuerpo.classList.add("modo-claro");
+            botonModo.textContent = "🌙 Modo Oscuro";
+        }
+
+        botonModo.addEventListener("click", () => {
+            cuerpo.classList.toggle("modo-claro");
+            const esClaro = cuerpo.classList.contains("modo-claro");
+            botonModo.textContent = esClaro ? "🌙 Modo Oscuro" : "☀️ Modo Claro";
+            localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+        });
+    </script>
+</body>
+</html>

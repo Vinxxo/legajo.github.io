@@ -1,0 +1,244 @@
+/* Variables base */
+:root {
+    --bg-dark: #1e1e2f;
+    --card-dark: #392a35;
+    --text-light: #e5fec5;
+    --text-muted: #b9cbb6;
+    --accent: #a9a;
+    --positive: #34d399;
+    --negative: #f87171;
+
+    --bg-light: #f1f1f1;
+    --card-light: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-gray: #555;
+
+    --fondo-principal: #392a35;
+    --color-texto: #e5fec5;
+    --color-secundario: #333;
+}
+
+.modo-claro {
+    --fondo-principal: #e5fec5;
+    --color-texto: #392a35;
+    --color-secundario: #ddd;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-light);
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-dark);
+    display: flex;
+    min-height: 100vh;
+    }
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: var(--card-dark);
+    padding: 2rem 1rem;
+    position: fixed;
+    height: 100vh;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    }
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0.5rem 0;
+}
+
+.nav-links li:hover,
+.nav-links li.active {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    width: calc(100% - 250px);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-left h1 {
+    font-size: 2rem;
+    color: var(--text-light);
+}
+
+.header-left p {
+    color: var(--text-muted);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+/* Cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--card-dark);
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    transform: scale(1);
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+    background-color: var(--accent);
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.card-info h3 {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.number {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.trend {
+    font-size: 0.875rem;
+}
+
+.trend.positive {
+    color: var(--positive);
+}
+
+.trend.negative {
+    color: var(--negative);
+}
+
+/* Charts */
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.chart-wrapper {
+    background-color: var(--card-dark);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.chart-wrapper.wide {
+    grid-column: span 2;
+}
+
+.chart-wrapper h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Modo Claro */
+.modo-claro {
+    --bg-dark: var(--bg-light);
+    --card-dark: var(--card-light);
+    --text-light: var(--text-dark);
+    --text-muted: var(--text-gray);
+    --accent: #9a4dff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar span {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+}
+
+.modo-toggle {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    background-color: var(--color-texto);
+    color: var(--fondo-principal);
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.modo-toggle:hover {
+    background-color: var(--fondo-principal);
+    color: var(--color-texto);
+}

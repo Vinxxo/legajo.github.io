@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="estilos/styles.css">
 </head>
 <body>
-    <header id="main_header">
+    <button id="modoToggle" class="modo-toggle">☀️ Modo Claro</button>
+    <header id="header">
         <div class="contenedor">
             <div class="sidebar">
-                <img src="imagenes/logo_oscuro.png" alt="Logo del sito">
+                <div class="logo"></div>
                 <nav>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="">Sobre esta pagina</a></li>
-                        <li><a href="">Ayuda</a></li>
-                        <li><a href="">Crear cuenta</a></li>
-                        <li><a href="">Ingresar</a></li>
+                        <li><a href="#about">Sobre Nosotros</a></li>
+                        <li><a href="#ayuda">Ayuda</a></li>
+                        <li><a href="crear_cuenta.html" target="_blank">Crear cuenta</a></li>
+                        <li><a href="iniciar_secion.html">Ingresar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -25,30 +26,96 @@
         <hr>
     </header>
     <main>
+
+        <!-- INICIO -->
         <section id="inicio">
-            <div class="contenedor_inicio">
+            <div class="fondo_inicio">
                 <div class="contenedor">
                     <p>Bienvenido a</p>
                     <h1>Legajo</h1>
                 </div>
             </div>
         </section>
-    </main>
-    <footer>
 
+        <!-- SOBRE ESTA PAGINA -->
+        <section id="about">
+            <div class="contenedor">
+                <h2>Sobre Nosotros</h2>
+                <div class="contenedor_about">
+                    <img src="imagenes/Libro-abierto.jpg" alt="Libro abierto">
+                    <div class="texto">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit minima non, fuga at nobis quidem ab veniam autem harum odio enim maxime doloribus tempora. Velit, eos? Aperiam laborum recusandae labore? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus ipsam ab deleniti ratione porro culpa ullam qui quibusdam minus quidem repudiandae quia expedita corporis, ea, recusandae laudantium, enim quo. Reiciendis.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit minima non, fuga at nobis quidem ab veniam autem harum odio enim maxime doloribus tempora. Velit, eos? Aperiam laborum recusandae labore? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus ipsam ab deleniti ratione porro culpa ullam qui quibusdam minus quidem repudiandae quia expedita corporis, ea, recusandae laudantium, enim quo. Reiciendis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AYUDA -->
+        <section id="ayuda">
+            <div class="fondo_ayuda">
+                <div class="contenedor">
+                    <h2>¿Necesitas ayuda?</h2>
+                    <h3>Puedes comunicarte con nosotros a través de los siguientes canales de atención</h3>
+                    <div class="contenedor_ayuda">
+                        <div class="targetas">
+                            <img src="imagenes/whatsapp.png" alt="Logo de whatsapp">
+                            <p>A través de whatsapp al número +57 3000000000</p>
+                        </div>
+                        <div class="targetas">
+                            <img src="imagenes/telefono.png" alt="Logo telefono">
+                            <p>Por linea telefónica al número +57 3000000000</p>
+                        </div>
+                        <div class="targetas">
+                            <img src="imagenes/email.png" alt="Logo email">
+                            <p>Por email a la dirección ayuda@legajo.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="contenedor">
+            <div class="contenedor_footer">
+                <p>Copyrigth © 2025</p>
+            </div>
+            <div class="errores">
+                <a href="errores/404.html">Ver error 404</a>
+                <a href="errores/500.html">Ver error 500</a>
+            </div>
+        </div>
     </footer>
     <script>
         let lastScrollY = window.scrollY;
-        const header = document.getElementById(main_header);
+        const header = document.getElementById('header');
 
-        window.addEventListener('scroll', ()=>{
-            if(window.scrollY > lastScrollY){
-                header.style.top = '-100px';
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+            header.style.top = '-120px'; // Esconde el header
             } else {
-                header.styke.top = '0';
+            header.style.top = '0'; // Muestra el header
             }
             lastScrollY = window.scrollY;
-        })
+        });
+    </script>
+    <script>
+        const botonModo = document.getElementById("modoToggle");
+        const cuerpo = document.body;
+
+        if (localStorage.getItem("modo") === "claro") {
+            cuerpo.classList.add("modo-claro");
+            botonModo.textContent = "🌙 Modo Oscuro";
+        }
+
+        botonModo.addEventListener("click", () => {
+            cuerpo.classList.toggle("modo-claro");
+            const esClaro = cuerpo.classList.contains("modo-claro");
+            botonModo.textContent = esClaro ? "🌙 Modo Oscuro" : "☀️ Modo Claro";
+            localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+        });
     </script>
 </body>
 </html>

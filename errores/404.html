@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página no encontrada</title>
+    <link rel="stylesheet" href="estilos-error.css">
+</head>
+<body>
+    <button id="modoToggle" class="modo-toggle">☀️ Modo Claro</button>
+    <div class="contenedor-error">
+        <h1>404</h1>
+        <h2>Página no encontrada</h2>
+        <p>Lo sentimos, la página que buscas no existe o ha sido movida.</p>
+        <a href="../index.html" class="boton">Volver al inicio</a>
+    </div>
+    <script>
+        const botonModo = document.getElementById("modoToggle");
+        const cuerpo = document.body;
+
+        if (localStorage.getItem("modo") === "claro") {
+            cuerpo.classList.add("modo-claro");
+            botonModo.textContent = "🌙 Modo Oscuro";
+        }
+
+        botonModo.addEventListener("click", () => {
+            cuerpo.classList.toggle("modo-claro");
+            const esClaro = cuerpo.classList.contains("modo-claro");
+            botonModo.textContent = esClaro ? "🌙 Modo Oscuro" : "☀️ Modo Claro";
+            localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+        });
+    </script>
+</body>
+</html>
