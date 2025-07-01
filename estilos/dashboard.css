@@ -149,8 +149,17 @@ header {
     color: var(--color-texto);
 }
 
+.card-info{
+    min-height: 20vh;
+}
+
 .card-info canvas{
-    margin-top: 20px;
+    margin-top: 10vh;
+    width: 35vw;
+}
+
+.card-canvas {
+    min-height: 60vh;
 }
 
 .number {
@@ -235,23 +244,6 @@ header {
 .modo-toggle:hover {
     background-color: var(--fondo-principal);
     color: var(--color-texto);
-}
-
-/*  */
-
-.contenedor_recomendados{
-    display: flex;
-}
-
-.recomendados h2{
-    color: var(--color-texto);
-    margin: 10px;
-}
-
-.recomendados .card{
-    width: 250px;
-    height: 300px;
-    margin: 20px;
 }
 
 /* ==========
@@ -626,4 +618,82 @@ INVENTARIO
 .btn-positivo:hover {
     opacity: 0.9;
     transform: scale(1.05);
+}
+
+/*inicio*/
+.seccion-carrusel {
+    margin: 40px 20px;
+}
+
+.titulo-seccion {
+    text-align: left;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--color-texto);
+    text-align: center;
+}
+
+.contenedor-carrusel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    position: relative;
+    margin: 30px;
+}
+
+.carrusel-libros {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.libro {
+    min-width: 300px;
+    background:var(--fondo-principal);
+    color: var(--color-texto);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.libro img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.ver-libro {
+    background-color: #3f51b5;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ver-libro:hover {
+    background-color: #283593;
+}
+
+.ver-libro i {
+    font-size: 1em;
+}
+
+.flecha {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #3f51b5;
+    cursor: pointer;
 }

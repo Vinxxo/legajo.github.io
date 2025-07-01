@@ -17,10 +17,10 @@
             <span>AdminDash</spa>
         </div>
         <ul class="nav-links">
-            <a href="dashboard_admin.html"><li class="active"><i class="fas fa-home"></i><span>Inicio</span></li></a>
+            <a href="dashboard_admin.html"><li><i class="fas fa-home"></i><span>Inicio</span></li></a>
             <a href="reportes_usuarios.html"><li><i class="fas fa-user"></i><span>Reporte de usuarios</span></li></a>
             <a href="../errores/500.html"><li><i class="fas fa-book"></i><span>Reporte de libros</span></li></a>
-            <a href="perfil_admin.html"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
+            <a href="perfil_admin.html"><li class="active"><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
             <a href="../errores/404.html"><li><i class="fas fa-cog"></i><span>Configuración</span></li></a>
         </ul>
     </nav>
@@ -29,8 +29,7 @@
     <main class="main-content">
         <header>
             <div class="header-left">
-                <h1>Hola David</h1>
-                <p>Este es tu panel general de control</p>
+                <h1>Tu perfil</h1>
             </div>
             <div class="header-right">
                 <div class="user-profile">
@@ -40,40 +39,32 @@
             </div>
         </header>
 
-        <section>
-            <div class="summary-cards">
-                <div class="card">
-                    <div class="card-info">
-                        <h3>Usuarios Registrados</h3>
-                        <p class="number">1,234</p>
-                        <p class="trend positive">+4.5% <span>último mes</span></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-info">
-                        <h3>Registros</h3>
-                        <p class="number">5,678</p>
-                        <p class="trend negative">-1.2% <span>último mes</span></p>
-                    </div>
-                </div>
+        <section class="perfil-usuario">
+            
+            <!-- Contenedor de la imagen de perfil -->
+            <div class="contenedor-imagen">
+                <img src="../imagenes/profile.png" alt="Foto de perfil" class="foto-perfil">
+                <h2 class="nombre-perfil">Santiago Durán Pulido</h2>
+                    <!-- Botón de cerrar sesión -->
+                    <button class="boton-editar boton-cerrar">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar sesión
+                    </button>
             </div>
 
-            <div class="summary-cards">
-                <div class="card card-canvas">
-                    <div class="card-info">
-                        <h3>Usuarios reportados este mes</h3>
-                        <canvas id="uR" width="400" height="200"></canvas>
-                    </div>
-                </div>
-                <div class="card card-canvas">
-                    <div class="card-info">
-                        <h3>Intercamibios completados este mes</h3>
-                        <canvas id="iC" width="400" height="200"></canvas>
-                    </div>
-                </div>
+            <!-- Contenedor de información del usuario (más largo verticalmente) -->
+            <div class="contenedor-info">
+                <p><strong>Correo:</strong> duransantiago003@gmail.com</p>
+                <p><strong>Ubicación:</strong> Bogotá, barrio Mandalay</p>
+                <p><strong>Ciudad:</strong> Bogotá</p>
+                <p><strong>Dirección:</strong> Calle 15 #12-34</p>
+                
+
+                <!-- Botón de editar -->
+                <button class="boton-editar"><i class="fa-solid fa-pen"></i> Editar información</button>
             </div>
+
         </section>
     </main>
     <script src="../scripts/script.js"></script>
-    
 </html>
