@@ -248,7 +248,7 @@ footer .contenedor{
     font-size: 2rem;
 }
 
-.formulario input {
+.formulario input, #genero {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -256,6 +256,7 @@ footer .contenedor{
     border-radius: 5px;
     font-size: 1rem;
     color: #000;
+
 }
 
 .formulario button {
@@ -278,4 +279,69 @@ footer .contenedor{
 form a{
     text-decoration: none;
     color: var(--fondo-principal);
+}
+
+/* Estilo uniforme del select */
+.formulario select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Opciones dentro del desplegable */
+.formulario select option {
+    background-color: #fff;   /* fondo blanco */
+    color: #000;              /* texto negro */
+}
+
+/* Placeholder "Seleccione un género" en gris */
+.formulario select option[value=""] {
+    color: #777;
+}
+
+/* SINOPSIS textarea */
+.formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical; /* permite agrandar solo en vertical */
+    color: #000;
+}
+
+
+/*INPUT FILE PORTADA */
+/* Ocultar el input por defecto */
+.form-grupo input[type="file"] {
+    display: none;
+}
+
+/* Estilo del botón personalizado */
+.label-file {
+    display: inline-block;  
+    padding: 10px 15px;
+    background-color: var(--color-texto);
+    color: var(--fondo-principal);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 20px;    
+}
+
+.label-file:hover {
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+}
+
+/* Ocultamos el input original */
+.form-grupo input[type="file"] {
+    display: none;
 }
