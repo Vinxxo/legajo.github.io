@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="{{ asset('estilos/styles.css') }}">
     <button id="toggleModo" class="modo-toggle">☀️ Modo Claro</button>
     <section class="formulario">
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('registrar_usuario.store') }}">
             <div class="logo"></div>
             <h2>Crear cuenta</h2>
             @csrf

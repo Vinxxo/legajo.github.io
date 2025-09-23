@@ -17,7 +17,7 @@
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#about">Sobre Nosotros</a></li>
                         <li><a href="#ayuda">Ayuda</a></li>
-                        <li><a href="{{ route('register') }}" target="_blank">Crear cuenta</a></li>
+                        <li><a href="{{ route('registrar_usuario') }}" target="_blank">Crear cuenta</a></li>
                         <li><a href="{{ route('login') }}">Ingresar</a></li>
                     </ul>
                 </nav>
