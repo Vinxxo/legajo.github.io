@@ -2,48 +2,63 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; // Para usar Query Builder
 
 class UsuarioController extends Controller
 {
-    /**
-     * Mostrar el formulario de registro
-     */
-    public function showRegisterForm()
+    public function index()
     {
-        return view('auth.registrar_usuario');
+        $usuarios = Usuario::all();
+        return view('usuarios.index', compact('usuarios'));
     }
 
-    /**
-     * Guardar un nuevo usuario en la BD
-     */
+    public function create()
+    {
+        return view('usuarios.create');
+    }
+
     public function store(Request $request)
     {
-        // ✅ Validar datos del formulario
         $request->validate([
-            'NomUsu1'   => 'required|string|max:50',
-            'ApeUsu1'   => 'required|string|max:50',
+            'NomUsu1' => 'required|max:20',
+            'ApeUsu1' => 'required|max:20',
             'CorreoUsu' => 'required|email|unique:usuarios,CorreoUsu',
-            'Clave'     => 'required|string|min:6|confirmed', // usa Clave + Clave_confirmation
-            'FK_roles'  => 'required|integer',
+            'Clave' => 'required|min:6|max:8'
         ]);
 
-        // ✅ Insertar en la base de datos (tabla usuarios)
-        DB::table('usuarios')->insert([
-            'NomUsu1'      => $request->NomUsu1,
-            'NomUsu2'      => $request->NomUsu2,
-            'ApeUsu1'      => $request->ApeUsu1,
-            'ApeUsu2'      => $request->ApeUsu2,
-            'CorreoUsu'    => $request->CorreoUsu,
-            'Clave'        => bcrypt($request->Clave), // encriptar clave
-            'DireccionUsu' => $request->DireccionUsu,
-            'CiudadUsu'    => $request->CiudadUsu,
-            'TelefonoUsu'  => $request->TelefonoUsu,
-            'FK_roles'     => $request->FK_roles, // 👈 viene del select en tu formulario
+        Usuario::create($request->all());
+
+        return redirect()->route('usuarios.index')->with('success', 'Usuario creado correctamente');
+    }
+
+    public function show(Usuario $usuario)
+    {
+        return view('usuarios.show', compact('usuario'));
+    }
+
+    public function edit(Usuario $usuario)
+    {
+        return view('usuarios.edit', compact('usuario'));
+    }
+
+    public function update(Request $request, Usuario $usuario)
+    {
+        $request->validate([
+            'NomUsu1' => 'required|max:20',
+            'ApeUsu1' => 'required|max:20',
+            'CorreoUsu' => 'required|email|unique:usuarios,CorreoUsu,'.$usuario->idUsuario,
+            'Clave' => 'required|min:6|max:8'
         ]);
 
-        // ✅ Redirigir con mensaje de éxito
-        return redirect()->route('home')->with('success', 'Usuario registrado correctamente ✅');
+        $usuario->update($request->all());
+
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente');
+    }
+
+    public function destroy(Usuario $usuario)
+    {
+        $usuario->delete();
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente');
     }
 }
