@@ -37,6 +37,12 @@
                     <img src="../imagenes/profile.png" alt="Usuario" />
                     <span>Usuario</span>
                 </div>
+                <form method="POST" action="{{ route('logout') }}" style="margin-left: 12px;">
+                    @csrf
+                    <button type="submit" class="btn-logout" style="background:#ef4444;color:#fff;border:none;border-radius:6px;padding:8px 12px;cursor:pointer;">
+                        Cerrar sesión
+                    </button>
+                </form>
             </div>
         </header>
 

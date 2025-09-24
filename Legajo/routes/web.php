@@ -9,10 +9,28 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-// Dashboard (solo para usuarios logueados)
+// Dashboard (redirige según rol, solo para usuarios logueados)
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    $user = auth()->user();
+    if ($user && (int) $user->FK_roles === 1) {
+        return redirect()->route('admin.dashboard');
+    }
+    if ($user && (int) $user->FK_roles === 2) {
+        return redirect()->route('usuario.dashboard');
+    }
+    return redirect()->route('home'); // sin vista genérica
+})->middleware(['auth', 'verified', 'prevent-back-history'])->name('dashboard');
+
+// Dashboards por rol (solo para usuarios logueados)
+Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('dashboard_admin'); // usa resources/views/dashboard_admin.blade.php
+    })->name('admin.dashboard');
+
+    Route::get('/usuario/dashboard', function () {
+        return view('dashboard_usuario'); // usa resources/views/dashboard_usuario.blade.php
+    })->name('usuario.dashboard');
+});
 
 // Perfil (solo para usuarios logueados)
 Route::middleware('auth')->group(function () {
