@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RegistrarUsuarioController;
 
 // Página de inicio
 Route::get('/', function () {
@@ -28,10 +29,17 @@ require __DIR__.'/auth.php';
 // 🔹 Rutas personalizadas para usuarios
 // --------------------------
 
+
+
 // Mostrar formulario de registro (registrar_usuario.blade.php)
 Route::get('/registrar_usuario', function () {
     return view('auth.registrar_usuario');
 })->name('registrar_usuario');
 
+//CRUD DE USUARIOS
+Route::resource('usuarios', UsuarioController::class);
+
+
 // Guardar usuario en la BD
-Route::post('/registrar_usuario', [UsuarioController::class, 'store'])->name('registrar_usuario.store');
+Route::post('/registrar_usuario', [RegistrarUsuarioController::class, 'store'])->name('registrar_usuario.store');
+
