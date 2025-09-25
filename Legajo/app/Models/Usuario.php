@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     protected $table = 'usuarios';
     protected $primaryKey = 'idUsuario';
@@ -22,4 +22,18 @@ class Usuario extends Model
         'TelefonoUsu',
         'FK_roles'
     ];
+
+    protected $hidden = [
+        'Clave',
+    ];
+
+    /**
+     * Override the method to get the password for authentication.
+     * Laravel expects the password field to be named 'password' by default,
+     * so we need to tell it to use 'Clave' instead.
+     */
+    public function getAuthPassword()
+    {
+        return $this->Clave;
+    }
 }

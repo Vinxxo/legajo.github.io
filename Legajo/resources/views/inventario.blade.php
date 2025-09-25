@@ -53,106 +53,22 @@
         <section>
             <div class="inventario">
                 <div class="grid-inventario">
-
-                    <!-- libro 1 -->
+                    @foreach($libros as $libro)
                     <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>El libro de la selva</h3>
-                        <h4>Rudyard Kipling</h4>
+                        <img src="{{ asset('storage/' . $libro->imagen) }}" alt="Imagen del libro">
+                        <h3>{{ $libro->TituloLib }}</h3>
+                        <h4>{{ $libro->autores->pluck('NomAutor1')->join(', ') }}</h4>
                         <div class="estrellas">
                             ★★★★☆
                         </div>
-                        <p class="descripcion">Un clásico de aventuras con valores sobre la naturaleza y la amistad.</p>
+                        <p class="descripcion">{{ $libro->SinopsisLib }}</p>
                         <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
                     </div>
-
-                    <!-- libro 2-->
-                    <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>Cien años de soledad</h3>
-                        <h4> García Márquez</h4>
-                        <div class="estrellas">
-                            ★★★★★
-                        </div>
-                        <p class="descripcion">Una saga familiar llena de realismo mágico en el mítico pueblo de Macondo.</p>
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
-                    </div>
-
-                    <!-- libro 3-->
-                    <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>El principito</h3>
-                        <h4>Antoine de Saint-Exupéry</h4>
-                        <div class="estrellas">
-                            ★★★★☆
-                        </div>
-                        <p class="descripcion">Una fábula poética sobre la amistad, el amor y lo esencial de la vida, contada por un pequeño príncipe.</p>
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
-                    </div>
-
-                    <!-- libro 4-->
-                    <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>Don Quijote de la Mancha</h3>
-                        <h4>Miguel de Cervantes</h4>
-                        <div class="estrellas">
-                            ★★★★★
-                        </div>
-                        <p class="descripcion">Las aventuras de un caballero idealista y su escudero en un mundo que ya no cree en héroes.</p>
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
-                    </div>
-
-                    <!-- libro 5 -->
-                    <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>La sombra del viento</h3>
-                        <h4>Carlos Ruiz Zafón</h4>
-                        <div class="estrellas">
-                            ★★★☆☆
-                        </div>
-                        <p class="descripcion">Un joven descubre un libro olvidado y desata un misterio en la Barcelona antigua.</p>
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
-                    </div>
-
-                    <!-- libro 6 -->
-                    <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>Rayuela</h3>
-                        <h4>Julio Cortázar</h4>
-                        <div class="estrellas">
-                            ★★☆☆☆
-                        </div>
-                        <p class="descripcion">Un viaje literario libre y caótico por París y Buenos Aires.</p>
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
-                    </div>
-
-                    <!-- libro 7 -->
-                    <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>Ficciones</h3>
-                        <h4>Jorge Luis Borges</h4>
-                        <div class="estrellas">
-                            ★★☆☆☆
-                        </div>
-                        <p class="descripcion">Relatos laberínticos que desafían la realidad.</p> 
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
-                    </div>
-
-                    <!-- libro 8 -->
-                    <div class="item-inventario">
-                        <img src="../imagenes/libro_de_la_selva.jpg" alt="Libro 1">
-                        <h3>Ficciones</h3>
-                        <h4>Jorge Luis Borges</h4>
-                        <div class="estrellas">
-                            ★★☆☆☆
-                        </div>
-                        <p class="descripcion">Relatos laberínticos que desafían la realidad.</p>
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
-                    </div>
+                    @endforeach
                 </div>
 
                 <!-- Botón de acción (esquina inferior derecha) -->
-                <a href="registrar_libro.html"><button class="btn-agregar">+</button></a>
+                <a href="{{ route('registrar_libro') }}"><button class="btn-agregar">+</button></a>
             </div>
         </section>
     </main>

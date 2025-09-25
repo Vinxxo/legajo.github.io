@@ -29,7 +29,7 @@
     <main class="main-content">
         <header>
             <div class="header-left">
-                <h1>Hola David</h1>
+                <h1>Hola {{ $user->NomUsu1 }}</h1>
                 <p>Este es tu panel general de control</p>
             </div>
             <div class="header-right">

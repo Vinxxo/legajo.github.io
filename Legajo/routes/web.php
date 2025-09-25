@@ -26,11 +26,13 @@ Route::get('/dashboard', function () {
 // Dashboards por rol (solo para usuarios logueados)
 Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view('dashboard_admin'); // usa resources/views/dashboard_admin.blade.php
+        $user = auth()->user();
+        return view('dashboard_admin', compact('user')); // usa resources/views/dashboard_admin.blade.php
     })->name('admin.dashboard');
 
     Route::get('/usuario/dashboard', function () {
-        return view('dashboard_usuario'); // usa resources/views/dashboard_usuario.blade.php
+        $user = auth()->user();
+        return view('dashboard_usuario', compact('user')); // usa resources/views/dashboard_usuario.blade.php
     })->name('usuario.dashboard');
 
     Route::get('/usuario/chats', function () {
@@ -38,7 +40,8 @@ Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function 
     })->name('usuario.chats');
 
     Route::get('/usuario/inventario', function () {
-        return view('inventario'); // usa resources/views/inventario.blade.php
+        $libros = \App\Models\Libro::with('autores', 'generos')->get();
+        return view('inventario', compact('libros')); // usa resources/views/inventario.blade.php
     })->name('usuario.inventario');
 
     Route::get('/usuario/notificaciones', function () {
@@ -48,6 +51,12 @@ Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function 
     Route::get('/usuario/perfil', function () {
         return view('perfil'); // usa resources/views/perfil.blade.php
     })->name('usuario.perfil');
+
+    // Mostrar formulario de registro de libro (registrar_libro.blade.php)
+    Route::get('/registrar_libro', function () {
+        $generos = \App\Models\Genero::all();
+        return view('auth.registrar_libro', compact('generos'));
+    })->name('registrar_libro');
 });
 
 // Rutas para administradores (solo para usuarios logueados con rol de admin)
@@ -87,7 +96,7 @@ Route::resource('usuarios', UsuarioController::class);
 
 
 // Guardar usuario en la BD
-Route::post('/registrar_usuario', [UsuarioController::class, 'store'])->name('registrar_usuario.store');
+Route::post('/registrar_usuario', [RegistrarUsuarioController::class, 'store'])->name('registrar_usuario.store');
 
 Route::get('libros/imprimir', [LibroController::class, 'imprimir'])->name('libros.imprimir');
 Route::resource('libros', LibroController::class);

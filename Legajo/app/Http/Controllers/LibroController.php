@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use App\Models\Libro;
 use App\Models\Genero;
 use App\Models\Autor;
@@ -69,6 +70,9 @@ class LibroController extends Controller
         $rutaImagen = null;
         if ($request->hasFile('imagen')) {
             $rutaImagen = $request->file('imagen')->store('libros', 'public');
+            // Copiar a public/storage para acceso web
+            $filename = basename($rutaImagen);
+            File::copy(storage_path('app/public/libros/' . $filename), public_path('storage/libros/' . $filename));
         }
 
         // Guardar libro

@@ -30,7 +30,7 @@
         <header>
             <div class="header-left">
                 <h1>Bienvenid@</h1>
-                <p><span id="nombreRecibido">nombre</span>, Como estás?</p>
+                <p><span>{{ $user->NomUsu1 }}</span>, Como estás?</p>
             </div>
             <div class="header-right">
                 <div class="user-profile">
@@ -112,18 +112,6 @@
             carrusel.scrollLeft = scrollMax;
         }
         }
-    </script>
-    <script>
-        const inicial = localStorage.getItem("textoCompartido");
-        if (inicial){
-            document.getElementById("nombreRecibido").textContent = inicial;
-        }
-        
-        window.addEventListener("storage", function(event){
-            if (event.key === "textoCompartido"){
-                document.getElementById("nombreRecibido").textContent = event.newValue;
-            }
-        });
     </script>
 </body>
 </html>
