@@ -17,11 +17,11 @@
             <span>Panel de usuario</span>
         </div>
         <ul class="nav-links">
-            <a href=""><li class="active"><i class="fas fa-home"></i><span>Inicio</span></li></a>
-            <a href="chats.html"><li><i class="fas fa-message"></i><span>Chats</span></li></a>
-            <a href="inventario.html"><li><i class="fas fa-box"></i><span>Inventario</span></li></a>
-            <a href=""><li><i class="fas fa-check"></i><span>Notificaciones</span></li></a>
-            <a href="perfil.html"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
+            <a href="{{ route('usuario.dashboard') }}"><li class="active"><i class="fas fa-home"></i><span>Inicio</span></li></a>
+            <a href="{{ route('usuario.chats') }}"><li><i class="fas fa-message"></i><span>Chats</span></li></a>
+            <a href="{{ route('usuario.inventario') }}"><li><i class="fas fa-box"></i><span>Inventario</span></li></a>
+            <a href="{{ route('usuario.notificaciones') }}"><li><i class="fas fa-check"></i><span>Notificaciones</span></li></a>
+            <a href="{{ route('usuario.perfil') }}"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
         </ul>
     </nav>
 
