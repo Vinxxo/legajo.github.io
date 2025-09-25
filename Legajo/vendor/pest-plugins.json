@@ -1,8 +1,5 @@
 [
-<<<<<<< HEAD
     "Pest\\Arch\\Plugin",
-=======
->>>>>>> creacion_de_reportes
     "Pest\\Mutate\\Plugins\\Mutate",
     "Pest\\Plugins\\Configuration",
     "Pest\\Plugins\\Bail",
@@ -21,9 +18,5 @@
     "Pest\\Plugins\\Verbose",
     "Pest\\Plugins\\Version",
     "Pest\\Plugins\\Parallel",
-<<<<<<< HEAD
-=======
-    "Pest\\Arch\\Plugin",
->>>>>>> creacion_de_reportes
     "Pest\\Laravel\\Plugin"
 ]

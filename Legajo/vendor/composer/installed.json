@@ -1,8 +1,6 @@
 {
     "packages": [
         {
-<<<<<<< HEAD
-=======
             "name": "barryvdh/laravel-dompdf",
             "version": "v3.1.1",
             "version_normalized": "3.1.1.0",
@@ -83,7 +81,6 @@
             "install-path": "../barryvdh/laravel-dompdf"
         },
         {
->>>>>>> creacion_de_reportes
             "name": "brianium/paratest",
             "version": "v7.8.4",
             "version_normalized": "7.8.4.0",
@@ -617,8 +614,6 @@
             "install-path": "../doctrine/lexer"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "dompdf/dompdf",
             "version": "v3.1.2",
             "version_normalized": "3.1.2.0",
@@ -783,7 +778,6 @@
             "install-path": "../dompdf/php-svg-lib"
         },
         {
->>>>>>> creacion_de_reportes
             "name": "dragonmantank/cron-expression",
             "version": "v3.4.0",
             "version_normalized": "3.4.0.0",
@@ -1805,8 +1799,6 @@
             "install-path": "../jean85/pretty-package-versions"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "kitloong/laravel-migrations-generator",
             "version": "v7.2.0",
             "version_normalized": "7.2.0.0",
@@ -1888,7 +1880,6 @@
             "install-path": "../kitloong/laravel-migrations-generator"
         },
         {
->>>>>>> creacion_de_reportes
             "name": "laravel/breeze",
             "version": "v2.3.8",
             "version_normalized": "2.3.8.0",
@@ -3163,8 +3154,6 @@
             "install-path": "../league/uri-interfaces"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "masterminds/html5",
             "version": "2.10.0",
             "version_normalized": "2.10.0.0",
@@ -3235,7 +3224,6 @@
             "install-path": "../masterminds/html5"
         },
         {
->>>>>>> creacion_de_reportes
             "name": "mockery/mockery",
             "version": "1.6.12",
             "version_normalized": "1.6.12.0",
@@ -6118,8 +6106,6 @@
             "install-path": "../ramsey/uuid"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "sabberworm/php-css-parser",
             "version": "v8.9.0",
             "version_normalized": "8.9.0.0",
@@ -6189,7 +6175,6 @@
             "install-path": "../sabberworm/php-css-parser"
         },
         {
->>>>>>> creacion_de_reportes
             "name": "sebastian/cli-parser",
             "version": "3.0.2",
             "version_normalized": "3.0.2.0",
@@ -10318,10 +10303,7 @@
         "filp/whoops",
         "hamcrest/hamcrest-php",
         "jean85/pretty-package-versions",
-<<<<<<< HEAD
-=======
         "kitloong/laravel-migrations-generator",
->>>>>>> creacion_de_reportes
         "laravel/breeze",
         "laravel/pail",
         "laravel/pint",
