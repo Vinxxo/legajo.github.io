@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`usuarios` (
   `TelefonoUsu` BIGINT(20) NOT NULL,
   `FK_roles` INT(11) NOT NULL,
   PRIMARY KEY (`idUsuario`),
-  INDEX `FK_usuarios_roles` (`FK_roles` ASC) VISIBLE,
+  INDEX `FK_usuarios_roles` (`FK_roles`),
   CONSTRAINT `FK_usuarios_roles`
     FOREIGN KEY (`FK_roles`)
     REFERENCES `legajobd`.`roles` (`idRol`))
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`libros` (
   `created_at` TIMESTAMP NULL DEFAULT NULL,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`idLibro`),
-  INDEX `FK_libros_usuarios` (`FK_usuarios` ASC) VISIBLE,
+  INDEX `FK_libros_usuarios` (`FK_usuarios`),
   CONSTRAINT `FK_libros_usuarios`
     FOREIGN KEY (`FK_usuarios`)
     REFERENCES `legajobd`.`usuarios` (`idUsuario`))
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`autor_libros` (
   `FK_idAutor` INT(11) NOT NULL,
   `FK_idLibro` INT(11) NOT NULL,
   PRIMARY KEY (`FK_idAutor`, `FK_idLibro`),
-  INDEX `FK_autorlibros_libros` (`FK_idLibro` ASC) VISIBLE,
+  INDEX `FK_autorlibros_libros` (`FK_idLibro`),
   CONSTRAINT `FK_autorlibros_autor`
     FOREIGN KEY (`FK_idAutor`)
     REFERENCES `legajobd`.`autor` (`idAutor`),
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`calificacionlibro` (
   `CalificacionLib` DECIMAL(10,0) NULL DEFAULT NULL,
   `FK_libros` INT(11) NOT NULL,
   PRIMARY KEY (`idCalificacionLib`),
-  INDEX `FK_calificacionLibro_libros` (`FK_libros` ASC) VISIBLE,
+  INDEX `FK_calificacionLibro_libros` (`FK_libros`),
   CONSTRAINT `FK_calificacionLibro_libros`
     FOREIGN KEY (`FK_libros`)
     REFERENCES `legajobd`.`libros` (`idLibro`))
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`calificacionusuario` (
   `CalificacionUsu` DECIMAL(10,0) NULL DEFAULT NULL,
   `FK_usuarios` INT(11) NOT NULL,
   PRIMARY KEY (`idCalificacionUsu`),
-  INDEX `FK_calificacionUsuario_usuarios` (`FK_usuarios` ASC) VISIBLE,
+  INDEX `FK_calificacionUsuario_usuarios` (`FK_usuarios`),
   CONSTRAINT `FK_calificacionUsuario_usuarios`
     FOREIGN KEY (`FK_usuarios`)
     REFERENCES `legajobd`.`usuarios` (`idUsuario`))
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`chats_usuarios` (
   `FK_idChat` INT(11) NOT NULL,
   `FK_idUsuario` INT(11) NOT NULL,
   PRIMARY KEY (`FK_idChat`, `FK_idUsuario`),
-  INDEX `FK_chatsusuarios_usuarios` (`FK_idUsuario` ASC) VISIBLE,
+  INDEX `FK_chatsusuarios_usuarios` (`FK_idUsuario`),
   CONSTRAINT `FK_chatsusuarios_chats`
     FOREIGN KEY (`FK_idChat`)
     REFERENCES `legajobd`.`chats` (`idChat`),
@@ -218,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`genero_libros` (
   `FK_idGenero` INT(11) NOT NULL,
   `FK_idLibro` INT(11) NOT NULL,
   PRIMARY KEY (`FK_idGenero`, `FK_idLibro`),
-  INDEX `FK_generolibros_libros` (`FK_idLibro` ASC) VISIBLE,
+  INDEX `FK_generolibros_libros` (`FK_idLibro`),
   CONSTRAINT `FK_generolibros_genero`
     FOREIGN KEY (`FK_idGenero`)
     REFERENCES `legajobd`.`genero` (`idGenero`),
@@ -253,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`reporteslibros` (
   `fecha_reporte` DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
   `estado` ENUM('pendiente', 'revisado', 'rechazado') NULL DEFAULT 'pendiente',
   PRIMARY KEY (`idReporteUsu`),
-  INDEX `FK_libro_reportado_id` (`FK_idLibroReportado` ASC) VISIBLE,
+  INDEX `FK_libro_reportado_id` (`FK_idLibroReportado`),
   CONSTRAINT `FK_libro_reportado_id`
     FOREIGN KEY (`FK_idLibroReportado`)
     REFERENCES `legajobd`.`libros` (`idLibro`))
@@ -271,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`reportesusuarios` (
   `fecha_reporte` DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
   `estado` ENUM('pendiente', 'revisado', 'rechazado') NULL DEFAULT 'pendiente',
   PRIMARY KEY (`idReporteUsu`),
-  INDEX `FK_usuario_reportado_id` (`FK_idUsuarioReportado` ASC) VISIBLE,
+  INDEX `FK_usuario_reportado_id` (`FK_idUsuarioReportado`),
   CONSTRAINT `FK_usuario_reportado_id`
     FOREIGN KEY (`FK_idUsuarioReportado`)
     REFERENCES `legajobd`.`usuarios` (`idUsuario`))
@@ -290,8 +290,8 @@ CREATE TABLE IF NOT EXISTS `legajobd`.`sessions` (
   `payload` LONGTEXT NOT NULL,
   `last_activity` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `sessions_user_id_index` (`user_id` ASC) VISIBLE,
-  INDEX `sessions_last_activity_index` (`last_activity` ASC) VISIBLE)
+  INDEX `sessions_user_id_index` (`user_id`),
+  INDEX `sessions_last_activity_index` (`last_activity`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
@@ -332,7 +332,20 @@ CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY D
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `legajobd`.`vistaresumenusuario`;
 USE `legajobd`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `legajobd`.`vistaresumenusuario` AS select `u`.`idUsuario` AS `idUsuario`,`u`.`NomUsu1` AS `NomUsu1`,`u`.`ApeUsu1` AS `ApeUsu1`,`cu`.`CalificacionUsu` AS `CalificacionUsu`,count(`cu2`.`FK_idChat`) AS `TotalChats` from ((`legajobd`.`usuarios` `u` left join `legajobd`.`calificacionusuario` `cu` on(`u`.`idUsuario` = `cu`.`FK_usuarios`)) left join `legajobd`.`chats_usuarios` `cu2` on(`u`.`idUsuario` = `cu2`.`FK_idUsuario`)) group by `u`.`idUsuario`;
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `legajobd`.`vistaresumenusuario` AS select `u`.`idUsuario` AS `idUsuario`,`u`.`NomUsu1` AS `NomUsu1`,`u`.`ApeUsu1` AS `ApeUsu1`,`cu`.`CalificacionUsu` AS `CalificacionUsu`,count(`cu2`.`FK_idChat`) AS `TotalChats` from ((`legajobd`.`usuarios` `u` left join `legajobd`.`calificacionusuario` `cu` on(`u`.`idUsuario` = `cu`.`FK_usuarios`)) left join `legajobd`.`chats_usuarios` `cu2` on(`u`.`idUsuario` = `cu2`.`FK_idUsuario`)) group by `u`.`idUsuario`, `u`.`NomUsu1`, `u`.`ApeUsu1`, `cu`.`CalificacionUsu`;
+
+insert into genero (GeneroLib) values
+('Ficción'),
+('No Ficción'),
+('Fantasía'),
+('Ciencia Ficción'),
+('Romance'),
+('Terror'),
+('Misterio'),
+('Aventura'),
+('Histórico'),
+('Biografía');
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
