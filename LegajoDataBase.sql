@@ -38,7 +38,7 @@ create table usuarios(
     ApeUsu1 varchar(20) not null,
     ApeUsu2 varchar(20),
     CorreoUsu varchar(50) not null,
-    Clave varchar(50) not null,
+    Clave varchar(100) not null,
     DireccionUsu varchar(50) not null,
     CiudadUsu varchar(15) not null,
     TelefonoUsu bigint not null,
@@ -51,6 +51,7 @@ create table libros(
     TituloLib varchar(100) not null,
     SinopsisLib varchar(400) not null,
     EstadoLib enum('Publicado', 'Leyendo') not null,
+    Imagen varchar(255) not null,
     FK_usuarios int not null,
     primary key (idLibro)
 );
