@@ -40,7 +40,7 @@ Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function 
     })->name('usuario.chats');
 
     Route::get('/usuario/inventario', function () {
-        $libros = \App\Models\Libro::with('autores', 'generos')->get();
+        $libros = \App\Models\Libro::where('FK_usuarios', auth()->id())->with('autores', 'generos')->get();
         return view('inventario', compact('libros')); // usa resources/views/inventario.blade.php
     })->name('usuario.inventario');
 
@@ -84,8 +84,6 @@ require __DIR__.'/auth.php';
 // 🔹 Rutas personalizadas para usuarios
 // --------------------------
 
-
-
 // Mostrar formulario de registro (registrar_usuario.blade.php)
 Route::get('/registrar_usuario', function () {
     return view('auth.registrar_usuario');
@@ -93,7 +91,6 @@ Route::get('/registrar_usuario', function () {
 
 //CRUD DE USUARIOS
 Route::resource('usuarios', UsuarioController::class);
-
 
 // Guardar usuario en la BD
 Route::post('/registrar_usuario', [RegistrarUsuarioController::class, 'store'])->name('registrar_usuario.store');

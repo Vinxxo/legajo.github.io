@@ -14,7 +14,7 @@ class Libro extends Model
         'SinopsisLib',
         'EstadoLib',
         'FK_usuarios',
-        'imagen'
+        'Imagen'
     ];
 
     public function autores()

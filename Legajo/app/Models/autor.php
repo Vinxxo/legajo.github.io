@@ -8,6 +8,7 @@ class Autor extends Model
 {
     protected $table = 'autor';
     protected $primaryKey = 'idAutor';
+    public $timestamps = false;
 
     protected $fillable = [
         'NomAutor1',

@@ -6,6 +6,39 @@
     <title>Dashboard Usuario</title>
     <link rel="stylesheet" href="../estilos/dashboard.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .acciones {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .btn-editar {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .btn-editar:hover {
+            background: #2563eb;
+        }
+        .btn-borrar {
+            background: #ef4444;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-borrar:hover {
+            background: #dc2626;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -55,14 +88,22 @@
                 <div class="grid-inventario">
                     @foreach($libros as $libro)
                     <div class="item-inventario">
-                        <img src="{{ asset('storage/' . $libro->imagen) }}" alt="Imagen del libro">
+                        <img src="{{ asset('storage/' . $libro->Imagen) }}" alt="Imagen del libro">
                         <h3>{{ $libro->TituloLib }}</h3>
                         <h4>{{ $libro->autores->pluck('NomAutor1')->join(', ') }}</h4>
                         <div class="estrellas">
                             ★★★★☆
                         </div>
                         <p class="descripcion">{{ $libro->SinopsisLib }}</p>
-                        <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
+                        <div class="acciones">
+                            <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
+                            <a href="{{ route('libros.edit', $libro->idLibro) }}" class="btn-editar"><i class="fas fa-edit"></i> Editar</a>
+                            <form method="POST" action="{{ route('libros.destroy', $libro->idLibro) }}" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-borrar" onclick="return confirm('¿Estás seguro de que quieres borrar este libro?')"><i class="fas fa-trash"></i> Borrar</button>
+                            </form>
+                        </div>
                     </div>
                     @endforeach
                 </div>

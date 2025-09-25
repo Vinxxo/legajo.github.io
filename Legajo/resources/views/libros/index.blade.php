@@ -122,8 +122,8 @@
         <div class="libros-grid">
             @foreach($libros as $libro)
             <div class="libro-card">
-                @if($libro->imagen)
-                    <img src="{{ asset('storage/'.$libro->imagen) }}" alt="Imagen del libro">
+                @if($libro->Imagen)
+                    <img src="{{ asset('storage/'.$libro->Imagen) }}" alt="Imagen del libro">
                 @else
                     <div style="height: 200px; background: var(--color-secundario); display: flex; align-items: center; justify-content: center; border-radius: 8px; margin-bottom: 15px;">No imagen</div>
                 @endif

@@ -8,6 +8,7 @@ class Genero extends Model
 {
     protected $table = 'genero';
     protected $primaryKey = 'idGenero';
+    public $timestamps = false;
 
     protected $fillable = [
         'GeneroLib',

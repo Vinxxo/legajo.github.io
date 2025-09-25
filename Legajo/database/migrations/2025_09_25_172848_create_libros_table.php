@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('TituloLib', 100);
             $table->string('SinopsisLib', 400);
             $table->enum('EstadoLib', ['Publicado', 'Leyendo']);
+            $table->string('Imagen');
             $table->integer('FK_usuarios')->index('fk_libros_usuarios');
         });
     }

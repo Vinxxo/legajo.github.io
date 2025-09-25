@@ -1,2 +1,0 @@
-- [ ] Update routes/web.php to pass the authenticated user to the dashboard_admin view
-- [ ] Update resources/views/dashboard_admin.blade.php to display the admin's first name using Blade syntax
