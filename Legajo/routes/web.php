@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RegistrarUsuarioController;
+use App\Http\Controllers\LibroController;
 
 // Página de inicio
 Route::get('/', function () {
@@ -87,3 +88,6 @@ Route::resource('usuarios', UsuarioController::class);
 
 // Guardar usuario en la BD
 Route::post('/registrar_usuario', [UsuarioController::class, 'store'])->name('registrar_usuario.store');
+
+Route::get('libros/imprimir', [LibroController::class, 'imprimir'])->name('libros.imprimir');
+Route::resource('libros', LibroController::class);
