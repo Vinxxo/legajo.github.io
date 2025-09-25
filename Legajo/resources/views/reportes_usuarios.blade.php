@@ -17,11 +17,11 @@
             <span>AdminDash</spa>
         </div>
         <ul class="nav-links">
-            <a href="dashboard_admin.html"><li><i class="fas fa-home"></i><span>Inicio</span></li></a>
-            <a href="reportes_usuarios.html"><li class="active"><i class="fas fa-user"></i><span>Reporte de usuarios</span></li></a>
-            <a href="../errores/500.html"><li><i class="fas fa-book"></i><span>Reporte de libros</span></li></a>
-            <a href="perfil_admin.html"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
-            <a href="../errores/404.html"><li><i class="fas fa-cog"></i><span>Configuración</span></li></a>
+            <a href="{{ route('admin.dashboard') }}"><li><i class="fas fa-home"></i><span>Inicio</span></li></a>
+            <a href="{{ route('admin.reportes-usuarios') }}"><li class="active"><i class="fas fa-user"></i><span>Reporte de usuarios</span></li></a>
+            <a href="#"><li><i class="fas fa-book"></i><span>Reporte de libros</span></li></a>
+            <a href="{{ route('admin.perfil') }}"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
+            <a href="#"><li><i class="fas fa-cog"></i><span>Configuración</span></li></a>
         </ul>
     </nav>
 
@@ -33,9 +33,15 @@
             </div>
             <div class="header-right">
                 <div class="user-profile">
-                <img src="../imagenes/profile.png" alt="Admin" />
-                <span>Administrador</span>
+                    <img src="../imagenes/profile.png" alt="Admin" />
+                    <span>Administrador</span>
                 </div>
+                <form method="POST" action="{{ route('logout') }}" style="margin-left: 12px;">
+                    @csrf
+                    <button type="submit" class="btn-logout" style="background:#ef4444;color:#fff;border:none;border-radius:6px;padding:8px 12px;cursor:pointer;">
+                        Cerrar sesión
+                    </button>
+                </form>
             </div>
         </header>
 

@@ -24,10 +24,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        // $usuario = \App\Models\Usuario::where('CorreoUsu', $request->CorreoUsu)->first();
-        // dd(\Illuminate\Support\Facades\Hash::check('12345678', $usuario->Clave)); // Comenta o elimina
         $request->authenticate();
         $request->session()->regenerate();
+
+        $usuarioAutenticado = Auth::user();
+
+        if ($usuarioAutenticado && (int) ($usuarioAutenticado->FK_roles) === 1) {
+            return redirect()->intended(route('admin.dashboard', absolute: false));
+        }
+
+        if ($usuarioAutenticado && (int) ($usuarioAutenticado->FK_roles) === 2) {
+            return redirect()->intended(route('usuario.dashboard', absolute: false));
+        }
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

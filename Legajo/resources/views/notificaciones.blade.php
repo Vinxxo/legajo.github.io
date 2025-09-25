@@ -17,11 +17,11 @@
             <span>Panel de <p id="n2">nombre</p></span>
         </div>
         <ul class="nav-links">
-            <a href=""><li><i class="fas fa-home"></i><span>Inicio</span></li></a>
-            <a href="chats.html"><li><i class="fas fa-message"></i><span>Chats</span></li></a>
-            <a href="inventario.html"><li><i class="fas fa-box"></i><span>Inventario</span></li></a>
-            <a href="notificaciones.html"><li class="active"><i class="fas fa-check"></i><span>Notificaciones</span></li></a>
-            <a href="perfil.html"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
+            <a href="{{ route('usuario.dashboard') }}"><li><i class="fas fa-home"></i><span>Inicio</span></li></a>
+            <a href="{{ route('usuario.chats') }}"><li><i class="fas fa-message"></i><span>Chats</span></li></a>
+            <a href="{{ route('usuario.inventario') }}"><li><i class="fas fa-box"></i><span>Inventario</span></li></a>
+            <a href="{{ route('usuario.notificaciones') }}"><li class="active"><i class="fas fa-check"></i><span>Notificaciones</span></li></a>
+            <a href="{{ route('usuario.perfil') }}"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
         </ul>
     </nav>
 
@@ -34,9 +34,15 @@
             </div>
             <div class="header-right">
                 <div class="user-profile">
-                <img src="../imagenes/profile.png" alt="Usuario" />
-                <span id="n3">Usuario</span>
+                    <img src="../imagenes/profile.png" alt="Usuario" />
+                    <span id="n3">Usuario</span>
                 </div>
+                <form method="POST" action="{{ route('logout') }}" style="margin-left: 12px;">
+                    @csrf
+                    <button type="submit" class="btn-logout" style="background:#ef4444;color:#fff;border:none;border-radius:6px;padding:8px 12px;cursor:pointer;">
+                        Cerrar sesión
+                    </button>
+                </form>
             </div>
         </header>
         <!-- Notificaciones  -->
