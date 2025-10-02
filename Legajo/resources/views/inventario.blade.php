@@ -96,7 +96,6 @@
                         </div>
                         <p class="descripcion">{{ $libro->SinopsisLib }}</p>
                         <div class="acciones">
-                            <button class="btn-verde"><i class="fas fa-eye"></i> Ver</button>
                             <a href="{{ route('libros.edit', $libro->idLibro) }}" class="btn-editar"><i class="fas fa-edit"></i> Editar</a>
                             <form method="POST" action="{{ route('libros.destroy', $libro->idLibro) }}" style="display:inline;">
                                 @csrf

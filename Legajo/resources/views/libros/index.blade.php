@@ -89,7 +89,11 @@
 
         <form method="GET" action="{{ route('libros.index') }}" class="mb-6">
             <h2>Lista de Libros</h2>
-            <a href="{{ route('usuario.inventario') }}" class="pdf-link">Regresar al Inventario</a>
+            @if(auth()->user()->FK_roles == 1)
+                <a href="{{ route('admin.dashboard') }}" class="pdf-link">Regresar al Dashboard</a>
+            @else
+                <a href="{{ route('usuario.inventario') }}" class="pdf-link">Regresar al Inventario</a>
+            @endif
             <div class="grid-3cols">
                 <input type="text" name="titulo" value="{{ request('titulo') }}" placeholder="Título">
                 <input type="text" name="autor" value="{{ request('autor') }}" placeholder="Autor">

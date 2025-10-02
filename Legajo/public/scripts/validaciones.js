@@ -22,16 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Validación para Crear Cuenta
-    const formRegistro = document.querySelector('form[action="dashboard_usuario.html"]');
+    const formRegistro = document.querySelector('input[name="Clave"]') ? document.querySelector('input[name="Clave"]').closest('form') : null;
     if (formRegistro) {
         formRegistro.addEventListener("submit", function (e) {
-            const nombre = document.getElementById("textoInput").value.trim();
+            const nombre = document.getElementById("NomUsu1").value.trim();
             const email = formRegistro.querySelector('input[type="email"]').value.trim();
-            const password = formRegistro.querySelectorAll('input[type="password"]')[0].value;
-            const confirmar = formRegistro.querySelectorAll('input[type="password"]')[1].value;
+            const password = formRegistro.querySelector('input[name="Clave"]').value;
+            const confirmar = formRegistro.querySelector('input[name="Clave_confirmation"]').value;
 
             if (nombre === "") {
-                alert("Por favor, ingresa tu nombre completo.");
+                alert("Por favor, ingresa tu primer nombre.");
                 e.preventDefault();
                 return;
             }
@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (password.length < 6) {
-                alert("La contraseña debe tener al menos 6 caracteres.");
+            if (!validarContrasenaFuerte(password)) {
+                alert("La contraseña debe tener más de 8 caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial.");
                 e.preventDefault();
                 return;
             }
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Guardar nombre en localStorage
+            // Guardar nombre en localStorage si es necesario
             localStorage.setItem("textoCompartido", nombre);
         });
     }
@@ -64,4 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
 function validarEmail(correo) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(correo);
+}
+
+// Función para validar contraseña fuerte
+function validarContrasenaFuerte(contrasena) {
+    // Más de 8 caracteres
+    if (contrasena.length <= 8) return false;
+    // Al menos una mayúscula
+    if (!/[A-Z]/.test(contrasena)) return false;
+    // Al menos una minúscula
+    if (!/[a-z]/.test(contrasena)) return false;
+    // Al menos un número
+    if (!/\d/.test(contrasena)) return false;
+    // Al menos un carácter especial
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(contrasena)) return false;
+    return true;
 }

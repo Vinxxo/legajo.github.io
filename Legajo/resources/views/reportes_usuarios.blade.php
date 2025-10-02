@@ -19,9 +19,8 @@
         <ul class="nav-links">
             <a href="{{ route('admin.dashboard') }}"><li><i class="fas fa-home"></i><span>Inicio</span></li></a>
             <a href="{{ route('admin.reportes-usuarios') }}"><li class="active"><i class="fas fa-user"></i><span>Reporte de usuarios</span></li></a>
-            <a href="#"><li><i class="fas fa-book"></i><span>Reporte de libros</span></li></a>
+            <a href="{{ route('libros.index') }}"><li><i class="fas fa-book"></i><span>Reporte de libros</span></li></a>
             <a href="{{ route('admin.perfil') }}"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
-            <a href="#"><li><i class="fas fa-cog"></i><span>Configuración</span></li></a>
         </ul>
     </nav>
 

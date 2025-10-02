@@ -121,7 +121,7 @@ class LibroController extends Controller
             'FK_idLibro'  => $idLibro,
         ]);
 
-        return redirect()->route('libros.index')->with('success', 'Libro registrado con éxito');
+        return redirect()->route('usuario.inventario')->with('success', 'Libro registrado con éxito');
     }
 
     /**
