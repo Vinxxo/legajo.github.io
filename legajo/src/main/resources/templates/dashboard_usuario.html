@@ -40,7 +40,7 @@
             </div>
         </header>
 
-       <section class="seccion-carrusel">
+        <section class="seccion-carrusel">
             <h2 class="titulo-seccion">Recomendados</h2>
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('recomendados', -1)">❮</button>
@@ -51,6 +51,13 @@
                 <div class="libro"><img src="../static/imgs/libro_de_la_selva.jpg"><h3>Padre Rico</h3><p>Robert Kiyosaki</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('recomendados', 1)">❯</button>
+            </div>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span id="closeModal" class="close">&times;</span>
+                    <h2>Detalles del producto</h2>
+                    <p>Descripción detallada del producto...</p>
+                </div>
             </div>
         </section>
 
