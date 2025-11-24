@@ -1,15 +1,21 @@
 :root{
-    --fondo-principal: #392a35;
-    --color-texto: #e5fec5;
-    --color-secundario: #333;
-    --logo: url(../imgs/logo_oscuro.png) center / cover no-repeat;
+    --fondo-principal: #091326;
+    --color-texto: #D9B596;
+    --color-secundario: #8C6249;
+    --logo: url(../imgs/logo_oscuro1.jpg) center / cover no-repeat;
+
+    --color-acento: #F2AE2E;
+    --color-acento-sec: #BF5B04;
 }
 
 .modo-claro {
-    --fondo-principal: #e5fec5;
-    --color-texto: #392a35;
-    --color-secundario: #ddd;
-    --logo: url(../imgs/logo_claro.png) center / cover no-repeat;
+    --fondo-principal: #FFFFFF;
+    --color-texto: #091326;
+    --color-secundario: #D9B596;
+    --logo: url(../imgs/logo_claro1.jpg) center / cover no-repeat;
+
+    --color-acento: #BF5B04;
+    --color-acento-sec: #F2AE2E;
 }
 
 *{
@@ -93,7 +99,7 @@ hr{
 /* INICIO */
 
 #inicio{
-    background: url(../imgs/fondo_inicio.jpg) center / cover no-repeat fixed;
+    background: url(../imgs/bibliotecas.jpg) center / cover no-repeat fixed;
     min-height: 100vh;
 }
 
@@ -105,7 +111,7 @@ hr{
 .fondo_inicio h1, .fondo_inicio p{
     font-size: 7rem;
     text-align: center;
-    color: #e5fec5;
+    color: #FFFFFF;
 }
 
 .fondo_inicio p{
@@ -155,11 +161,11 @@ hr{
 }
 
 #ayuda h2{
-    color: #e5fec5;
+    color: #D9B596;
 }
 
 #ayuda h3{
-    color: #e5fec5;
+    color: #D9B596;
 }
 
 .contenedor_ayuda{
