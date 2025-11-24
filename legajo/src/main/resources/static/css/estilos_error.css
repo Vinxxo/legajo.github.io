@@ -1,13 +1,19 @@
 :root{
-    --fondo-principal: #392a35;
-    --color-texto: #e5fec5;
-    --color-secundario: #333;
+    --fondo-principal: #091326;
+    --color-texto: #D9B596;
+    --color-secundario: #8C6249;
+
+    --color-acento: #F2AE2E;
+    --color-acento-sec: #BF5B04;
 }
 
 .modo-claro {
-    --fondo-principal: #e5fec5;
-    --color-texto: #392a35;
-    --color-secundario: #ddd;
+    --fondo-principal: #FFFFFF;
+    --color-texto: #091326;
+    --color-secundario: #D9B596;
+
+    --color-acento: #BF5B04;
+    --color-acento-sec: #F2AE2E;
 }
 
 * {
