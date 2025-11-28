@@ -19,6 +19,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "usuarios")
 public class usuarios {
@@ -52,13 +53,16 @@ public class usuarios {
     private String ciudad;
 
     @Column(name = "TelefonoUsu", length = 20)
-    private long telefono;
+    private int telefono;
 
     // Constructor
 
-    public usuarios(Long id, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido,
-            String correo, String clave, String direccion, String ciudad, long telefono) {
-        this.idUsuario = id;
+    public usuarios() {
+    }
+
+
+    public usuarios( String primerNombre, String segundoNombre, String primerApellido, String segundoApellido,
+            String correo, String clave, String direccion, String ciudad, int telefono) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -72,12 +76,12 @@ public class usuarios {
 
     // Getters y Setters
 
-    public Long getId() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setId(Long id) {
-        this.idUsuario = id;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getPrimerNombre() {
@@ -144,7 +148,7 @@ public class usuarios {
         this.ciudad = ciudad;
     }
 
-    public long getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
@@ -152,11 +156,21 @@ public class usuarios {
         this.telefono = telefono;
     }
 
+    public roles getRol() {
+    return rol;
+    }
+
+    public void setRol(roles rol) {
+        this.rol = rol;
+    }
+
+
     // Relaciones
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<libros> libros;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private roles roles;
+    @JoinColumn(name = "FK_roles")  
+    private roles rol;
+
 }

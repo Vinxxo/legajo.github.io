@@ -44,7 +44,8 @@ public class UsuarioService {
         usuario.setClave(datosActualizados.getClave());
         usuario.setDireccion(datosActualizados.getDireccion());
         usuario.setCiudad(datosActualizados.getCiudad());
-        //quedo faltando telefono y rol
+        usuario.setTelefono(datosActualizados.getTelefono());
+        usuario.setRol(datosActualizados.getRol());
 
         return usuarioRepository.save(usuario);
     }

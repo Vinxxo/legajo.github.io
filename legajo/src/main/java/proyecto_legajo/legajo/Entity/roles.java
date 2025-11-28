@@ -29,9 +29,11 @@ public class roles {
     private String rol;
 
     // Constructor
+    public roles() {
+    }
 
-    public roles(Long idRol, String rol) {
-        this.idRol = idRol;
+
+    public roles(String rol) {
         this.rol = rol;
     }
 
@@ -55,8 +57,7 @@ public class roles {
     }
 
     // Relaciones
-    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
     private List<usuarios> usuarios;
-
 
 }

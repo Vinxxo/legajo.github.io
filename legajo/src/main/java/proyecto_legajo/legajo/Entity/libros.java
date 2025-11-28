@@ -1,102 +1,73 @@
 package proyecto_legajo.legajo.Entity;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name="libros")
+@Table(name = "libros")
 public class libros {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idLibro;
+    @Column(name = "idLibro")
+    private Long idLibro;
 
-    @Size(max = 100)
     @Column(name = "TituloLib", length = 100, nullable = false)
-    private String tituloLib;
+    private String titulo;
 
-    @Size(max = 400)
     @Column(name = "SinopsisLib", length = 400, nullable = false)
-    private String sinopsisLib;
+    private String sinopsis;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "EstadoLib", nullable = false)
-    private EnumType estadoLib;
+    private EstadoLibro estado;
 
-    //Constructor
-    
-    public libros(int idLibro, @Size(max = 100) String tituloLib, @Size(max = 400) String sinopsisLib,
-            EnumType estadoLib) {
-        this.idLibro = idLibro;
-        this.tituloLib = tituloLib;
-        this.sinopsisLib = sinopsisLib;
-        this.estadoLib = estadoLib;
-    }
+    // RELACIÓN con usuarios: MUCHOS libros -> UN usuario
+    @ManyToOne
+    @JoinColumn(name = "FK_usuarios", nullable = false)
+    private usuarios usuario;
 
-    //Getters y Setters
+    // Constructor vacío
+    public libros() {}
 
-    public int getIdLibro() {
+    // Getters y Setters
+    public Long getIdLibro() {
         return idLibro;
     }
 
-    public void setIdLibro(int idLibro) {
+    public void setIdLibro(Long idLibro) {
         this.idLibro = idLibro;
     }
 
-    public String getTituloLib() {
-        return tituloLib;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTituloLib(String tituloLib) {
-        this.tituloLib = tituloLib;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getSinopsisLib() {
-        return sinopsisLib;
+    public String getSinopsis() {
+        return sinopsis;
     }
 
-    public void setSinopsisLib(String sinopsisLib) {
-        this.sinopsisLib = sinopsisLib;
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
     }
 
-    public EnumType getEstadoLib() {
-        return estadoLib;
+    public EstadoLibro getEstado() {
+        return estado;
     }
 
-    public void setEstadoLib(EnumType estadoLib) {
-        this.estadoLib = estadoLib;
+    public void setEstado(EstadoLibro estado) {
+        this.estado = estado;
     }
 
-    // Relaciones
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private usuarios usuarios;
+    public usuarios getUsuario() {
+        return usuario;
+    }
 
-    @ManyToMany
-    @JoinTable(
-        name = "autor_libros",
-        joinColumns = @JoinColumn(name = "libros_id"),
-        inverseJoinColumns = @JoinColumn(name = "autor_id")
-    )
-    private Set<autor> autor = new HashSet<>();
+    public void setUsuario(usuarios usuario) {
+        this.usuario = usuario;
+    }
+    //
 }

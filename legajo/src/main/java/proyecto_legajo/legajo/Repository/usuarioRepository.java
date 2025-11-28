@@ -8,6 +8,6 @@ import proyecto_legajo.legajo.Entity.usuarios;
 
 @Repository
 public interface usuarioRepository extends JpaRepository<usuarios, Long> {
-Optional<usuarios> findByCorreoUsu(String correoUsu);
+Optional<usuarios> findByCorreo(String correo);
 
 }
