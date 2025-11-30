@@ -1,0 +1,14 @@
+proyecto_legajo\legajo\Repository\usuarioRepository.class
+proyecto_legajo\legajo\Dto\LibroDTO.class
+proyecto_legajo\legajo\Repository\LibrosRepository.class
+proyecto_legajo\legajo\Entity\genero.class
+proyecto_legajo\legajo\Entity\EstadoLibro.class
+proyecto_legajo\legajo\Entity\libros.class
+proyecto_legajo\legajo\Entity\usuarios.class
+proyecto_legajo\legajo\Controller\LibrosController.class
+proyecto_legajo\legajo\Entity\roles.class
+proyecto_legajo\legajo\Service\UsuarioService.class
+proyecto_legajo\legajo\Dto\UsuarioDTO.class
+proyecto_legajo\legajo\Entity\autor.class
+proyecto_legajo\legajo\Controller\UsuarioController.class
+proyecto_legajo\legajo\LegajoApplication.class

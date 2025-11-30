@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import proyecto_legajo.legajo.Entity.usuarios;
 import proyecto_legajo.legajo.Service.UsuarioService;
+import proyecto_legajo.legajo.Dto.UsuarioDTO;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -17,26 +19,29 @@ public class UsuarioController {
 
     // Crear usuario
     @PostMapping
-    public usuarios crearUsuario(@RequestBody usuarios usuario) {
-        return usuarioService.crearUsuario(usuario);
+    public UsuarioDTO crearUsuario(@RequestBody UsuarioDTO usuarioDto) {
+        usuarios saved = usuarioService.crearUsuario(usuarioService.fromDto(usuarioDto));
+        return usuarioService.toDto(saved);
     }
 
     // Listar todos los usuarios
     @GetMapping
-    public List<usuarios> listarUsuarios() {
+    public List<UsuarioDTO> listarUsuarios() {
         return usuarioService.listarUsuarios();
     }
 
     // Buscar usuario por ID
     @GetMapping("/{id}")
-    public usuarios obtenerUsuarioPorId(@PathVariable Long id) {
-        return usuarioService.obtenerUsuarioPorId(id);
+    public UsuarioDTO obtenerUsuarioPorId(@PathVariable Long id) {
+        return usuarioService.toDto(usuarioService.obtenerUsuarioPorId(id));
     }
 
     // Actualizar usuario
     @PutMapping("/{id}")
-    public usuarios actualizarUsuario(@PathVariable Long id, @RequestBody usuarios usuarioActualizado) {
-        return usuarioService.actualizarUsuario(id, usuarioActualizado);
+    public UsuarioDTO actualizarUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioActualizado) {
+        usuarios entidad = usuarioService.fromDto(usuarioActualizado);
+        usuarios updated = usuarioService.actualizarUsuario(id, entidad);
+        return usuarioService.toDto(updated);
     }
 
     // Eliminar usuario

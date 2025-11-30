@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.repository;
+package proyecto_legajo.legajo.Repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -2,15 +2,13 @@ package proyecto_legajo.legajo.Entity;
 
 import java.util.List;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,50 +17,60 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "usuarios")
 public class usuarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "\"idUsuario\"")
     private Long idUsuario;
 
-    @Column(name = "NomUsu1", length = 20, nullable = false)
+    @Column(name = "\"NomUsu1\"", length = 20, nullable = false)
     private String primerNombre;
 
-    @Column(name = "NomUsu2", length = 20)
+    @Column(name = "\"NomUsu2\"", length = 20)
     private String segundoNombre;
 
-    @Column(name = "ApeUsu1", length = 20, nullable = false)
+    @Column(name = "\"ApeUsu1\"", length = 20, nullable = false)
     private String primerApellido;
 
-    @Column(name = "ApeUsu2", length = 20)
+    @Column(name = "\"ApeUsu2\"", length = 20)
     private String segundoApellido;
 
-    @Column(name = "CorreoUsu", length = 50, nullable = false, unique = true)
+    @Column(name = "\"CorreoUsu\"", length = 50, nullable = false, unique = true)
     private String correo;
 
-    @Column(name = "Clave", length = 8, nullable = false)
+    @Column(name = "\"Clave\"", length = 255, nullable = false)
     private String clave;
 
-    @Column(name = "DireccionUsu", length = 50)
+    @Column(name = "\"DireccionUsu\"", length = 50)
     private String direccion;
 
-    @Column(name = "CiudadUsu", length = 15)
+    @Column(name = "\"CiudadUsu\"", length = 15)
     private String ciudad;
 
-    @Column(name = "TelefonoUsu", length = 20)
-    private int telefono;
+    @Column(name = "\"TelefonoUsu\"")
+    private Long telefono;
 
-    // Constructor
+    @Column(name = "\"Activo\"", nullable = false)
+    private Boolean activo = true;
 
+    // Relaciones
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<libros> libros;
+
+    @ManyToOne
+    @JoinColumn(name = "\"FK_rolUsuario\"")
+    private roles rol;
+
+    // Constructors
     public usuarios() {
     }
 
-
-    public usuarios( String primerNombre, String segundoNombre, String primerApellido, String segundoApellido,
-            String correo, String clave, String direccion, String ciudad, int telefono) {
+    public usuarios(Long idUsuario, String primerNombre, String segundoNombre, String primerApellido,
+            String segundoApellido, String correo, String clave, String direccion, String ciudad, Long telefono) {
+        this.idUsuario = idUsuario;
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -75,7 +83,6 @@ public class usuarios {
     }
 
     // Getters y Setters
-
     public Long getIdUsuario() {
         return idUsuario;
     }
@@ -148,29 +155,36 @@ public class usuarios {
         this.ciudad = ciudad;
     }
 
-    public int getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
+    public List<libros> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<libros> libros) {
+        this.libros = libros;
+    }
+
     public roles getRol() {
-    return rol;
+        return rol;
     }
 
     public void setRol(roles rol) {
         this.rol = rol;
     }
-
-
-    // Relaciones
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<libros> libros;
-
-    @ManyToOne
-    @JoinColumn(name = "FK_roles")  
-    private roles rol;
 
 }

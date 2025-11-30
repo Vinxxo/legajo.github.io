@@ -23,7 +23,7 @@ public class libros {
 
     // RELACIÓN con usuarios: MUCHOS libros -> UN usuario
     @ManyToOne
-    @JoinColumn(name = "FK_usuarios", nullable = false)
+    @JoinColumn(name = "FK_UsuarioPropietario", nullable = false)
     private usuarios usuario;
 
     // Constructor vacío

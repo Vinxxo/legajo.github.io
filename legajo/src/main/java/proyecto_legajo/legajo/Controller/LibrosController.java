@@ -33,7 +33,7 @@ public class LibrosController {
     // FORMULARIO NUEVO
     @GetMapping("/nuevo")
     public String nuevoLibro(Model model) {
-        model.addAttribute("libro", new libros(0, null, null, null));
+        model.addAttribute("libro", new libros());
         return "libros/registrar";
     }
 
