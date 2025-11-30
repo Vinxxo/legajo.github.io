@@ -23,37 +23,37 @@ public class usuarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "\"idUsuario\"")
+    @Column(name = "idUsuario")
     private Long idUsuario;
 
-    @Column(name = "\"NomUsu1\"", length = 20, nullable = false)
+    @Column(name = "NomUsu1", length = 20, nullable = false)
     private String primerNombre;
 
-    @Column(name = "\"NomUsu2\"", length = 20)
+    @Column(name = "NomUsu2", length = 20)
     private String segundoNombre;
 
-    @Column(name = "\"ApeUsu1\"", length = 20, nullable = false)
+    @Column(name = "ApeUsu1", length = 20, nullable = false)
     private String primerApellido;
 
-    @Column(name = "\"ApeUsu2\"", length = 20)
+    @Column(name = "ApeUsu2", length = 20)
     private String segundoApellido;
 
-    @Column(name = "\"CorreoUsu\"", length = 50, nullable = false, unique = true)
+    @Column(name = "CorreoUsu", length = 50, nullable = false, unique = true)
     private String correo;
 
-    @Column(name = "\"Clave\"", length = 255, nullable = false)
+    @Column(name = "Clave", length = 255, nullable = false)
     private String clave;
 
-    @Column(name = "\"DireccionUsu\"", length = 50)
+    @Column(name = "DireccionUsu", length = 50)
     private String direccion;
 
-    @Column(name = "\"CiudadUsu\"", length = 15)
+    @Column(name = "CiudadUsu", length = 15)
     private String ciudad;
 
-    @Column(name = "\"TelefonoUsu\"")
+    @Column(name = "TelefonoUsu")
     private Long telefono;
 
-    @Column(name = "\"Activo\"", nullable = false)
+    @Column(name = "Activo", nullable = false)
     private Boolean activo = true;
 
     // Relaciones
@@ -61,7 +61,7 @@ public class usuarios {
     private List<libros> libros;
 
     @ManyToOne
-    @JoinColumn(name = "\"FK_rolUsuario\"")
+    @JoinColumn(name = "FK_rolUsuario")
     private roles rol;
 
     // Constructors

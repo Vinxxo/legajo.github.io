@@ -10,6 +10,7 @@ public class UsuarioDTO {
     private String correo;
     private String direccion;
     private String ciudad;
+    private String clave;
     private Long telefono;
     private java.util.List<LibroDTO> libros;
 
@@ -73,6 +74,14 @@ public class UsuarioDTO {
 
     public String getCiudad() {
         return ciudad;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public void setCiudad(String ciudad) {

@@ -1,0 +1,14 @@
+﻿{
+    "idUsuario":  5,
+    "primerNombre":  "AutoTest",
+    "segundoNombre":  null,
+    "primerApellido":  "Tester",
+    "segundoApellido":  null,
+    "correo":  "autotest+639000744418643921@example.com",
+    "direccion":  "Calle Test 1",
+    "ciudad":  "Madrid",
+    "telefono":  600777888,
+    "libros":  [
+
+               ]
+}

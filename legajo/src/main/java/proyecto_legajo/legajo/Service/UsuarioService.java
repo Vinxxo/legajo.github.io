@@ -12,15 +12,33 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 @Service
 public class UsuarioService {
 
     @Autowired
     private usuarioRepository usuarioRepository;
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
     // Crear usuario
     public usuarios crearUsuario(usuarios usuario) {
+        // Asegurar campos obligatorios antes de guardar: clave y rol por defecto
+        if (usuario.getClave() == null || usuario.getClave().isEmpty()) {
+            usuario.setClave("changeme");
+        }
+        // Encode password before saving
+        if (usuario.getClave() != null) {
+            usuario.setClave(passwordEncoder.encode(usuario.getClave()));
+        }
+        if (usuario.getRol() == null) {
+            // Asignar rol por defecto con id 2 (Usuario). Se asume que existe en la BD.
+            proyecto_legajo.legajo.Entity.roles rolDef = new proyecto_legajo.legajo.Entity.roles();
+            rolDef.setIdRol(2L);
+            usuario.setRol(rolDef);
+        }
         return usuarioRepository.save(usuario);
     }
 
@@ -59,6 +77,18 @@ public class UsuarioService {
         u.setDireccion(dto.getDireccion());
         u.setCiudad(dto.getCiudad());
         u.setTelefono(dto.getTelefono());
+        // Mapear la clave si viene en el DTO para que pueda ser codificada al guardar
+        try {
+            Method m = dto.getClass().getMethod("getClave");
+            if (m != null) {
+                Object val = m.invoke(dto);
+                if (val != null) {
+                    u.setClave(val.toString());
+                }
+            }
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+            // DTO no define getClave() o no accesible, ignorar
+        }
         // Note: fromDto does not set libros; handle libros separately if needed
         return u;
     }
@@ -110,7 +140,7 @@ public class UsuarioService {
         }
         // No sobrescribir la clave si no viene en el DTO
         if (datosActualizados.getClave() != null) {
-            usuario.setClave(datosActualizados.getClave());
+            usuario.setClave(passwordEncoder.encode(datosActualizados.getClave()));
         }
         if (datosActualizados.getDireccion() != null) {
             usuario.setDireccion(datosActualizados.getDireccion());

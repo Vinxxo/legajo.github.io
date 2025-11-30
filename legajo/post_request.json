@@ -1,0 +1,10 @@
+﻿POST JSON:\n{
+    "ciudad":  "Madrid",
+    "telefono":  600777888,
+    "direccion":  "Calle Test 1",
+    "segundoNombre":  null,
+    "primerNombre":  "AutoTest",
+    "correo":  "autotest+639000744418643921@example.com",
+    "segundoApellido":  null,
+    "primerApellido":  "Tester"
+}

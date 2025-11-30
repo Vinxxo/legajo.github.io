@@ -1,0 +1,200 @@
+﻿        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    insert 
+    into
+        usuarios
+        (Activo, CiudadUsu, Clave, CorreoUsu, DireccionUsu, ApeUsu1, NomUsu1, FK_rolUsuario, ApeUsu2, NomUsu2, TelefonoUsu) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
