@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "LegajoApplication",
+            "request": "launch",
+            "mainClass": "proyecto_legajo.legajo.LegajoApplication",
+            "projectName": "legajo"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "type": "pwa-msedge",
             "request": "launch",
             "name": "Open crear_cuenta.html (Edge)",

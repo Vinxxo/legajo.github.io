@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <button id="toggleModo" class="modo-toggle">☀️ Modo Claro</button>
@@ -17,8 +17,8 @@
         </form>
         <div id="loginMensaje" style="margin-top:10px;color:red"></div>
     </section>
-    <script src="../static/js/script.js"></script>
-    <script src="../static/js/validaciones.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/validaciones.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('loginForm');
@@ -53,10 +53,16 @@
                         return;
                     }
 
-                    // Guardar token y redirigir
+                    // Guardar token
                     localStorage.setItem('jwtToken', token);
-                    // Redirigir al dashboard de usuario por defecto
-                    window.location.href = '/dashboard_usuario.html';
+
+                    // Redirigir según rol retornado por el servidor (esperamos data.role)
+                    const role = (data.role || '').toString().toLowerCase();
+                    if (role === 'admin' || role === 'administrator' || role === 'rol_admin') {
+                        window.location.href = '/dashboard_admin.html';
+                    } else {
+                        window.location.href = '/dashboard_usuario.html';
+                    }
                 } catch (err) {
                     console.error(err);
                     mensaje.textContent = 'Error de red: ' + (err.message || err);

@@ -22,6 +22,8 @@ public class UsuarioService {
     private usuarioRepository usuarioRepository;
     @Autowired
     private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+    @Autowired
+    private jakarta.persistence.EntityManager entityManager;
 
     // Crear usuario
     public usuarios crearUsuario(usuarios usuario) {
@@ -34,10 +36,14 @@ public class UsuarioService {
             usuario.setClave(passwordEncoder.encode(usuario.getClave()));
         }
         if (usuario.getRol() == null) {
-            // Asignar rol por defecto con id 2 (Usuario). Se asume que existe en la BD.
-            proyecto_legajo.legajo.Entity.roles rolDef = new proyecto_legajo.legajo.Entity.roles();
-            rolDef.setIdRol(2L);
-            usuario.setRol(rolDef);
+            // Intentar asignar rol por defecto buscando la entidad roles con id 2
+            try {
+                proyecto_legajo.legajo.Entity.roles rolDef = entityManager.find(proyecto_legajo.legajo.Entity.roles.class, 2L);
+                if (rolDef != null) {
+                    usuario.setRol(rolDef);
+                }
+            } catch (Exception ignored) {
+            }
         }
         return usuarioRepository.save(usuario);
     }

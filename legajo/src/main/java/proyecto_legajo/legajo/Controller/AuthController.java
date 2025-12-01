@@ -49,7 +49,11 @@ public class AuthController {
             Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             SecurityContextHolder.getContext().setAuthentication(auth);
             String token = jwtUtil.generateToken(username);
-            return ResponseEntity.ok(Map.of("token", token));
+            // Obtener rol del usuario para que el frontend pueda redirigir según rol
+            usuarios u = usuarioRepository.findByCorreo(username).orElse(null);
+            String role = null;
+            if (u != null && u.getRol() != null) role = u.getRol().getRol();
+            return ResponseEntity.ok(Map.of("token", token, "role", role));
         } catch (Exception ex) {
             return ResponseEntity.status(401).body(Map.of("error", "Credenciales inválidas"));
         }

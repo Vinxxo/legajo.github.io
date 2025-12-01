@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cuenta</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <style>
-        
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <button id="toggleModo" class="modo-toggle">☀️ Modo Claro</button>
     <section class="formulario">
         <form id="registroForm">
             <h2>Crear cuenta</h2>
@@ -23,17 +19,19 @@
             <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" />
             <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" />
             <input type="password" id="clave" name="clave" placeholder="Contraseña" required />
-            <input type="password" id="confirmClave" placeholder="Confirmar contraseña" required />
-            <button type="submit">Registrarse</button>
+            <input type="password" id="confirmClave" name="confirmClave" placeholder="Confirmar contraseña" required />
+            <button type="submit">Registrar</button>
         </form>
         <div id="mensaje" style="margin-top:10px;color:red"></div>
     </section>
-    <script src="../static/js/script.js"></script>
-    <script src="../static/js/validaciones.js"></script>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/validaciones.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('registroForm');
             const mensaje = document.getElementById('mensaje');
+            const submitBtn = form.querySelector('button[type="submit"]');
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -59,6 +57,7 @@
                 };
 
                 try {
+                    if (submitBtn) submitBtn.disabled = true;
                     const res = await fetch('/api/usuarios', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -69,15 +68,16 @@
                         let errText = await res.text();
                         try { errText = JSON.parse(errText).message || JSON.parse(errText); } catch(e){}
                         mensaje.textContent = 'Error al registrar: ' + (errText || res.statusText);
+                        if (submitBtn) submitBtn.disabled = false;
                         return;
                     }
 
-                    // Registro ok
-                    alert('Registro completado. Inicia sesión con tu correo y contraseña.');
-                    window.location.href = '/login.html';
+                    alert('Registro completado. Serás redirigido al login.');
+                    window.location.href = '/login';
                 } catch (err) {
                     console.error(err);
                     mensaje.textContent = 'Error de red: ' + err.message;
+                    if (submitBtn) submitBtn.disabled = false;
                 }
             });
         });
