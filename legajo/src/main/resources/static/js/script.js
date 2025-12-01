@@ -88,6 +88,54 @@ openButtons.forEach(button => {
 
 close.onclick = () => modal.style.display = 'none';
 
-window.onclick = (e) => {
-    if (e.target === modal) modal.style.display = 'none';
+window.onclick = (e) => { 
+    if (e.target === modal) modal.style.display = 'none'; 
 };
+
+
+document.querySelectorAll(".ver-libro").forEach(boton => {
+    boton.addEventListener("click", () => {
+        const libro = boton.parentElement;
+
+        const titulo = libro.dataset.titulo;
+        const autor = libro.dataset.autor;
+        const descripcion = libro.dataset.descripcion;
+        const imagen = libro.dataset.imagen;
+
+        document.getElementById("modalTitulo").textContent = titulo;
+        document.getElementById("modalAutor").textContent = autor;
+        document.getElementById("modalDescripcion").textContent = descripcion;
+        document.getElementById("modalImg").src = imagen;
+
+        document.getElementById("modal").style.display = "flex";
+    });
+});
+
+document.getElementById("closeModal").onclick = function() {
+    document.getElementById("modal").style.display = "none";
+};
+
+
+    const modalAutor = document.getElementById("modalAutor");
+    const cerrarAutor = document.getElementById("cerrarAutor");
+
+    document.querySelectorAll(".ver-autor").forEach(boton => {
+        boton.addEventListener("click", () => {
+            const card = boton.closest(".autor");
+
+            document.getElementById("autorNombre").textContent = card.dataset.nombre;
+            document.getElementById("autorDescripcion").textContent = card.dataset.descripcion;
+            document.getElementById("autorLibros").textContent = card.dataset.libros;
+            document.getElementById("autorImg").src = card.dataset.imagen;
+
+            modalAutor.style.display = "block";
+        });
+    });
+
+    cerrarAutor.onclick = () => modalAutor.style.display = "none";
+
+    window.onclick = (e) => {
+        if (e.target === modalAutor) {
+            modalAutor.style.display = "none";
+        }
+    };

@@ -26,6 +26,11 @@ public class libros {
     @JoinColumn(name = "FK_usuarios", nullable = false)
     private usuarios usuario;
 
+    // RELACIÓN con autor: MUCHOS libros -> UN autor
+    @ManyToOne
+    @JoinColumn(name = "FK_autor", nullable = false)
+    private autor autor;
+
     // Constructor vacío
     public libros() {}
 
@@ -69,5 +74,7 @@ public class libros {
     public void setUsuario(usuarios usuario) {
         this.usuario = usuario;
     }
+
+
     //
 }
