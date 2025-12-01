@@ -12,15 +12,39 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 @Service
 public class UsuarioService {
 
     @Autowired
     private usuarioRepository usuarioRepository;
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+    @Autowired
+    private jakarta.persistence.EntityManager entityManager;
 
     // Crear usuario
     public usuarios crearUsuario(usuarios usuario) {
+        // Asegurar campos obligatorios antes de guardar: clave y rol por defecto
+        if (usuario.getClave() == null || usuario.getClave().isEmpty()) {
+            usuario.setClave("changeme");
+        }
+        // Encode password before saving
+        if (usuario.getClave() != null) {
+            usuario.setClave(passwordEncoder.encode(usuario.getClave()));
+        }
+        if (usuario.getRol() == null) {
+            // Intentar asignar rol por defecto buscando la entidad roles con id 2
+            try {
+                proyecto_legajo.legajo.Entity.roles rolDef = entityManager.find(proyecto_legajo.legajo.Entity.roles.class, 2L);
+                if (rolDef != null) {
+                    usuario.setRol(rolDef);
+                }
+            } catch (Exception ignored) {
+            }
+        }
         return usuarioRepository.save(usuario);
     }
 
@@ -59,6 +83,18 @@ public class UsuarioService {
         u.setDireccion(dto.getDireccion());
         u.setCiudad(dto.getCiudad());
         u.setTelefono(dto.getTelefono());
+        // Mapear la clave si viene en el DTO para que pueda ser codificada al guardar
+        try {
+            Method m = dto.getClass().getMethod("getClave");
+            if (m != null) {
+                Object val = m.invoke(dto);
+                if (val != null) {
+                    u.setClave(val.toString());
+                }
+            }
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+            // DTO no define getClave() o no accesible, ignorar
+        }
         // Note: fromDto does not set libros; handle libros separately if needed
         return u;
     }
@@ -68,9 +104,9 @@ public class UsuarioService {
         if (l == null) return null;
         LibroDTO d = new LibroDTO();
         d.setIdLibro(l.getIdLibro());
-        d.setTitulo(l.getTitulo());
-        d.setSinopsis(l.getSinopsis());
-        d.setEstado(l.getEstado() == null ? null : l.getEstado().name());
+        d.setTitulo(l.getTituloLib());
+        d.setSinopsis(l.getSinopsisLib());
+        d.setEstado(l.getEstadoLib() == null ? null : l.getEstadoLib().name());
         return d;
     }
 
@@ -81,13 +117,13 @@ public class UsuarioService {
     }
 
     // Buscar usuario por ID
-    public usuarios obtenerUsuarioPorId(Long id) {
+    public usuarios obtenerUsuarioPorId(int id) {
         return usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 
     // Actualizar usuario
-    public usuarios actualizarUsuario(Long id, usuarios datosActualizados) {
+    public usuarios actualizarUsuario(int id, usuarios datosActualizados) {
 
         usuarios usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -110,7 +146,7 @@ public class UsuarioService {
         }
         // No sobrescribir la clave si no viene en el DTO
         if (datosActualizados.getClave() != null) {
-            usuario.setClave(datosActualizados.getClave());
+            usuario.setClave(passwordEncoder.encode(datosActualizados.getClave()));
         }
         if (datosActualizados.getDireccion() != null) {
             usuario.setDireccion(datosActualizados.getDireccion());
@@ -129,7 +165,7 @@ public class UsuarioService {
     }
 
     // Eliminar usuario
-    public void eliminarUsuario(Long id) {
+    public void eliminarUsuario(int id) {
         if (!usuarioRepository.existsById(id)) {
             throw new RuntimeException("Usuario no encontrado");
         }

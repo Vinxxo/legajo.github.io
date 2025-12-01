@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import proyecto_legajo.legajo.Entity.usuarios;
 
 @Repository
-public interface usuarioRepository extends JpaRepository<usuarios, Long> {
+public interface usuarioRepository extends JpaRepository<usuarios, Integer> {
 Optional<usuarios> findByCorreo(String correo);
 
 }

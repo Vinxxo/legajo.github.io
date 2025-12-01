@@ -41,7 +41,7 @@ public class intercambios {
     @Column(name = "EstadoInter")
     private EstadoIntercambio EstadoInter = EstadoIntercambio.pendiente;
 
-    @Column(name = "Activo")
+    @Column(name = "Activo", nullable = false)
     private boolean Activo = true;
 
     /* Relaciones */

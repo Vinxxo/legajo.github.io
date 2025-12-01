@@ -2,18 +2,18 @@ package proyecto_legajo.legajo.Dto;
 
 public class LibroDTO {
 
-    private Long idLibro;
+    private int idLibro;
     private String titulo;
     private String sinopsis;
     private String estado;
 
     public LibroDTO() {}
 
-    public Long getIdLibro() {
+    public int getIdLibro() {
         return idLibro;
     }
 
-    public void setIdLibro(Long idLibro) {
+    public void setIdLibro(int idLibro) {
         this.idLibro = idLibro;
     }
 

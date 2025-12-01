@@ -33,7 +33,7 @@ public class reportesUsuario {
     private String Motivo;
 
     @Lob
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", columnDefinition = "TEXT")
     private String Descripcion;
 
     @Column(name = "FechaReporte", insertable = false, updatable = false)
@@ -43,7 +43,7 @@ public class reportesUsuario {
     @Column(name = "Estado")
     private EstadoReporte Estado = EstadoReporte.pendiente;
 
-    @Column(name = "Activo")
+    @Column(name = "Activo", nullable = false)
     private boolean Activo = true;
 
     /* Relaciones */

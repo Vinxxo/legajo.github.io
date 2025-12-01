@@ -1,9 +1,16 @@
 package proyecto_legajo.legajo.Entity;
 
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "libros")
 public class libros {
@@ -17,7 +24,7 @@ public class libros {
     private String TituloLib;
 
     @Lob
-    @Column(name = "SinopsisLib", nullable = false)
+    @Column(name = "SinopsisLib", columnDefinition = "TEXT", nullable = false)
     private String SinopsisLib;
 
     @Enumerated(EnumType.STRING)
@@ -27,7 +34,7 @@ public class libros {
     @Column(name = "UrlImagen", length = 255, nullable = false)
     private String UrlImagen;
 
-    @Column(name = "Activo")
+    @Column(name = "Activo", nullable = false)
     private boolean Activo = true;
 
     /* Relaciones */
@@ -47,19 +54,19 @@ public class libros {
 
     // Libros - Usuarios
     @ManyToOne
-    @JoinTable(name = "FK_UsuarioPropietario")
+    @JoinColumn(name = "FK_UsuarioPropietario")
     private usuarios usuarioPropietario;
     
     // Libros - CalificacionLibro
     @OneToMany(mappedBy = "libroCalificado")
-    private calificacionLibro calificacionLibCalificado;
+    private List<calificacionLibro> calificacionLibCalificado;
     
     // Libros - Intercambios (Solicitado)
     @OneToMany(mappedBy = "libroSolicitado")
-    private intercambios intercambioSolicitado;
+    private List<intercambios> intercambioSolicitado;
 
     // Libros - Intercambios (Cambio)
     @OneToMany(mappedBy = "libroCambio")
-    private intercambios intercambiosCambio;
+    private List<intercambios> intercambiosCambio;
 
 }

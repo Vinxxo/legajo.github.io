@@ -33,16 +33,16 @@ public class calificacionLibro {
     @Column(name = "CalificacionLib")
     @Min(1)
     @Max(5)
-    private int CalificacionLib;
+    private byte CalificacionLib;
 
     @Lob
-    @Column(name = "Comentario")
+    @Column(name = "Comentario", columnDefinition = "TEXT")
     private String Comentario;
 
     @Column(name = "FechaCalificacion", insertable = false, updatable = false)
     private LocalDateTime FechaCalificacion;
 
-    @Column(name = "Activo")
+    @Column(name = "Activo", nullable = false)
     private boolean Activo = true;
 
     /* Relaciones */

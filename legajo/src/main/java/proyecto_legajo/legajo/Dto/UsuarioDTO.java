@@ -2,7 +2,7 @@ package proyecto_legajo.legajo.Dto;
 
 public class UsuarioDTO {
 
-    private Long idUsuario;
+    private int idUsuario;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -10,16 +10,17 @@ public class UsuarioDTO {
     private String correo;
     private String direccion;
     private String ciudad;
+    private String clave;
     private Long telefono;
     private java.util.List<LibroDTO> libros;
 
     public UsuarioDTO() {}
 
-    public Long getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -73,6 +74,14 @@ public class UsuarioDTO {
 
     public String getCiudad() {
         return ciudad;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public void setCiudad(String ciudad) {

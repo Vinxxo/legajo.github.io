@@ -4,19 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <button id="toggleModo" class="modo-toggle">☀️ Modo Claro</button>
     <section class="formulario">
-        <form action="dashboard_admin.html">
+        <form id="loginForm">
             <h2>Iniciar sesión</h2>
-            <input type="email" id="email" placeholder="Correo electrónico" required>
-            <input type="password" placeholder="Contraseña" required>
+            <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required />
+            <input type="password" id="clave" name="clave" placeholder="Contraseña" required />
             <button type="submit">Ingresar</button>
         </form>
+        <div id="loginMensaje" style="margin-top:10px;color:red"></div>
     </section>
-    <script src="../static/js/script.js"></script>
-    <script src="../static/js/validaciones.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/validaciones.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('loginForm');
+            const mensaje = document.getElementById('loginMensaje');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                mensaje.textContent = '';
+
+                const correo = document.getElementById('correo').value;
+                const clave = document.getElementById('clave').value;
+
+                try {
+                    const res = await fetch('/api/auth/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ correo: correo, clave: clave })
+                    });
+
+                    const dataText = await res.text();
+                    let data = {};
+                    try { data = JSON.parse(dataText); } catch (err) { data = { raw: dataText }; }
+
+                    if (!res.ok) {
+                        mensaje.textContent = data.error || data.message || 'Credenciales inválidas';
+                        return;
+                    }
+
+                    const token = data.token || data.accessToken || '';
+                    if (!token) {
+                        mensaje.textContent = 'Respuesta inválida del servidor (no llegó token).';
+                        return;
+                    }
+
+                    // Guardar token
+                    localStorage.setItem('jwtToken', token);
+
+                    // Redirigir según rol retornado por el servidor (esperamos data.role)
+                    const role = (data.role || '').toString().toLowerCase();
+                    if (role === 'admin' || role === 'administrator' || role === 'rol_admin') {
+                        window.location.href = '/dashboard_admin.html';
+                    } else {
+                        window.location.href = '/dashboard_usuario.html';
+                    }
+                } catch (err) {
+                    console.error(err);
+                    mensaje.textContent = 'Error de red: ' + (err.message || err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

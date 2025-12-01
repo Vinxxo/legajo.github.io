@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "LegajoApplication",
+            "request": "launch",
+            "mainClass": "proyecto_legajo.legajo.LegajoApplication",
+            "projectName": "legajo"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "pwa-msedge",
+            "request": "launch",
+            "name": "Open crear_cuenta.html (Edge)",
+            "file": "${workspaceFolder}\\legajo\\src\\main\\resources\\static\\crear_cuenta.html",
+            "runtimeExecutable": "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
+            "userDataDir": "${workspaceFolder}\\.vscode\\edge-profile",
+            "presentation": {
+                "group": "web",
+                "hidden": false
+            }
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Open crear_cuenta.html (Chrome)",
+            "file": "${workspaceFolder}\\legajo\\src\\main\\resources\\static\\crear_cuenta.html",
+            "runtimeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            "userDataDir": "${workspaceFolder}\\.vscode\\chrome-profile",
+            "presentation": {
+                "group": "web",
+                "hidden": false
+            }
+        }
+    ]
+}
