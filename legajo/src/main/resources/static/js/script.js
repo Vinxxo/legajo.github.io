@@ -8,15 +8,17 @@ const body = document.body;
 // Verificar si ya hay un modo guardado
 if (localStorage.getItem("modo") === "claro") {
     body.classList.add("modo-claro");
-    toggle.textContent = "🌙 Modo Oscuro";
+    if (toggle) toggle.textContent = "🌙 Modo Oscuro";
 }
 
-toggle.addEventListener("click", () => {
-    body.classList.toggle("modo-claro");
-    const esClaro = body.classList.contains("modo-claro");
-    toggle.textContent = esClaro ? "🌙 Modo Oscuro" : "☀️ Modo Claro";
-    localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
-});
+if (toggle) {
+    toggle.addEventListener("click", () => {
+        body.classList.toggle("modo-claro");
+        const esClaro = body.classList.contains("modo-claro");
+        toggle.textContent = esClaro ? "🌙 Modo Oscuro" : "☀️ Modo Claro";
+        localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+    });
+}
 
 /* ========================
     GRAFICAS DEL ADMIN
@@ -81,13 +83,15 @@ const close = document.getElementById('closeModal');
 // Seleccionar todos los botones con clase 'ver-libro'
 const openButtons = document.querySelectorAll('.ver-libro');
 
-// Agregar event listener a cada botón
-openButtons.forEach(button => {
-    button.onclick = () => modal.style.display = 'flex';
-});
+// Agregar event listener a cada botón (si existe modal)
+if (modal) {
+    openButtons.forEach(button => {
+        button.onclick = () => modal.style.display = 'flex';
+    });
 
-close.onclick = () => modal.style.display = 'none';
+    if (close) close.onclick = () => modal.style.display = 'none';
 
-window.onclick = (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-};
+    window.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+}

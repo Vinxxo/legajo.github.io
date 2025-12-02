@@ -21,8 +21,17 @@ public class JwtUtil {
     private long expirationMs;
 
     private Key getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(secret);
-        return Keys.hmacShaKeyFor(keyBytes);
+        try {
+            // Derivar una clave de 32 bytes a partir del secreto configurado usando SHA-256.
+            // Esto evita errores si el valor en `jwt.secret` no es un Base64 de 32 bytes.
+            java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(secret.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            return Keys.hmacShaKeyFor(hash);
+        } catch (Exception e) {
+            // Fallback: intentar decodificar como Base64 (comportamiento legacy)
+            byte[] keyBytes = Decoders.BASE64.decode(secret);
+            return Keys.hmacShaKeyFor(keyBytes);
+        }
     }
 
     public String generateToken(String username) {

@@ -22,8 +22,11 @@ public class UsuarioPrincipal implements UserDetails {
         return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRol().getRol().toUpperCase()));
     }
 
+    
+
     @Override
     public String getPassword() { return user.getClave(); }
+
 
     @Override
     public String getUsername() { return user.getCorreo(); }

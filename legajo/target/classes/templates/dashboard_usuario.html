@@ -4,11 +4,51 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dashboard Usuario</title>
-    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <script>
+        // Comprobar token JWT antes de mostrar contenido protegido
+        (async function() {
+            try {
+                const token = localStorage.getItem('jwtToken');
+                if (!token) {
+                    // No hay token: volver al login
+                    window.location.href = '/login.html';
+                    return;
+                }
+
+                const resp = await fetch('/api/auth/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!resp.ok) {
+                    // Token inválido o expirado: eliminar y forzar login
+                    localStorage.removeItem('jwtToken');
+                    window.location.href = '/login.html';
+                    return;
+                }
+
+                const user = await resp.json();
+                // Rellenar nombre en la UI si existe el elemento
+                const nombreEl = document.getElementById('nombreRecibido');
+                if (nombreEl) {
+                    const nombre = (user.nomUsu1 || user.NomUsu1 || user.nombre || user.nombreUsu || '') ;
+                    nombreEl.textContent = nombre || (user.correo || 'Usuario');
+                }
+            } catch (e) {
+                console.error('Error validando token en dashboard:', e);
+                localStorage.removeItem('jwtToken');
+                window.location.href = '/login.html';
+            }
+        })();
+    </script>
     <button id="toggleModo" class="modo-toggle">🌙 Modo Claro</button>
     <!-- Sidebar -->
     <nav class="sidebar">
@@ -34,7 +74,7 @@
             </div>
             <div class="header-right">
                 <div class="user-profile">
-                    <img src="../static/imgs/profile.png" alt="Usuario" />
+                    <img src="/imgs/profile.png" alt="Usuario" />
                     <span>Usuario</span>
                 </div>
             </div>
@@ -45,10 +85,10 @@
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('recomendados', -1)">❮</button>
                 <div class="carrusel-libros" id="recomendados">
-                <div class="libro"><img src="../static/imgs/libro_de_la_selva.jpg"><h3>Hábitos Atómicos</h3><p>James Clear</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/libro_de_la_selva.jpg"><h3>Pensar rápido</h3><p>Daniel Kahneman</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/libro_de_la_selva.jpg"><h3>El poder de los hábitos</h3><p>Charles Duhigg</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/libro_de_la_selva.jpg"><h3>Padre Rico</h3><p>Robert Kiyosaki</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>Hábitos Atómicos</h3><p>James Clear</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>Pensar rápido</h3><p>Daniel Kahneman</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>El poder de los hábitos</h3><p>Charles Duhigg</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>Padre Rico</h3><p>Robert Kiyosaki</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('recomendados', 1)">❯</button>
             </div>
@@ -66,12 +106,12 @@
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('autores', -1)">❮</button>
                 <div class="carrusel-libros" id="autores">
-                <div class="libro"><img src="../static/imgs/gabo.jpg"><h3>James Clear</h3><p>Hábitos Atómicos</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/gabo.jpg"><h3>Stephen King</h3><p>It</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/gabo.jpg"><h3>J.K. Rowling</h3><p>Harry Potter</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/gabo.jpg"><h3>Gabriel García Márquez</h3><p>Cien años de soledad</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/gabo.jpg"><h3>George Orwell</h3><p>1984</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/gabo.jpg"><h3>Haruki Murakami</h3><p>Tokio Blues</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/gabo.jpg"><h3>James Clear</h3><p>Hábitos Atómicos</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/gabo.jpg"><h3>Stephen King</h3><p>It</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/gabo.jpg"><h3>J.K. Rowling</h3><p>Harry Potter</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/gabo.jpg"><h3>Gabriel García Márquez</h3><p>Cien años de soledad</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/gabo.jpg"><h3>George Orwell</h3><p>1984</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/gabo.jpg"><h3>Haruki Murakami</h3><p>Tokio Blues</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('autores', 1)">❯</button>
             </div>
@@ -83,19 +123,19 @@
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('generos', -1)">❮</button>
                 <div class="carrusel-libros" id="generos">
-                <div class="libro"><img src="../static/imgs/terror.jpeg"><h3>Autoayuda</h3><p>Libros que motivan</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/terror.jpeg"><h3>Ficción</h3><p>Historias creativas</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/terror.jpeg"><h3>Misterio</h3><p>Tramas intrigantes</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/terror.jpeg"><h3>Fantasía</h3><p>Mundos mágicos</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/terror.jpeg"><h3>Biografías</h3><p>Vidas inspiradoras</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="../static/imgs/terror.jpeg"><h3>Romance</h3><p>Historias de amor</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Autoayuda</h3><p>Libros que motivan</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Ficción</h3><p>Historias creativas</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Misterio</h3><p>Tramas intrigantes</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Fantasía</h3><p>Mundos mágicos</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Biografías</h3><p>Vidas inspiradoras</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Romance</h3><p>Historias de amor</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('generos', 1)">❯</button>
             </div>
         </section>
 
     </main>
-    <script src="../static/js/script.js"></script>
+    <script src="/js/script.js"></script>
     <script>
         function moverCarrusel(id, direccion) {
         const carrusel = document.getElementById(id);

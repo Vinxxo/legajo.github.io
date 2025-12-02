@@ -3,6 +3,8 @@ package proyecto_legajo.legajo.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import proyecto_legajo.legajo.Entity.usuarios;
 import proyecto_legajo.legajo.Repository.usuarioRepository;
 import proyecto_legajo.legajo.Dto.UsuarioDTO;
@@ -18,6 +20,8 @@ import java.lang.reflect.InvocationTargetException;
 @Service
 public class UsuarioService {
 
+    private static final Logger logger = LoggerFactory.getLogger(UsuarioService.class);
+
     @Autowired
     private usuarioRepository usuarioRepository;
     @Autowired
@@ -29,12 +33,13 @@ public class UsuarioService {
     public usuarios crearUsuario(usuarios usuario) {
         // Asegurar campos obligatorios antes de guardar: clave y rol por defecto
         if (usuario.getClave() == null || usuario.getClave().isEmpty()) {
-            usuario.setClave("changeme");
+            throw new RuntimeException("La clave es obligatoria");
         }
-        // Encode password before saving
-        if (usuario.getClave() != null) {
-            usuario.setClave(passwordEncoder.encode(usuario.getClave()));
-        }
+
+        String hashed = passwordEncoder.encode(usuario.getClave());
+        usuario.setClave(hashed);
+        logger.info("Creando usuario con correo='{}' claveHash='{}'", usuario.getCorreo(), (hashed == null ? "null" : (hashed.length() > 8 ? hashed.substring(0,8) + "..." : hashed)));
+
         if (usuario.getRol() == null) {
             // Intentar asignar rol por defecto buscando la entidad roles con id 2
             try {
