@@ -1,7 +1,16 @@
 package proyecto_legajo.legajo.Entity;
 
-import jakarta.persistence.*;
+import java.util.List;
+import java.util.Set;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "libros")
 public class libros {
@@ -9,65 +18,55 @@ public class libros {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idLibro")
-    private Long idLibro;
+    private int idLibro;
 
     @Column(name = "TituloLib", length = 100, nullable = false)
-    private String titulo;
+    private String TituloLib;
 
-    @Column(name = "SinopsisLib", length = 400, nullable = false)
-    private String sinopsis;
+    @Lob
+    @Column(name = "SinopsisLib", columnDefinition = "TEXT", nullable = false)
+    private String SinopsisLib;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "EstadoLib", nullable = false)
-    private EstadoLibro estado;
+    private EstadoLibro EstadoLib;
 
-    // RELACIÓN con usuarios: MUCHOS libros -> UN usuario
+    @Column(name = "UrlImagen", length = 255, nullable = false)
+    private String UrlImagen;
+
+    @Column(name = "Activo", nullable = false)
+    private boolean Activo = true;
+
+    /* Relaciones */
+
+    // Libros - Genero_Libros - Genero
+    @ManyToMany
+    @JoinTable(
+        name = "genero_libros",
+        joinColumns = @JoinColumn(name = "FK_idLibro"),
+        inverseJoinColumns = @JoinColumn(name = "FK_idGenero")
+    )
+    private Set<genero> generos;
+
+    // Libros - Autor_Libros - Autor
+    @ManyToMany (mappedBy = "libros")
+    private Set<autor> autor;
+
+    // Libros - Usuarios
     @ManyToOne
-    @JoinColumn(name = "FK_UsuarioPropietario", nullable = false)
-    private usuarios usuario;
+    @JoinColumn(name = "FK_UsuarioPropietario")
+    private usuarios usuarioPropietario;
+    
+    // Libros - CalificacionLibro
+    @OneToMany(mappedBy = "libroCalificado")
+    private List<calificacionLibro> calificacionLibCalificado;
+    
+    // Libros - Intercambios (Solicitado)
+    @OneToMany(mappedBy = "libroSolicitado")
+    private List<intercambios> intercambioSolicitado;
 
-    // Constructor vacío
-    public libros() {}
+    // Libros - Intercambios (Cambio)
+    @OneToMany(mappedBy = "libroCambio")
+    private List<intercambios> intercambiosCambio;
 
-    // Getters y Setters
-    public Long getIdLibro() {
-        return idLibro;
-    }
-
-    public void setIdLibro(Long idLibro) {
-        this.idLibro = idLibro;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getSinopsis() {
-        return sinopsis;
-    }
-
-    public void setSinopsis(String sinopsis) {
-        this.sinopsis = sinopsis;
-    }
-
-    public EstadoLibro getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoLibro estado) {
-        this.estado = estado;
-    }
-
-    public usuarios getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(usuarios usuario) {
-        this.usuario = usuario;
-    }
-    //
 }

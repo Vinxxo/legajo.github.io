@@ -2,7 +2,7 @@ package proyecto_legajo.legajo.Dto;
 
 public class UsuarioDTO {
 
-    private Long idUsuario;
+    private int idUsuario;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -16,11 +16,11 @@ public class UsuarioDTO {
 
     public UsuarioDTO() {}
 
-    public Long getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 

@@ -2,9 +2,6 @@ package proyecto_legajo.legajo.Entity;
 
 import java.util.List;
 
-import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,7 +13,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "usuarios")
 public class usuarios {
@@ -24,167 +27,67 @@ public class usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUsuario")
-    private Long idUsuario;
+    private int idUsuario;
 
-    @Column(name = "NomUsu1", length = 20, nullable = false)
+    @Column(name = "NomUsu1", length = 30, nullable = false)
     private String primerNombre;
 
-    @Column(name = "NomUsu2", length = 20)
+    @Column(name = "NomUsu2", length = 30)
     private String segundoNombre;
 
-    @Column(name = "ApeUsu1", length = 20, nullable = false)
+    @Column(name = "ApeUsu1", length = 30, nullable = false)
     private String primerApellido;
 
-    @Column(name = "ApeUsu2", length = 20)
+    @Column(name = "ApeUsu2", length = 30)
     private String segundoApellido;
 
     @Column(name = "CorreoUsu", length = 50, nullable = false, unique = true)
     private String correo;
 
-    @Column(name = "Clave", length = 255, nullable = false)
+    @Column(name = "Clave", length = 100, nullable = false)
     private String clave;
 
-    @Column(name = "DireccionUsu", length = 50)
+    @Column(name = "DireccionUsu", length = 50, nullable = false)
     private String direccion;
 
-    @Column(name = "CiudadUsu", length = 15)
+    @Column(name = "CiudadUsu", length = 20, nullable = false)
     private String ciudad;
 
-    @Column(name = "TelefonoUsu")
+    @Column(name = "TelefonoUsu", nullable = false)
     private Long telefono;
 
     @Column(name = "Activo", nullable = false)
     private Boolean activo = true;
 
-    // Relaciones
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    /* Relaciones */
+
+    // Usuarios - Libros
+    @OneToMany(mappedBy = "usuarioPropietario", cascade = CascadeType.ALL)
     private List<libros> libros;
 
+    // Usuarios - Roles
     @ManyToOne
     @JoinColumn(name = "FK_rolUsuario")
     private roles rol;
 
-    // Constructors
-    public usuarios() {
-    }
+    // Usuarios - CalificaciónLibro
+    @OneToMany(mappedBy = "usuarioCalificante")
+    private List<calificacionLibro> calificacionLibros;
 
-    public usuarios(Long idUsuario, String primerNombre, String segundoNombre, String primerApellido,
-            String segundoApellido, String correo, String clave, String direccion, String ciudad, Long telefono) {
-        this.idUsuario = idUsuario;
-        this.primerNombre = primerNombre;
-        this.segundoNombre = segundoNombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.correo = correo;
-        this.clave = clave;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.telefono = telefono;
-    }
+    // Usuarios - ReportesUsuarios (Reportante)
+    @OneToMany(mappedBy = "usuarioReportante")
+    private List<reportesUsuario> reporteReportante;
 
-    // Getters y Setters
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
+    // Usuarios - ReportesUsuarios (Reportado)
+    @OneToMany(mappedBy = "usuarioReportado")
+    private List<reportesUsuario> reporteReportado;
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    // Usuarios - Intercambios (Solicitante)
+    @OneToMany(mappedBy = "usuarioSolicitante")
+    private List<intercambios> intercambioSolicitante;
 
-    public String getPrimerNombre() {
-        return primerNombre;
-    }
-
-    public void setPrimerNombre(String primerNombre) {
-        this.primerNombre = primerNombre;
-    }
-
-    public String getSegundoNombre() {
-        return segundoNombre;
-    }
-
-    public void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = segundoNombre;
-    }
-
-    public String getPrimerApellido() {
-        return primerApellido;
-    }
-
-    public void setPrimerApellido(String primerApellido) {
-        this.primerApellido = primerApellido;
-    }
-
-    public String getSegundoApellido() {
-        return segundoApellido;
-    }
-
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = segundoApellido;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public Long getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(Long telefono) {
-        this.telefono = telefono;
-    }
-
-    public Boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
-
-    public List<libros> getLibros() {
-        return libros;
-    }
-
-    public void setLibros(List<libros> libros) {
-        this.libros = libros;
-    }
-
-    public roles getRol() {
-        return rol;
-    }
-
-    public void setRol(roles rol) {
-        this.rol = rol;
-    }
+    // Usuarios - Intercambios (Receptor)
+    @OneToMany(mappedBy = "usuarioReceptor")
+    private List<intercambios> intercambioReceptor;
 
 }

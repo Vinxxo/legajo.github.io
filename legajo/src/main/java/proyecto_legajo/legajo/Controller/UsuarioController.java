@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.Controller;
+package proyecto_legajo.legajo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,13 +32,13 @@ public class UsuarioController {
 
     // Buscar usuario por ID
     @GetMapping("/{id}")
-    public UsuarioDTO obtenerUsuarioPorId(@PathVariable Long id) {
+    public UsuarioDTO obtenerUsuarioPorId(@PathVariable int id) {
         return usuarioService.toDto(usuarioService.obtenerUsuarioPorId(id));
     }
 
     // Actualizar usuario
     @PutMapping("/{id}")
-    public UsuarioDTO actualizarUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioActualizado) {
+    public UsuarioDTO actualizarUsuario(@PathVariable int id, @RequestBody UsuarioDTO usuarioActualizado) {
         usuarios entidad = usuarioService.fromDto(usuarioActualizado);
         usuarios updated = usuarioService.actualizarUsuario(id, entidad);
         return usuarioService.toDto(updated);
@@ -46,7 +46,7 @@ public class UsuarioController {
 
     // Eliminar usuario
     @DeleteMapping("/{id}")
-    public String eliminarUsuario(@PathVariable Long id) {
+    public String eliminarUsuario(@PathVariable int id) {
         usuarioService.eliminarUsuario(id);
         return "Usuario eliminado correctamente";
     }

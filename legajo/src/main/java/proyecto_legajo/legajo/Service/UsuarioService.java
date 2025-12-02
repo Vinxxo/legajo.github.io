@@ -109,9 +109,9 @@ public class UsuarioService {
         if (l == null) return null;
         LibroDTO d = new LibroDTO();
         d.setIdLibro(l.getIdLibro());
-        d.setTitulo(l.getTitulo());
-        d.setSinopsis(l.getSinopsis());
-        d.setEstado(l.getEstado() == null ? null : l.getEstado().name());
+        d.setTitulo(l.getTituloLib());
+        d.setSinopsis(l.getSinopsisLib());
+        d.setEstado(l.getEstadoLib() == null ? null : l.getEstadoLib().name());
         return d;
     }
 
@@ -122,13 +122,13 @@ public class UsuarioService {
     }
 
     // Buscar usuario por ID
-    public usuarios obtenerUsuarioPorId(Long id) {
+    public usuarios obtenerUsuarioPorId(int id) {
         return usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 
     // Actualizar usuario
-    public usuarios actualizarUsuario(Long id, usuarios datosActualizados) {
+    public usuarios actualizarUsuario(int id, usuarios datosActualizados) {
 
         usuarios usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -170,7 +170,7 @@ public class UsuarioService {
     }
 
     // Eliminar usuario
-    public void eliminarUsuario(Long id) {
+    public void eliminarUsuario(int id) {
         if (!usuarioRepository.existsById(id)) {
             throw new RuntimeException("Usuario no encontrado");
         }

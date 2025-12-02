@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.Controller;
+package proyecto_legajo.legajo.controller;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.ListCrudRepository;
