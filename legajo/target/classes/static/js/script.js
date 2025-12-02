@@ -78,47 +78,32 @@ if (document.getElementById('iC')) {
 const modal = document.getElementById('modal');
 const close = document.getElementById('closeModal');
 
-// Seleccionar todos los botones con clase 'ver-libro'
-const openButtons = document.querySelectorAll('.ver-libro');
+if (modal && close) {
+    document.querySelectorAll(".ver-libro").forEach(boton => {
+        boton.addEventListener("click", () => {
+            const libro = boton.parentElement;
 
-// Agregar event listener a cada botón
-openButtons.forEach(button => {
-    button.onclick = () => modal.style.display = 'flex';
-});
+            const titulo = libro.dataset.titulo;
+            const autor = libro.dataset.autor;
+            const descripcion = libro.dataset.descripcion;
+            const imagen = libro.dataset.imagen;
 
-close.onclick = () => modal.style.display = 'none';
+            document.getElementById("modalTitulo").textContent = titulo;
+            document.getElementById("modalAutor").textContent = autor;
+            document.getElementById("modalDescripcion").textContent = descripcion;
+            document.getElementById("modalImg").src = imagen;
 
-window.onclick = (e) => { 
-    if (e.target === modal) modal.style.display = 'none'; 
-};
-
-
-document.querySelectorAll(".ver-libro").forEach(boton => {
-    boton.addEventListener("click", () => {
-        const libro = boton.parentElement;
-
-        const titulo = libro.dataset.titulo;
-        const autor = libro.dataset.autor;
-        const descripcion = libro.dataset.descripcion;
-        const imagen = libro.dataset.imagen;
-
-        document.getElementById("modalTitulo").textContent = titulo;
-        document.getElementById("modalAutor").textContent = autor;
-        document.getElementById("modalDescripcion").textContent = descripcion;
-        document.getElementById("modalImg").src = imagen;
-
-        document.getElementById("modal").style.display = "flex";
+            modal.style.display = "flex";
+        });
     });
-});
 
-document.getElementById("closeModal").onclick = function() {
-    document.getElementById("modal").style.display = "none";
-};
+    close.onclick = () => modal.style.display = 'none';
+}
 
+const modalAutor = document.getElementById("modalAutor");
+const cerrarAutor = document.getElementById("cerrarAutor");
 
-    const modalAutor = document.getElementById("modalAutor");
-    const cerrarAutor = document.getElementById("cerrarAutor");
-
+if (modalAutor && cerrarAutor) {
     document.querySelectorAll(".ver-autor").forEach(boton => {
         boton.addEventListener("click", () => {
             const card = boton.closest(".autor");
@@ -133,9 +118,13 @@ document.getElementById("closeModal").onclick = function() {
     });
 
     cerrarAutor.onclick = () => modalAutor.style.display = "none";
+}
 
-    window.onclick = (e) => {
-        if (e.target === modalAutor) {
-            modalAutor.style.display = "none";
-        }
-    };
+window.onclick = (e) => {
+    if (modal && e.target === modal) {
+        modal.style.display = 'none';
+    }
+    if (modalAutor && e.target === modalAutor) {
+        modalAutor.style.display = "none";
+    }
+};
