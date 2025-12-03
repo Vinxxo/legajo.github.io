@@ -519,9 +519,7 @@ INVENTARIO
     box-shadow: 0 0 5px #0003;
 }
 
-/*=========================
- INVENTARIO ADMIN
-==========================*/
+/* INVENTARIO ADMIN */
 
 .inventario-admin {
     background-color: var(--color-secundario);
@@ -945,4 +943,74 @@ INVENTARIO
     .modal-text {
         text-align: center;
     }
+}
+
+.filtros {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.filtros input,
+.filtros select,
+.filtros button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.filtros button {
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+.tabla-reportes table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.tabla-reportes th,
+.tabla-reportes td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla-reportes th {
+    background: #333;
+    color: white;
+}
+
+.btn-ver {
+    padding: 6px 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    width: 350px;
+    border-radius: 10px;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
 }
