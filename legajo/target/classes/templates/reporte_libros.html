@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de libros - Admin</title>
 
-    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -72,6 +72,7 @@
                 <option value="5">⭐ 5</option>
             </select>
             <button id="btnLimpiar">Limpiar filtros</button>
+             <button src="reporte/pdf">Generar Reporte</button>
         </section>
 
         <!-- TABLA -->
@@ -85,7 +86,7 @@
                         <th>Publicado por</th>
                         <th>Calificación</th>
                         <th>Estado</th>
-                        <th>Acción</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="tablaLibros">
@@ -116,7 +117,8 @@
 
     </main>
 
-    <script src="../static/js/reportes.js"></script>
+    <script src="/js/reportes.js"></script>
+    <script src="/js/script.js"></script>
 
 </body>
 </html>

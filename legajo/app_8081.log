@@ -1,0 +1,45 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2025-12-01T20:34:21.385-05:00  INFO 19284 --- [legajo] [           main] p.legajo.LegajoApplication               : Starting LegajoApplication v0.0.1-SNAPSHOT using Java 25 with PID 19284 (C:\legajo.github.io\legajo\target\legajo-0.0.1-SNAPSHOT.jar started by LENOVO in C:\legajo.github.io\legajo)
+2025-12-01T20:34:21.393-05:00  INFO 19284 --- [legajo] [           main] p.legajo.LegajoApplication               : No active profile set, falling back to 1 default profile: "default"
+2025-12-01T20:34:23.376-05:00  INFO 19284 --- [legajo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-01T20:34:23.543-05:00  INFO 19284 --- [legajo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 144 ms. Found 2 JPA repository interfaces.
+2025-12-01T20:34:24.901-05:00  INFO 19284 --- [legajo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-12-01T20:34:24.941-05:00  INFO 19284 --- [legajo] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-01T20:34:24.943-05:00  INFO 19284 --- [legajo] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-12-01T20:34:25.016-05:00  INFO 19284 --- [legajo] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-01T20:34:25.019-05:00  INFO 19284 --- [legajo] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3442 ms
+2025-12-01T20:34:25.564-05:00  INFO 19284 --- [legajo] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-01T20:34:25.731-05:00  INFO 19284 --- [legajo] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-12-01T20:34:25.840-05:00  INFO 19284 --- [legajo] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-01T20:34:26.632-05:00  INFO 19284 --- [legajo] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-01T20:34:26.738-05:00  INFO 19284 --- [legajo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-01T20:34:27.298-05:00  INFO 19284 --- [legajo] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@362a561e
+2025-12-01T20:34:27.304-05:00  INFO 19284 --- [legajo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-01T20:34:27.431-05:00  WARN 19284 --- [legajo] [           main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-12-01T20:34:27.482-05:00  INFO 19284 --- [legajo] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-01T20:34:28.825-05:00  INFO 19284 --- [legajo] [           main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: proyecto_legajo.legajo.Entity.genero (class must be instantiated by Interceptor)
+2025-12-01T20:34:28.944-05:00  INFO 19284 --- [legajo] [           main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: proyecto_legajo.legajo.Entity.autor (class must be instantiated by Interceptor)
+2025-12-01T20:34:29.324-05:00  INFO 19284 --- [legajo] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-01T20:34:29.329-05:00  INFO 19284 --- [legajo] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-01T20:34:30.542-05:00  WARN 19284 --- [legajo] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-01T20:34:31.714-05:00  INFO 19284 --- [legajo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-12-01T20:34:31.770-05:00  INFO 19284 --- [legajo] [           main] p.legajo.LegajoApplication               : Started LegajoApplication in 12.11 seconds (process running for 13.869)
+2025-12-01T20:53:26.405-05:00  INFO 19284 --- [legajo] [nio-8081-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-01T20:53:26.406-05:00  INFO 19284 --- [legajo] [nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-01T20:53:26.409-05:00  INFO 19284 --- [legajo] [nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms

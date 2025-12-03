@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.Controller;
+package proyecto_legajo.legajo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,5 +20,17 @@ public class ViewController {
     public String crearCuenta() {
         return "crear_cuenta";
     }
+
+     @GetMapping({"/resources"})
+    public String resources() {
+        return "/resources";
+    }
+
+     @GetMapping({"/templates"})
+    public String templates() {
+        return "/templates";
+    }
+
+    
 
 }

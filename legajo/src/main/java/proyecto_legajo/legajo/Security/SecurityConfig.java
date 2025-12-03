@@ -52,7 +52,39 @@ public class SecurityConfig {
             .and()
             .authorizeHttpRequests()
                 // Permitir endpoints públicos: auth, páginas públicas y recursos estáticos
-                .requestMatchers("/api/auth/**", "/", "/index.html", "/login.html", "/login", "/crear_cuenta.html", "/crear_cuenta", "/dashboard_usuario.html", "/dashboard_admin.html", "/perfil.html", "/perfil_admin.html", "/css/**", "/js/**", "/imgs/**", "/static/**", "/error", "/favicon.ico").permitAll()
+                .requestMatchers
+                ("/api/auth/**",
+                 "/", "/index.html",
+                "/login.html",
+                "/login",
+                "/crear_cuenta.html",
+                "/crear_cuenta",
+                "/dashboard_usuario.html",
+                "/dashboard_admin.html",
+                "/perfil.html",
+                "/perfil_admin.html",
+                "/css/**",
+                "/js/**",
+                "/imgs/**",
+                "/error",
+                "/favicon.ico",
+                "/reporte/pdf",
+                "/404.html",
+                "/chats.html",
+                "/crear_cuenta.html",
+                "/dashboard_admin.html",
+                "/dashboard_usuario.html",
+                "/index.html",
+                "/inventario_admi.html",
+                "/inventario.html",
+                "/login.html",
+                "/notificaciones.html",
+                "/novedades_usuarios.html",
+                "/perfil_admin.html",
+                "/perfil.html",
+                "/registrar_libro.html",
+                "/reporte_libros.html")
+                               .permitAll()
                 // NOTA: evitar patrones globales problemáticos con PathPatternParser
                 .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
                 .requestMatchers("/api/usuarios/**").authenticated()

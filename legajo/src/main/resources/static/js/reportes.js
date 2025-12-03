@@ -8,7 +8,7 @@ const libros = [
         calificacion: 5,
         estado: "Disponible",
         descripcion: "Una obra del realismo mágico...",
-        imagen: "../static/imgs/gabo.jpg"
+        imagen: "/imgs/gabo.jpg"
     },
     {
         titulo: "Duna",
@@ -18,7 +18,7 @@ const libros = [
         calificacion: 5,
         estado: "Intercambiado",
         descripcion: "Una de las mejores novelas del género...",
-        imagen: "../static/imgs/terror.jpeg"
+        imagen: "/imgs/terror.jpeg"
     }
 ];
 
