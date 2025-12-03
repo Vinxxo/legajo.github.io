@@ -1,7 +1,7 @@
-package proyecto_legajo.legajo.controller;
+package proyecto_legajo.legajo.Controller;
 
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.ListCrudRepository;
+import proyecto_legajo.legajo.Repository.LibrosRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,16 +17,16 @@ import proyecto_legajo.legajo.Entity.libros;
 @RequestMapping("/libros")
 public class LibrosController {
 
-    private final ListCrudRepository librosRepository;
+    private final LibrosRepository librosRepository;
 
-    public LibrosController(ListCrudRepository librosRepository) {
+    public LibrosController(LibrosRepository librosRepository) {
         this.librosRepository = librosRepository;
     }
 
     // LISTAR
     @GetMapping
     public String listarLibros(Model model) {
-        model.addAttribute("libros", librosRepository.findAllById(Sort.by(Sort.Direction.ASC, "titulo")));
+        model.addAttribute("libros", librosRepository.findAll(Sort.by(Sort.Direction.ASC, "TituloLib")));
         return "libros/index";
     }
 
@@ -47,8 +47,8 @@ public class LibrosController {
 
     // EDITAR
     @GetMapping("/editar/{id}")
-    public String editarLibro(@PathVariable Long id, Model model) throws Throwable {
-        libros libro = (libros) librosRepository.findById(id)
+    public String editarLibro(@PathVariable int id, Model model) throws Throwable {
+        libros libro = librosRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
 
         model.addAttribute("libro", libro);
@@ -64,7 +64,7 @@ public class LibrosController {
 
     // ELIMINAR
     @GetMapping("/eliminar/{id}")
-    public String eliminarLibro(@PathVariable Long id) {
+    public String eliminarLibro(@PathVariable int id) {
         librosRepository.deleteById(id);
         return "redirect:/libros";
     }

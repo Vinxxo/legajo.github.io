@@ -52,7 +52,7 @@ public class SecurityConfig {
             .and()
             .authorizeHttpRequests()
                 // Permitir endpoints públicos: auth, páginas públicas y recursos estáticos
-                .requestMatchers("/api/auth/**", "/", "/index.html", "/login.html", "/login", "/crear_cuenta.html", "/crear_cuenta", "/dashboard_usuario.html", "/dashboard_admin.html", "/perfil.html", "/css/**", "/js/**", "/imgs/**", "/static/**", "/error", "/favicon.ico").permitAll()
+                .requestMatchers("/api/auth/**", "/", "/index.html", "/login.html", "/login", "/crear_cuenta.html", "/crear_cuenta", "/dashboard_usuario.html", "/dashboard_admin.html", "/perfil.html", "/perfil_admin.html", "/css/**", "/js/**", "/imgs/**", "/static/**", "/error", "/favicon.ico").permitAll()
                 // NOTA: evitar patrones globales problemáticos con PathPatternParser
                 .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
                 .requestMatchers("/api/usuarios/**").authenticated()

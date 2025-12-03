@@ -68,7 +68,8 @@
 
                     // Redirigir según rol retornado por el servidor (esperamos data.role)
                     const role = (data.role || '').toString().toLowerCase();
-                    if (role === 'admin' || role === 'administrator' || role === 'rol_admin') {
+                    // Aceptar varias formas/idiomas del rol administrador
+                    if (role === 'admin' || role === 'administrator' || role === 'rol_admin' || role === 'administrador' || role.includes('admin')) {
                         window.location.href = '/dashboard_admin.html';
                     } else {
                         window.location.href = '/dashboard_usuario.html';

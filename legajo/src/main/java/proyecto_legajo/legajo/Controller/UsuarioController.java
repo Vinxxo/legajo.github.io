@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.controller;
+package proyecto_legajo.legajo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -7,7 +7,6 @@ import proyecto_legajo.legajo.Service.UsuarioService;
 import proyecto_legajo.legajo.Dto.UsuarioDTO;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/usuarios")

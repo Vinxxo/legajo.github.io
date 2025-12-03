@@ -6,9 +6,14 @@ C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Dto\LibroDTO.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Dto\UsuarioDTO.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\autor.java
+C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\calificacionLibro.java
+C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\EstadoIntercambio.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\EstadoLibro.java
+C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\EstadoReporte.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\genero.java
+C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\intercambios.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\libros.java
+C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\reportesUsuario.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\roles.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\usuarios.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\LegajoApplication.java
