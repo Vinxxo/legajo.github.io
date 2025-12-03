@@ -58,7 +58,7 @@
         </div>
         <ul class="nav-links">
             <a href=""><li class="active"><i class="fas fa-home"></i><span>Inicio</span></li></a>
-            <a href="chats.html"><li><i class="fas fa-message"></i><span>Chats</span></li></a>
+            <a href="chats.html"><li><i class="fas fa-message"></i><span>Intercambios</span></li></a>
             <a href="inventario.html"><li><i class="fas fa-box"></i><span>Inventario</span></li></a>
             <a href="notificaciones.html"><li><i class="fas fa-check"></i><span>Notificaciones</span></li></a>
             <a href="perfil.html"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
@@ -85,18 +85,36 @@
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('recomendados', -1)">❮</button>
                 <div class="carrusel-libros" id="recomendados">
-                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>Hábitos Atómicos</h3><p>James Clear</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>Pensar rápido</h3><p>Daniel Kahneman</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>El poder de los hábitos</h3><p>Charles Duhigg</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/libro_de_la_selva.jpg"><h3>Padre Rico</h3><p>Robert Kiyosaki</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro" 
+                    data-titulo="Hábitos Atómicos" data-autor="James Clear" data-descripcion="Un libro sobre cómo pequeños hábitos generan cambios gigantes." data-imagen="../static/imgs/libro_de_la_selva.jpg">
+                    <img src="../static/imgs/libro_de_la_selva.jpg"><h3>Hábitos Atómicos</h3><p>James Clear</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro"
+                    data-titulo="Pensar rápido" data-autor="Daniel Kahneman" data-descripcion="Presenta los dos sistemas con los que pensamos: uno rápido e intuitivo y otro lento y analítico, revelando cómo nuestras decisiones no siempre son tan racionales como creemos." data-imagen="../static/imgs/libro_de_la_selva.jpg">
+                    <img src="../static/imgs/libro_de_la_selva.jpg"><h3>Pensar rápido</h3><p>Daniel Kahneman</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro"
+                    data-titulo="El poder de los hábitos" data-autor="Charles Duhigg" data-descripcion="Explora cómo se forman los hábitos, cómo funcionan en la vida diaria y cómo cambiarlos para mejorar productividad, salud y bienestar." data-imagen="../static/imgs/libro_de_la_selva.jpg">
+                    <img src="../static/imgs/libro_de_la_selva.jpg"><h3>El poder de los hábitos</h3><p>Charles Duhigg</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro"
+                    data-titulo="Padre Rico" data-autor="Robert Kiyosaki" data-descripcion="Una guía sobre educación financiera que rompe mitos tradicionales y enseña cómo construir riqueza a través de la mentalidad correcta y la inversión inteligente." data-imagen="../static/imgs/libro_de_la_selva.jpg">
+                    <img src="../static/imgs/libro_de_la_selva.jpg"><h3>Padre Rico</h3><p>Robert Kiyosaki</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('recomendados', 1)">❯</button>
             </div>
             <div id="modal" class="modal">
                 <div class="modal-content">
                     <span id="closeModal" class="close">&times;</span>
-                    <h2>Detalles del producto</h2>
-                    <p>Descripción detallada del producto...</p>
+
+                     <img id="modalImg" class="modal-img">
+                     <div class="modal-text">
+                         <h2 id="modalTitulo"></h2>
+                         <h4 id="modalAutor"></h4>
+                         <h3>Sipnosis del libro</h3>
+                         <p id="modalDescripcion"></p>
+                     </div>
                 </div>
             </div>
         </section>
@@ -106,14 +124,46 @@
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('autores', -1)">❮</button>
                 <div class="carrusel-libros" id="autores">
-                <div class="libro"><img src="/imgs/gabo.jpg"><h3>James Clear</h3><p>Hábitos Atómicos</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/gabo.jpg"><h3>Stephen King</h3><p>It</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/gabo.jpg"><h3>J.K. Rowling</h3><p>Harry Potter</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/gabo.jpg"><h3>Gabriel García Márquez</h3><p>Cien años de soledad</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/gabo.jpg"><h3>George Orwell</h3><p>1984</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/gabo.jpg"><h3>Haruki Murakami</h3><p>Tokio Blues</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro autor"
+                    data-titulo="Hábitos Atómicos" data-autor="James Clear" data-descripcion="Un libro sobre cómo pequeños hábitos generan cambios gigantes." data-imagen="../static/imgs/libro_de_la_selva.jpg">
+                    <img src="../static/imgs/gabo.jpg"><h3>James Clear</h3><p>Hábitos Atómicos</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro autor"
+                    data-titulo="It" data-autor="Stephen King" data-descripcion="Escritor estadounidense famoso por novelas de terror como It, El resplandor y Carrie." data-imagen="../static/imgs/gabo.jpg">
+                    <img src="../static/imgs/gabo.jpg"><h3>Stephen King</h3><p>It</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro autor"
+                    data-titulo="Harry Potter" data-autor="J.K. Rowling" data-descripcion="Autora británica creadora del universo de Harry Potter." data-imagen="../static/imgs/gabo.jpg">
+                    <img src="../static/imgs/gabo.jpg"><h3>J.K. Rowling</h3><p>Harry Potter</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro autor"
+                    data-titulo="Cien años de soledad" data-autor="Gabriel García Márquez" data-descripcion="Novelista colombiano y figura central del realismo mágico." data-imagen="../static/imgs/gabo.jpg">
+                    <img src="../static/imgs/gabo.jpg"><h3>Gabriel García Márquez</h3><p>Cien años de soledad</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro autor"
+                    data-titulo="1984" data-autor="George Orwell" data-descripcion="Escritor británico autor de obras críticas como 1984 y Rebelión en la granja." data-imagen="../static/imgs/gabo.jpg">
+                    <img src="../static/imgs/gabo.jpg"><h3>George Orwell</h3><p>1984</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
+                <div class="libro autor"
+                    data-titulo="Tokio Blues" data-autor="Haruki Murakami" data-descripcion="Haruki Murakami es un autor japonés conocido por su estilo surrealista y melancólico. Sus obras exploran temas de soledad, amor y realidades alternas." data-imagen="../static/imgs/gabo.jpg">
+                    <img src="../static/imgs/gabo.jpg"><h3>Haruki Murakami</h3><p>Tokio Blues</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
+                </div>
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('autores', 1)">❯</button>
+            </div>
+            <div id="modalAutor" class="modal">
+                <div class="modal-content">
+                    <span id="cerrarAutor" class="close">&times;</span>
+
+                    <img id="autorImg" class="modal-img">
+                    <div class="modal-text">
+                    <h2 id="autorNombre"></h2>
+                    <h3>Libros más conocidos:</h3>
+                    <p id="autorLibros"></p>
+                    <h3>Descripción:</h3>
+                    <p id="autorDescripcion"></p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -123,12 +173,12 @@
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('generos', -1)">❮</button>
                 <div class="carrusel-libros" id="generos">
-                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Autoayuda</h3><p>Libros que motivan</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Ficción</h3><p>Historias creativas</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Misterio</h3><p>Tramas intrigantes</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Fantasía</h3><p>Mundos mágicos</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Biografías</h3><p>Vidas inspiradoras</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
-                <div class="libro"><img src="/imgs/terror.jpeg"><h3>Romance</h3><p>Historias de amor</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro" data-titulo="Hábitos Atómicos" data-autor="James Clear" data-descripcion="Un libro sobre cómo pequeños hábitos generan cambios gigantes." data-imagen="../static/imgs/libro_de_la_selva.jpg"><img src="../static/imgs/terror.jpeg"><h3>Autoayuda</h3><p>Libros que motivan</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro" data-titulo="Cien años de soledad" data-autor="Gabriel García Márquez" data-descripcion="Una obra maestra del realismo mágico que narra la saga de la familia Buendía en el pueblo ficticio de Macondo." data-imagen="../static/imgs/libro_de_la_selva.jpg"><img src="../static/imgs/terror.jpeg"><h3>Ficción</h3><p>Historias creativas</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro" data-titulo="El código Da Vinci" data-autor="Dan Brown" data-descripcion="Un thriller que combina arte, historia y conspiraciones en una búsqueda frenética por resolver un misterio antiguo." data-imagen="../static/imgs/libro_de_la_selva.jpg"><img src="../static/imgs/terror.jpeg"><h3>Misterio</h3><p>Tramas intrigantes</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro" data-titulo="Harry Potter y la piedra filosofal" data-autor="J.K. Rowling" data-descripcion="El inicio de la saga mágica de Harry Potter, donde un niño descubre su herencia como mago y enfrenta al malvado Voldemort." data-imagen="../static/imgs/libro_de_la_selva.jpg"><img src="../static/imgs/terror.jpeg"><h3>Fantasía</h3><p>Mundos mágicos</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro" data-titulo="Steve Jobs" data-autor="Walter Isaacson" data-descripcion="Una biografía autorizada del cofundador de Apple, explorando su vida, innovaciones y personalidad compleja." data-imagen="../static/imgs/libro_de_la_selva.jpg"><img src="../static/imgs/terror.jpeg"><h3>Biografías</h3><p>Vidas inspiradoras</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
+                <div class="libro" data-titulo="Orgullo y prejuicio" data-autor="Jane Austen" data-descripcion="Una historia clásica de amor y malentendidos en la Inglaterra del siglo XIX, centrada en Elizabeth Bennet y el señor Darcy." data-imagen="../static/imgs/libro_de_la_selva.jpg"><img src="../static/imgs/terror.jpeg"><h3>Romance</h3><p>Historias de amor</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button></div>
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('generos', 1)">❯</button>
             </div>
