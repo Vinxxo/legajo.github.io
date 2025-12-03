@@ -39,8 +39,8 @@
                 // Rellenar nombre en la UI si existe el elemento
                 const nombreEl = document.getElementById('nombreRecibido');
                 if (nombreEl) {
-                    const nombre = (user.nomUsu1 || user.NomUsu1 || user.nombre || user.nombreUsu || '') ;
-                    nombreEl.textContent = nombre || (user.correo || 'Usuario');
+                    const nombre = user.primerNombre;
+                    nombreEl.textContent = nombre;
                 }
             } catch (e) {
                 console.error('Error validando token en dashboard:', e);
@@ -203,18 +203,6 @@
             carrusel.scrollLeft = scrollMax;
         }
         }
-    </script>
-    <script>
-        const inicial = localStorage.getItem("textoCompartido");
-        if (inicial){
-            document.getElementById("nombreRecibido").textContent = inicial;
-        }
-        
-        window.addEventListener("storage", function(event){
-            if (event.key === "textoCompartido"){
-                document.getElementById("nombreRecibido").textContent = event.newValue;
-            }
-        });
     </script>
 </body>
 </html>
