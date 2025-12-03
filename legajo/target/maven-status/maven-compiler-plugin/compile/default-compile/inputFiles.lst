@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Config\MvcConfig.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Controller\AuthController.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Controller\LibrosController.java
@@ -27,3 +28,17 @@ C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Security\UtilidadJwt.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\JpaUserDetailsService.java
 C:\Users\Santiago\Desktop\proyecto_legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\UsuarioService.java
+=======
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Controller\LibrosController.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Controller\UsuarioController.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\autor.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\EstadoLibro.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\genero.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\libros.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\roles.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\usuarios.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\LegajoApplication.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\LibrosRepository.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\usuarioRepository.java
+C:\Proyecto_Legajo\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\UsuarioService.java
+>>>>>>> arreglo_front

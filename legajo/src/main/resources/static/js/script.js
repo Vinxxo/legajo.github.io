@@ -80,18 +80,53 @@ if (document.getElementById('iC')) {
 const modal = document.getElementById('modal');
 const close = document.getElementById('closeModal');
 
-// Seleccionar todos los botones con clase 'ver-libro'
-const openButtons = document.querySelectorAll('.ver-libro');
+if (modal && close) {
+    document.querySelectorAll(".ver-libro").forEach(boton => {
+        boton.addEventListener("click", () => {
+            const libro = boton.parentElement;
 
-// Agregar event listener a cada botón (si existe modal)
-if (modal) {
-    openButtons.forEach(button => {
-        button.onclick = () => modal.style.display = 'flex';
+            const titulo = libro.dataset.titulo;
+            const autor = libro.dataset.autor;
+            const descripcion = libro.dataset.descripcion;
+            const imagen = libro.dataset.imagen;
+
+            document.getElementById("modalTitulo").textContent = titulo;
+            document.getElementById("modalAutor").textContent = autor;
+            document.getElementById("modalDescripcion").textContent = descripcion;
+            document.getElementById("modalImg").src = imagen;
+
+            modal.style.display = "flex";
+        });
     });
 
-    if (close) close.onclick = () => modal.style.display = 'none';
-
-    window.onclick = (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-    };
+    close.onclick = () => modal.style.display = 'none';
 }
+
+const modalAutor = document.getElementById("modalAutor");
+const cerrarAutor = document.getElementById("cerrarAutor");
+
+if (modalAutor && cerrarAutor) {
+    document.querySelectorAll(".ver-autor").forEach(boton => {
+        boton.addEventListener("click", () => {
+            const card = boton.closest(".autor");
+
+            document.getElementById("autorNombre").textContent = card.dataset.nombre;
+            document.getElementById("autorDescripcion").textContent = card.dataset.descripcion;
+            document.getElementById("autorLibros").textContent = card.dataset.libros;
+            document.getElementById("autorImg").src = card.dataset.imagen;
+
+            modalAutor.style.display = "block";
+        });
+    });
+
+    cerrarAutor.onclick = () => modalAutor.style.display = "none";
+}
+
+window.onclick = (e) => {
+    if (modal && e.target === modal) {
+        modal.style.display = 'none';
+    }
+    if (modalAutor && e.target === modalAutor) {
+        modalAutor.style.display = "none";
+    }
+};

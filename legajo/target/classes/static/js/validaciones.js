@@ -52,9 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.preventDefault();
                 return;
             }
-
-            // Guardar nombre en localStorage
-            localStorage.setItem("textoCompartido", nombre);
         });
     }
 });
