@@ -46,7 +46,7 @@ function cargarTabla(lista) {
     });
 }
 
-// Filtrar sin fechas
+// Filtrar
 function filtrar() {
     let resultado = libros.filter(l => 
         (!filtroTitulo.value || l.titulo.toLowerCase().includes(filtroTitulo.value.toLowerCase())) &&

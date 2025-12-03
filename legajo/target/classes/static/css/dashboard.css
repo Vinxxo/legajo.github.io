@@ -991,26 +991,3 @@ INVENTARIO
     border-radius: 6px;
     cursor: pointer;
 }
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.6);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    width: 350px;
-    border-radius: 10px;
-}
-
-.close {
-    float: right;
-    cursor: pointer;
-    font-size: 20px;
-}
