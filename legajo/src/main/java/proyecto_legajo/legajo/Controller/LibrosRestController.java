@@ -1,7 +1,9 @@
 package proyecto_legajo.legajo.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +17,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import proyecto_legajo.legajo.Dto.LibroDTO;
 
 import proyecto_legajo.legajo.Service.LibrosService;
 import proyecto_legajo.legajo.Dto.LibroResponseDTO;
+import proyecto_legajo.legajo.Entity.usuarios;
+import proyecto_legajo.legajo.Repository.usuarioRepository;
 
 @RestController
 @RequestMapping("/api/libros")
@@ -28,6 +34,9 @@ import proyecto_legajo.legajo.Dto.LibroResponseDTO;
 public class LibrosRestController {
 
     private final LibrosService service;
+    
+    @Autowired
+    private usuarioRepository usuarioRepository;
 
     public LibrosRestController(LibrosService service) {
         this.service = service;
@@ -54,8 +63,24 @@ public class LibrosRestController {
 
     // Crear libro
     @PostMapping
-    public ResponseEntity<LibroDTO> crearLibro(@RequestBody LibroDTO libroDTO) {
-        LibroDTO creado = service.crearLibro(libroDTO);
+    public ResponseEntity<?> crearLibro(@RequestBody LibroDTO libroDTO) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        
+        // Si no hay autenticación o es anónimo, rechazar
+        if (auth == null || !auth.isAuthenticated() || auth.getPrincipal().equals("anonymousUser")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("error", "Se requiere autenticación para registrar un libro"));
+        }
+        
+        String correo = auth.getName();
+        usuarios usuario = usuarioRepository.findByCorreo(correo).orElse(null);
+        
+        if (usuario == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("error", "Usuario no encontrado"));
+        }
+        
+        LibroDTO creado = service.crearLibro(libroDTO, usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
 

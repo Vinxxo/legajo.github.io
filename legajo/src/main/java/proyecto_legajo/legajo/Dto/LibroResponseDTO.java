@@ -2,11 +2,16 @@ package proyecto_legajo.legajo.Dto;
 
 public class LibroResponseDTO {
 
+    private int idLibro;
     private String usuario;
     private String titulo;
     private String autor;
     private String genero;
     private String estado;
+    private String urlImagen;
+
+    public int getIdLibro() { return idLibro; }
+    public void setIdLibro(int idLibro) { this.idLibro = idLibro; }
 
     public String getUsuario() { return usuario; }
     public void setUsuario(String usuario) { this.usuario = usuario; }
@@ -22,4 +27,7 @@ public class LibroResponseDTO {
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+
+    public String getUrlImagen() { return urlImagen; }
+    public void setUrlImagen(String urlImagen) { this.urlImagen = urlImagen; }
 }

@@ -1,31 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Editar Libro</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="formulario">
+        <form id="editarForm">
+            <h2><i class="fas fa-edit"></i> Editar Libro</h2>
 
-<h1>Editar Libro</h1>
+            <input type="hidden" id="idLibro" name="idLibro">
 
-<form th:action="@{'/libros/actualizar/' + ${libro.id}}" method="post" th:object="${libro}">
+            <input type="text" id="titulo" name="titulo" placeholder="Título del libro" required>
 
-    Título:
-    <input type="text" th:field="*{titulo}"><br><br>
+            <input type="text" id="autor" name="autor" placeholder="Autor" required>
 
-    ISBN:
-    <input type="text" th:field="*{isbn}"><br><br>
+            <label for="sinopsis"></label>
+            <textarea id="sinopsis" name="sinopsis" rows="4" placeholder="Escribe aquí la sinopsis..."></textarea>
 
-    Año:
-    <input type="number" th:field="*{año}"><br><br>
+            <select id="genero" name="genero" required>
+                <option value="">Seleccione un género</option>
+                <option value="ficcion">Ficción</option>
+                <option value="fantasia">Fantasía</option>
+                <option value="romance">Romance</option>
+                <option value="misterio">Misterio</option>
+                <option value="biografia">Biografía</option>
+                <option value="autoayuda">Autoayuda</option>
+            </select>
 
-    Autor ID:
-    <input type="number" th:field="*{autor.id}"><br><br>
+            <div class="form-grupo">
+            <label for="imagen" class="label-file">Seleccionar portada (opcional)</label>
+            <input type="file" id="imagen" name="imagen" accept="image/*">
+            </div>
 
-    Género ID:
-    <input type="number" th:field="*{genero.id}"><br><br>
-
-    <button type="submit">Actualizar</button>
-</form>
-
+            <button type="submit"><i class="fas fa-save"></i> Guardar Cambios</button>
+            <a href="javascript:history.back()" style="margin-top: 10px; display: inline-block; padding: 10px 20px; background-color: #ccc; color: black; text-decoration: none; border-radius: 5px;"><i class="fas fa-times"></i> Cancelar</a>
+        </form>
+    </div>
+    <script src="/js/script.js"></script>
+    <script src="/js/editarLibro.js"></script>
 </body>
 </html>

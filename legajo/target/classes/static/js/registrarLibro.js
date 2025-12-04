@@ -1,6 +1,7 @@
 // /js/registrarLibro.js
 // Maneja el registro de libros desde registrar_libro.html
 const API = '/api/libros';
+const UPLOAD_API = '/api/upload/imagen';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
@@ -8,22 +9,66 @@ document.addEventListener('DOMContentLoaded', () => {
   form.onsubmit = async (e) => {
     e.preventDefault();
     const titulo = document.getElementById('titulo').value.trim();
+    const autor = document.getElementById('autor').value.trim();
     const sinopsis = document.getElementById('sinopsis').value.trim();
-    const estado = 'DISPONIBLE'; // O puedes obtenerlo de un select si lo agregas
-    // Puedes agregar autor, genero, etc. si el backend lo soporta
-    const libro = { titulo, sinopsis, estado };
+    const genero = document.getElementById('genero').value.trim();
+    const imagenInput = document.getElementById('imagen');
+    const estado = 'Publicado';
+    
+    // Usar URL por defecto si no hay imagen
+    let urlImagen = '/imgs/default-book.jpg';
+    
+    // Si hay archivo de imagen, subirlo al servidor
+    if (imagenInput.files && imagenInput.files[0]) {
+      const file = imagenInput.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      try {
+        const uploadRes = await fetch(UPLOAD_API, {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (!uploadRes.ok) {
+          throw new Error('Error al subir la imagen');
+        }
+        
+        const uploadData = await uploadRes.json();
+        urlImagen = uploadData.url;
+      } catch (err) {
+        console.error('Error subiendo imagen:', err);
+        alert('Advertencia: No se pudo subir la imagen, se usará una por defecto');
+      }
+    }
+    
+    await enviarLibro({ titulo, autor, sinopsis, genero, estado, urlImagen });
+  };
+  
+  async function enviarLibro(libro) {
     try {
+      const token = localStorage.getItem('jwtToken');
+      const headers = { 'Content-Type': 'application/json' };
+      
+      if (token) {
+        headers['Authorization'] = 'Bearer ' + token;
+      }
+      
       const res = await fetch(API, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: headers,
         body: JSON.stringify(libro)
       });
-      if (!res.ok) throw new Error('Error al registrar libro');
+      if (!res.ok) {
+        const error = await res.text();
+        throw new Error('Error al registrar libro: ' + error);
+      }
       alert('Libro registrado con éxito');
       form.reset();
       window.location.href = 'inventario.html';
     } catch (err) {
-      alert('No se pudo registrar el libro');
+      console.error('Error:', err);
+      alert('No se pudo registrar el libro: ' + err.message);
     }
-  };
+  }
 });

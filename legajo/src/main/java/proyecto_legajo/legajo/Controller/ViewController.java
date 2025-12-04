@@ -31,6 +31,9 @@ public class ViewController {
         return "/templates";
     }
 
-    
+    @GetMapping({"/libros/editar.html", "/libros/editar"})
+    public String editarLibro() {
+        return "libros/editar";
+    }
 
 }

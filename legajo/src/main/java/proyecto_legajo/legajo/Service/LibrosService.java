@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import proyecto_legajo.legajo.Entity.libros;
+import proyecto_legajo.legajo.Entity.usuarios;
 import proyecto_legajo.legajo.Repository.LibrosRepository;
 import proyecto_legajo.legajo.Dto.LibroResponseDTO;
 import proyecto_legajo.legajo.Entity.EstadoLibro;
@@ -29,13 +30,19 @@ public class LibrosService {
 
     // Crear libro
     @Transactional
-    public LibroDTO crearLibro(LibroDTO dto) {
+    public LibroDTO crearLibro(LibroDTO dto, usuarios usuario) {
         libros libro = new libros();
         libro.setTituloLib(dto.getTitulo());
         libro.setSinopsisLib(dto.getSinopsis());
         libro.setEstadoLib(EstadoLibro.valueOf(dto.getEstado()));
+        // Usar imagen proporcionada o una por defecto
+        String urlImagen = dto.getUrlImagen() != null && !dto.getUrlImagen().trim().isEmpty() 
+            ? dto.getUrlImagen() 
+            : "/imgs/default-book.jpg";
+        libro.setUrlImagen(urlImagen);
         libro.setActivo(true);
-        // Aquí puedes setear relaciones si es necesario
+        // Asociar el usuario propietario
+        libro.setUsuarioPropietario(usuario);
         repo.save(libro);
         return mapToLibroDTO(libro);
     }
@@ -46,6 +53,7 @@ public class LibrosService {
         return repo.findById(id).map(libro -> {
             libro.setTituloLib(dto.getTitulo());
             libro.setSinopsisLib(dto.getSinopsis());
+            libro.setUrlImagen(dto.getUrlImagen());
             libro.setEstadoLib(EstadoLibro.valueOf(dto.getEstado()));
             repo.save(libro);
             return mapToLibroDTO(libro);
@@ -67,6 +75,7 @@ public class LibrosService {
         dto.setTitulo(l.getTituloLib());
         dto.setSinopsis(l.getSinopsisLib());
         dto.setEstado(l.getEstadoLib() != null ? l.getEstadoLib().name() : "");
+        dto.setUrlImagen(l.getUrlImagen());
         return dto;
     }
 
@@ -103,6 +112,9 @@ public class LibrosService {
     private LibroResponseDTO mapToDto(libros l) {
         LibroResponseDTO dto = new LibroResponseDTO();
 
+        // ID
+        dto.setIdLibro(l.getIdLibro());
+
         // USUARIO
         if (l.getUsuarioPropietario() != null) {
             String nombre = safe(l.getUsuarioPropietario().getPrimerNombre());
@@ -137,6 +149,9 @@ public class LibrosService {
 
         // ESTADO
         dto.setEstado(l.getEstadoLib() != null ? l.getEstadoLib().name() : "");
+
+        // URL IMAGEN
+        dto.setUrlImagen(l.getUrlImagen());
 
         return dto;
     }

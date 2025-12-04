@@ -31,6 +31,8 @@ public class UsuarioPrincipal implements UserDetails {
     @Override
     public String getUsername() { return user.getCorreo(); }
 
+    public usuarios getUsuario() { return user; }
+
     @Override public boolean isAccountNonExpired() { return true; }
     @Override public boolean isAccountNonLocked() { return true; }
     @Override public boolean isCredentialsNonExpired() { return true; }
