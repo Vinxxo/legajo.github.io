@@ -1,7 +1,10 @@
 package proyecto_legajo.legajo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import proyecto_legajo.legajo.Repository.LibrosRepository;
+import proyecto_legajo.legajo.Service.PdfService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,13 +12,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpServletResponse;
 import proyecto_legajo.legajo.Entity.libros;
 
 @Controller
 @RequestMapping("/libros")
 public class LibrosController {
+
+    @Autowired
+
+    private PdfService pdfService;
 
     private final LibrosRepository librosRepository;
 
@@ -68,4 +77,22 @@ public class LibrosController {
         librosRepository.deleteById(id);
         return "redirect:/libros";
     }
+
+   @GetMapping("/reporte/pdf")
+    public void descargarPdfLibros(
+        @RequestParam(required = false) String usuario,
+        @RequestParam(required = false) String titulo,
+        @RequestParam(required = false) String autor,
+        @RequestParam(required = false) String genero,
+        @RequestParam(required = false) String estado,
+        HttpServletResponse response
+        ) {
+    try {
+        pdfService.generarReporteLibros(response, usuario, titulo, autor, genero, estado);
+    } catch (Exception e) {
+        throw new RuntimeException("Error generando PDF", e);
+    }
+}
+
+
 }

@@ -19,48 +19,55 @@ public class PdfService {
 
     @Autowired
     private LibrosRepository librosRepository;
+    
 
-    public void generarReporteLibros(HttpServletResponse response) throws Exception {
+    public void generarReporteLibros(HttpServletResponse response,
+                                String usuario,
+                                String titulo,
+                                String autor,
+                                String genero,
+                                String estado) throws Exception {
 
-    response.setContentType("application/pdf");
-    response.setHeader("Content-Disposition", "attachment; filename=libros_reporte.pdf");
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "attachment; filename=libros_reporte.pdf");
 
-    Document document = new Document(PageSize.A4, 40, 40, 70, 50);
-    PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+        // MÁRGENES AJUSTADOS PARA ENCABEZADO
+        Document document = new Document(PageSize.A4.rotate(), 40, 40, 120, 50);
+        PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
 
-    // Activo encabezado y pie
-    writer.setPageEvent(new EncabezadoPiePagina());
+        // Activar encabezado y pie de página
+        writer.setPageEvent(new EncabezadoPiePagina());
 
-    document.open();
+        document.open();
 
-    // El título principal se renderiza en el encabezado (EncabezadoPiePagina)
+        // ESPACIO PARA QUE NO SE MONTE CON EL ENCABEZADO
+        document.add(new Paragraph("\n\n\n"));
 
-    // Consulta BD
-    List<libros> listaLibros = librosRepository.findAll();
+        // TABLA DE 6 COLUMNAS
+        PdfPTable tabla = new PdfPTable(5);
+        tabla.setWidthPercentage(100);
+        tabla.setSpacingBefore(20);
 
-    // Añadir espacios vacíos para separar del encabezado dibujado
-    for (int i = 0; i < 3; i++) {
-        document.add(new Paragraph(" "));
-    }
+        tabla.setWidths(new float[]{2.5f, 3f, 3f, 2.5f, 1.8f });
 
-    PdfPTable tabla = new PdfPTable(5);
-    tabla.setWidthPercentage(100);
-    tabla.setWidths(new float[]{1.8f, 1.8f, 1.8f, 1.8f, 1.8f});
+        // ENCABEZADOS
+        agregarCeldaEncabezado(tabla, "Usuario");
+        agregarCeldaEncabezado(tabla, "Título");
+        agregarCeldaEncabezado(tabla, "Autor(es)");
+        agregarCeldaEncabezado(tabla, "Género(s)");
+        agregarCeldaEncabezado(tabla, "Estado");
 
-    // Encabezados
-    agregarCeldaEncabezado(tabla, "Usuario");
-    agregarCeldaEncabezado(tabla, "Título");
-    agregarCeldaEncabezado(tabla, "Autor");
-    agregarCeldaEncabezado(tabla, "Género");
-    agregarCeldaEncabezado(tabla, "Estado");
+        // -------------------------------
+        // LLENADO DE FILAS
+        // -------------------------------
+        List<libros> listaLibros = librosRepository.findAll();
 
-        // FILAS
         for (libros libro : listaLibros) {
 
             // USUARIO
             if (libro.getUsuarioPropietario() != null) {
-                String propietario = libro.getUsuarioPropietario().getPrimerNombre() + " " +
-                                     libro.getUsuarioPropietario().getPrimerApellido();
+                String propietario = libro.getUsuarioPropietario().getPrimerNombre()
+                        + " " + libro.getUsuarioPropietario().getPrimerApellido();
                 agregarCeldaDatos(tabla, propietario);
             } else {
                 agregarCeldaDatos(tabla, "Sin propietario");
@@ -81,6 +88,8 @@ public class PdfService {
                     .collect(Collectors.joining(", "));
             agregarCeldaDatos(tabla, generos);
 
+           
+
             // ESTADO
             agregarCeldaDatos(tabla, libro.getEstadoLib().name());
         }
@@ -89,13 +98,17 @@ public class PdfService {
         document.close();
     }
 
+    // -------------------------
+    // MÉTODOS DE CELDAS
+    // -------------------------
+
     private void agregarCeldaEncabezado(PdfPTable tabla, String texto) {
         Font font = new Font(Font.HELVETICA, 12, Font.BOLD, Color.BLACK);
 
         PdfPCell celda = new PdfPCell(new Paragraph(texto, font));
         celda.setHorizontalAlignment(Element.ALIGN_CENTER);
         celda.setBackgroundColor(new Color(210, 210, 210));
-        celda.setPadding(5);
+        celda.setPadding(7);
         tabla.addCell(celda);
     }
 

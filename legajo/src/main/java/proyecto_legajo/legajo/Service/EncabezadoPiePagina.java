@@ -58,6 +58,17 @@ public class EncabezadoPiePagina extends PdfPageEventHelper {
             ColumnText.showTextAligned(cb, Element.ALIGN_CENTER, titulo, pageCenterX, headerMiddleY, 0);
         } catch (Exception ignored) {}
 
+        // Fecha debajo del encabezado
+        try {
+            Font fechaFont = new Font(Font.HELVETICA, 10, Font.NORMAL, Color.WHITE);
+            String fechaStr = "Fecha de creación: " + new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date());
+
+            float fechaY = headerBottomY + headerHeight - 60f; // Ajusta si la quieres más arriba/abajo
+
+            ColumnText.showTextAligned(cb, Element.ALIGN_CENTER, new Phrase(fechaStr, fechaFont),
+                    (document.left() + document.right()) / 2f, fechaY, 0);
+        } catch (Exception ignored) {}
+
         
         cb.setLineWidth(1.2f);
         cb.moveTo(document.left(), headerBottomY);

@@ -54,7 +54,8 @@ public class SecurityConfig {
                 // Permitir endpoints públicos: auth, páginas públicas y recursos estáticos
                 .requestMatchers
                 ("/api/auth/**",
-                 "/", "/index.html",
+                "/", "/index.html",
+                "/libros/reporte/pdf",
                 "/login.html",
                 "/login",
                 "/crear_cuenta.html",
@@ -68,7 +69,6 @@ public class SecurityConfig {
                 "/imgs/**",
                 "/error",
                 "/favicon.ico",
-                "/reporte/pdf",
                 "/404.html",
                 "/chats.html",
                 "/crear_cuenta.html",
