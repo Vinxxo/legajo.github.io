@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <button id="toggleModo" class="modo-toggle">🌙 Modo Claro</button>
 <!-- Sidebar -->
     <nav class="sidebar">
         <div class="logo">
@@ -25,7 +25,7 @@
             <a href="perfil_admin.html"><li><i class="fas fa-user-circle"></i><span>Perfil</span></li></a>
         </ul>
     </nav>
-
+    
     <main class="main-content">
 
         <header>
@@ -71,6 +71,7 @@
                 <option value="4">⭐ 4</option>
                 <option value="5">⭐ 5</option>
             </select>
+            
             <button id="btnLimpiar">Limpiar filtros</button>
              <button onclick="window.location.href='/libros/reporte/pdf'">
                 Generar Reporte en PDF</button>
@@ -84,8 +85,7 @@
                         <th>Usuario</th>
                         <th>Título</th>
                         <th>Autor</th>
-                        <th>Género</th>
-                        <th>Calificación</th>
+                        <th>Género</th>                       
                         <th>Estado</th>
                         
                     </tr>

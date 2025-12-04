@@ -12,6 +12,7 @@ public class UsuarioDTO {
     private String ciudad;
     private String clave;
     private Long telefono;
+    private RoleDTO rol;
     private java.util.List<LibroDTO> libros;
 
     public UsuarioDTO() {}
@@ -94,6 +95,14 @@ public class UsuarioDTO {
 
     public void setTelefono(Long telefono) {
         this.telefono = telefono;
+    }
+
+    public RoleDTO getRol() {
+        return rol;
+    }
+
+    public void setRol(RoleDTO rol) {
+        this.rol = rol;
     }
 
     public java.util.List<LibroDTO> getLibros() {

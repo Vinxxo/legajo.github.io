@@ -18,9 +18,10 @@
                 const resp = await fetch('/api/auth/me', { method: 'GET', headers: { Authorization: 'Bearer ' + token } });
                 if (!resp.ok) { localStorage.removeItem('jwtToken'); window.location.href = '/login.html'; return; }
                 const user = await resp.json();
-                const roleName = (user.rol && user.rol.rol) ? user.rol.rol.toString().toLowerCase() : (user.role || '').toString().toLowerCase();
+                // El rol ahora viene como un objeto con propiedad "rol"
+                const roleName = (user.rol && user.rol.rol) ? user.rol.rol.toString().toLowerCase() : '';
                 if (!(roleName.includes('admin') || roleName === 'administrador')) {
-                    // No es admin
+                    // No es admin, redirigir al dashboard del usuario
                     window.location.href = '/dashboard_usuario.html';
                     return;
                 }

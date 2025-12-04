@@ -1,111 +1,111 @@
-// Datos de prueba
-const libros = [
-    {
-        titulo: "Cien años de soledad",
-        autor: "Gabriel García Márquez",
-        usuario: "carlos88",
-        genero: "Ficción",
-        calificacion: 5,
-        estado: "Disponible",
-        descripcion: "Una obra del realismo mágico...",
-        imagen: "/imgs/gabo.jpg"
-    },
-    {
-        titulo: "Duna",
-        autor: "Frank Herbert",
-        usuario: "ana22",
-        genero: "Ciencia ficción",
-        calificacion: 5,
-        estado: "Intercambiado",
-        descripcion: "Una de las mejores novelas del género...",
-        imagen: "/imgs/terror.jpeg"
-    }
-];
+// /js/reportes.js
+const API = '/api/libros';
+const tablaBody = document.getElementById('tablaLibros');
 
-// Mostrar tabla
-function cargarTabla(lista) {
-    const tbody = document.getElementById("tablaLibros");
-    tbody.innerHTML = "";
+async function cargarLibros() {
+  const titulo = document.getElementById('filtroTitulo').value.trim();
+  const autor = document.getElementById('filtroAutor').value.trim();
+  const usuario = document.getElementById('filtroUsuario').value.trim();
+  const genero = document.getElementById('filtroGenero').value;
+  const estado = document.getElementById('filtroEstado').value;
+  const calificacionMin = document.getElementById('filtroCalificacion').value;
 
-    lista.forEach(lib => {
-        const tr = document.createElement("tr");
+  const params = new URLSearchParams();
+  if (titulo) params.append('titulo', titulo);
+  if (autor) params.append('autor', autor);
+  if (usuario) params.append('usuario', usuario);
+  if (genero) params.append('genero', genero);
+  if (estado) params.append('estado', estado);
 
-        tr.innerHTML = `
-            <td>${lib.titulo}</td>
-            <td>${lib.autor}</td>
-            <td>${lib.genero}</td>
-            <td>${lib.usuario}</td>
-            <td>${"⭐".repeat(lib.calificacion)}</td>
-            <td>${lib.estado}</td>
-            <td><button class="btn-ver">Ver</button></td>
-        `;
+  const url = params.toString() ? `${API}?${params.toString()}` : API;
 
-        tr.querySelector(".btn-ver").onclick = () => abrirModal(lib);
-
-        tbody.appendChild(tr);
-    });
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Error en petición: ' + res.status);
+    const libros = await res.json();
+    mostrarEnTabla(libros, calificacionMin);
+  } catch (err) {
+    console.error(err);
+    tablaBody.innerHTML = `<tr><td colspan="5">Error cargando datos. Revisa consola.</td></tr>`;
+  }
 }
 
-// Filtrar
-function filtrar() {
-    let resultado = libros.filter(l => 
-        (!filtroTitulo.value || l.titulo.toLowerCase().includes(filtroTitulo.value.toLowerCase())) &&
-        (!filtroAutor.value || l.autor.toLowerCase().includes(filtroAutor.value.toLowerCase())) &&
-        (!filtroUsuario.value || l.usuario.toLowerCase().includes(filtroUsuario.value.toLowerCase())) &&
-        (!filtroGenero.value || l.genero === filtroGenero.value) &&
-        (!filtroEstado.value || l.estado === filtroEstado.value) &&
-        (!filtroCalificacion.value || l.calificacion >= parseInt(filtroCalificacion.value))
-    );
+function mostrarEnTabla(libros, calificacionMin) {
+  tablaBody.innerHTML = '';
+  if (!libros || libros.length === 0) {
+    tablaBody.innerHTML = '<tr><td colspan="5">No hay resultados</td></tr>';
+    return;
+  }
 
-    cargarTabla(resultado);
+  // filtra por calificación si se seleccionó
+  if (calificacionMin) {
+    libros = libros.filter(l => (l.calificacion || 0) >= parseFloat(calificacionMin));
+  }
+
+  libros.forEach(l => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${escapeHtml(l.usuario || '')}</td>
+      <td class="clickable" data-lib='${escapeHtml(JSON.stringify(l))}'>${escapeHtml(l.titulo || '')}</td>
+      <td>${escapeHtml(l.autor || '')}</td>
+      <td>${escapeHtml(l.genero || '')}</td>
+      <td>${escapeHtml(l.estado || '')}</td>
+    `;
+    tablaBody.appendChild(tr);
+  });
+
+  // click en título para abrir modal
+  document.querySelectorAll('.clickable').forEach(td => {
+    td.onclick = (e) => {
+      const lib = JSON.parse(td.getAttribute('data-lib'));
+      abrirModal(lib);
+    };
+  });
 }
 
-// Inputs
-const filtroTitulo = document.getElementById("filtroTitulo");
-const filtroAutor = document.getElementById("filtroAutor");
-const filtroUsuario = document.getElementById("filtroUsuario");
-const filtroGenero = document.getElementById("filtroGenero");
-const filtroEstado = document.getElementById("filtroEstado");
-const filtroCalificacion = document.getElementById("filtroCalificacion");
+function escapeHtml(s) {
+  return String(s)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;');
+}
 
-[filtroTitulo, filtroAutor, filtroUsuario].forEach(f => f.oninput = filtrar);
-[filtroGenero, filtroEstado, filtroCalificacion].forEach(f => f.onchange = filtrar);
-
-// Limpiar
-document.getElementById("btnLimpiar").onclick = () => {
-    filtroTitulo.value = "";
-    filtroAutor.value = "";
-    filtroUsuario.value = "";
-    filtroGenero.value = "";
-    filtroEstado.value = "";
-    filtroCalificacion.value = "";
-
-    cargarTabla(libros);
-};
-
-// Modal
+/* Modal (usa ids que ya tienes en tu HTML) */
+const modal = document.getElementById('modalLibro');
+const cerrarModal = document.getElementById('cerrarModal');
 function abrirModal(lib) {
-    document.getElementById("modalTitulo").textContent = lib.titulo;
-    document.getElementById("modalAutor").textContent = lib.autor;
-    document.getElementById("modalGenero").textContent = lib.genero;
-    document.getElementById("modalUsuario").textContent = lib.usuario;
-    document.getElementById("modalCalificacion").textContent = "⭐".repeat(lib.calificacion);
-    document.getElementById("modalEstado").textContent = lib.estado;
-    document.getElementById("modalDescripcion").textContent = lib.descripcion;
-    document.getElementById("modalImg").src = lib.imagen;
-
-    document.getElementById("modalLibro").style.display = "flex";
+  document.getElementById('modalImg').src = lib.urlImagen || '';
+  document.getElementById('modalTitulo').innerText = lib.titulo || '';
+  document.getElementById('modalAutor').innerText = lib.autor || '';
+  document.getElementById('modalGenero').innerText = lib.genero || '';
+  document.getElementById('modalUsuario').innerText = lib.usuario || '';
+  document.getElementById('modalCalificacion').innerText = lib.calificacion ?? 'N/A';
+  document.getElementById('modalEstado').innerText = lib.estado || '';
+  document.getElementById('modalDescripcion').innerText = lib.descripcion || '';
+  modal.style.display = 'block';
 }
+if (cerrarModal) cerrarModal.onclick = () => modal.style.display = 'none';
+window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
 
-document.getElementById("cerrarModal").onclick = () => {
-    document.getElementById("modalLibro").style.display = "none";
-};
+/* Event listeners para los filtros - se ejecutan en tiempo real */
+document.getElementById('filtroTitulo').addEventListener('input', cargarLibros);
+document.getElementById('filtroAutor').addEventListener('input', cargarLibros);
+document.getElementById('filtroUsuario').addEventListener('input', cargarLibros);
+document.getElementById('filtroGenero').addEventListener('change', cargarLibros);
+document.getElementById('filtroEstado').addEventListener('change', cargarLibros);
+document.getElementById('filtroCalificacion').addEventListener('change', cargarLibros);
 
-window.onclick = (e) => {
-    if (e.target.id === "modalLibro") {
-        document.getElementById("modalLibro").style.display = "none";
-    }
-};
+/* Botones */
+document.getElementById('btnLimpiar').addEventListener('click', () => {
+  document.getElementById('filtroTitulo').value = '';
+  document.getElementById('filtroAutor').value = '';
+  document.getElementById('filtroUsuario').value = '';
+  document.getElementById('filtroGenero').value = '';
+  document.getElementById('filtroEstado').value = '';
+  document.getElementById('filtroCalificacion').value = '';
+  cargarLibros();
+});
 
-// Inicial
-cargarTabla(libros);
+// recarga al cargar la página
+window.addEventListener('load', () => cargarLibros());

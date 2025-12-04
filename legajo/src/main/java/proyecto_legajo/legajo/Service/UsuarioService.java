@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import proyecto_legajo.legajo.Entity.usuarios;
 import proyecto_legajo.legajo.Repository.usuarioRepository;
 import proyecto_legajo.legajo.Dto.UsuarioDTO;
+import proyecto_legajo.legajo.Dto.RoleDTO;
 import proyecto_legajo.legajo.Dto.LibroDTO;
 import proyecto_legajo.legajo.Entity.libros;
 import java.util.stream.Collectors;
@@ -66,6 +67,9 @@ public class UsuarioService {
         dto.setDireccion(u.getDireccion());
         dto.setCiudad(u.getCiudad());
         dto.setTelefono(u.getTelefono());
+        if (u.getRol() != null) {
+            dto.setRol(new RoleDTO(u.getRol().getRol()));
+        }
         // Map libros to LibroDTOs if present
         if (u.getLibros() != null) {
             dto.setLibros(u.getLibros().stream().map(this::libroToDto).collect(Collectors.toList()));
