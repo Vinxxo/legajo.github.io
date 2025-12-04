@@ -10,6 +10,7 @@ import proyecto_legajo.legajo.Entity.libros;
 import proyecto_legajo.legajo.Repository.LibrosRepository;
 import proyecto_legajo.legajo.Dto.LibroResponseDTO;
 import proyecto_legajo.legajo.Entity.EstadoLibro;
+import proyecto_legajo.legajo.Dto.LibroDTO;
 
 @Service
 public class LibrosService {
@@ -18,6 +19,55 @@ public class LibrosService {
 
     public LibrosService(LibrosRepository repo) {
         this.repo = repo;
+    }
+
+    // Obtener libro por ID
+    @Transactional(readOnly = true)
+    public LibroDTO obtenerPorId(int id) {
+        return repo.findById(id).map(this::mapToLibroDTO).orElse(null);
+    }
+
+    // Crear libro
+    @Transactional
+    public LibroDTO crearLibro(LibroDTO dto) {
+        libros libro = new libros();
+        libro.setTituloLib(dto.getTitulo());
+        libro.setSinopsisLib(dto.getSinopsis());
+        libro.setEstadoLib(EstadoLibro.valueOf(dto.getEstado()));
+        libro.setActivo(true);
+        // Aquí puedes setear relaciones si es necesario
+        repo.save(libro);
+        return mapToLibroDTO(libro);
+    }
+
+    // Actualizar libro
+    @Transactional
+    public LibroDTO actualizarLibro(int id, LibroDTO dto) {
+        return repo.findById(id).map(libro -> {
+            libro.setTituloLib(dto.getTitulo());
+            libro.setSinopsisLib(dto.getSinopsis());
+            libro.setEstadoLib(EstadoLibro.valueOf(dto.getEstado()));
+            repo.save(libro);
+            return mapToLibroDTO(libro);
+        }).orElse(null);
+    }
+
+    // Eliminar libro
+    @Transactional
+    public boolean eliminarLibro(int id) {
+        if (!repo.existsById(id)) return false;
+        repo.deleteById(id);
+        return true;
+    }
+
+    // Mapear entidad a DTO para CRUD
+    private LibroDTO mapToLibroDTO(libros l) {
+        LibroDTO dto = new LibroDTO();
+        dto.setIdLibro(l.getIdLibro());
+        dto.setTitulo(l.getTituloLib());
+        dto.setSinopsis(l.getSinopsisLib());
+        dto.setEstado(l.getEstadoLib() != null ? l.getEstadoLib().name() : "");
+        return dto;
     }
 
     @Transactional(readOnly = true)
