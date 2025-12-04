@@ -107,5 +107,24 @@ document.getElementById('btnLimpiar').addEventListener('click', () => {
   cargarLibros();
 });
 
+// Botón para generar PDF con filtros actuales
+document.getElementById('btnGenerarPDF').addEventListener('click', () => {
+  const titulo = document.getElementById('filtroTitulo').value.trim();
+  const autor = document.getElementById('filtroAutor').value.trim();
+  const usuario = document.getElementById('filtroUsuario').value.trim();
+  const genero = document.getElementById('filtroGenero').value;
+  const estado = document.getElementById('filtroEstado').value;
+
+  const params = new URLSearchParams();
+  if (titulo) params.append('titulo', titulo);
+  if (autor) params.append('autor', autor);
+  if (usuario) params.append('usuario', usuario);
+  if (genero) params.append('genero', genero);
+  if (estado) params.append('estado', estado);
+
+  const url = params.toString() ? `/libros/reporte/pdf?${params.toString()}` : '/libros/reporte/pdf';
+  window.location.href = url;
+});
+
 // recarga al cargar la página
 window.addEventListener('load', () => cargarLibros());

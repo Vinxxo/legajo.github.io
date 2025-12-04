@@ -62,6 +62,43 @@ public class PdfService {
         // -------------------------------
         List<libros> listaLibros = librosRepository.findAll();
 
+        // APLICAR FILTROS
+        if (titulo != null && !titulo.trim().isEmpty()) {
+            listaLibros = listaLibros.stream()
+                    .filter(l -> l.getTituloLib().toLowerCase().contains(titulo.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        
+        if (autor != null && !autor.trim().isEmpty()) {
+            listaLibros = listaLibros.stream()
+                    .filter(l -> l.getAutor().stream()
+                            .anyMatch(a -> (a.getNomAutor1() + " " + a.getApeAutor1())
+                                    .toLowerCase().contains(autor.toLowerCase())))
+                    .collect(Collectors.toList());
+        }
+        
+        if (usuario != null && !usuario.trim().isEmpty()) {
+            listaLibros = listaLibros.stream()
+                    .filter(l -> l.getUsuarioPropietario() != null && 
+                            (l.getUsuarioPropietario().getPrimerNombre() + " " + 
+                             l.getUsuarioPropietario().getPrimerApellido())
+                                    .toLowerCase().contains(usuario.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        
+        if (genero != null && !genero.trim().isEmpty()) {
+            listaLibros = listaLibros.stream()
+                    .filter(l -> l.getGeneros().stream()
+                            .anyMatch(g -> g.getGeneroLib().equalsIgnoreCase(genero)))
+                    .collect(Collectors.toList());
+        }
+        
+        if (estado != null && !estado.trim().isEmpty()) {
+            listaLibros = listaLibros.stream()
+                    .filter(l -> l.getEstadoLib().name().equalsIgnoreCase(estado))
+                    .collect(Collectors.toList());
+        }
+
         for (libros libro : listaLibros) {
 
             // USUARIO
