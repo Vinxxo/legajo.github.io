@@ -50,9 +50,40 @@ async function eliminarLibro(id) {
   else alert('No se pudo eliminar');
 }
 
-function verLibro(id) {
-  // Aquí puedes mostrar un modal o redirigir a una vista de detalle
-  alert('Ver libro: ' + id);
+// Modal para mostrar detalles del libro
+const modal = document.getElementById('modal');
+const closeModal = document.getElementById('closeModal');
+
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    if (modal) modal.style.display = 'none';
+  });
+}
+
+window.addEventListener('click', (event) => {
+  if (modal && event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+async function verLibro(id) {
+  try {
+    const res = await fetch(`${API}/${id}`);
+    if (!res.ok) throw new Error('Error al cargar libro');
+    const libro = await res.json();
+    
+    // Rellenar modal con datos del libro
+    document.getElementById('modalImg').src = libro.urlImagen || '/imgs/default-book.jpg';
+    document.getElementById('modalTitulo').textContent = libro.titulo || '';
+    document.getElementById('modalAutor').textContent = libro.autor || '';
+    document.getElementById('modalDescripcion').textContent = libro.sinopsis || '';
+    
+    // Mostrar modal
+    if (modal) modal.style.display = 'block';
+  } catch (e) {
+    console.error('Error:', e);
+    alert('No se pudo cargar el libro');
+  }
 }
 
 function editarLibro(id) {

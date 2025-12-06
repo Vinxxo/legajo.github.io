@@ -1,6 +1,8 @@
 package proyecto_legajo.legajo.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -8,7 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import proyecto_legajo.legajo.Entity.libros;
 import proyecto_legajo.legajo.Entity.usuarios;
+import proyecto_legajo.legajo.Entity.autor;
+import proyecto_legajo.legajo.Entity.genero;
 import proyecto_legajo.legajo.Repository.LibrosRepository;
+import proyecto_legajo.legajo.Repository.AutorRepository;
+import proyecto_legajo.legajo.Repository.GeneroRepository;
 import proyecto_legajo.legajo.Dto.LibroResponseDTO;
 import proyecto_legajo.legajo.Entity.EstadoLibro;
 import proyecto_legajo.legajo.Dto.LibroDTO;
@@ -17,9 +23,13 @@ import proyecto_legajo.legajo.Dto.LibroDTO;
 public class LibrosService {
 
     private final LibrosRepository repo;
+    private final AutorRepository autorRepo;
+    private final GeneroRepository generoRepo;
 
-    public LibrosService(LibrosRepository repo) {
+    public LibrosService(LibrosRepository repo, AutorRepository autorRepo, GeneroRepository generoRepo) {
         this.repo = repo;
+        this.autorRepo = autorRepo;
+        this.generoRepo = generoRepo;
     }
 
     // Obtener libro por ID
@@ -43,6 +53,53 @@ public class LibrosService {
         libro.setActivo(true);
         // Asociar el usuario propietario
         libro.setUsuarioPropietario(usuario);
+        
+        // Procesar y guardar autor
+        if (dto.getAutor() != null && !dto.getAutor().trim().isEmpty()) {
+            Set<autor> autores = new HashSet<>();
+            String[] nombresParte = dto.getAutor().trim().split("\\s+");
+            if (nombresParte.length >= 2) {
+                String nom = nombresParte[0];
+                String ape = String.join(" ", java.util.Arrays.copyOfRange(nombresParte, 1, nombresParte.length));
+                
+                autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nom, ape)
+                    .orElseGet(() -> {
+                        autor nuevoAutor = new autor();
+                        nuevoAutor.setNomAutor1(nom);
+                        nuevoAutor.setApeAutor1(ape);
+                        return autorRepo.save(nuevoAutor);
+                    });
+                autores.add(autorEntity);
+            } else if (nombresParte.length == 1) {
+                autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nombresParte[0], "")
+                    .orElseGet(() -> {
+                        autor nuevoAutor = new autor();
+                        nuevoAutor.setNomAutor1(nombresParte[0]);
+                        nuevoAutor.setApeAutor1("");
+                        return autorRepo.save(nuevoAutor);
+                    });
+                autores.add(autorEntity);
+            }
+            libro.setAutor(autores);
+        }
+        
+        // Procesar y guardar género
+        if (dto.getGenero() != null && !dto.getGenero().trim().isEmpty()) {
+            Set<genero> generos = new HashSet<>();
+            String[] nombresGenero = dto.getGenero().split(",");
+            for (String gen : nombresGenero) {
+                String generoNombre = gen.trim();
+                genero generoEntity = generoRepo.findByGeneroLib(generoNombre)
+                    .orElseGet(() -> {
+                        genero nuevoGenero = new genero();
+                        nuevoGenero.setGeneroLib(generoNombre);
+                        return generoRepo.save(nuevoGenero);
+                    });
+                generos.add(generoEntity);
+            }
+            libro.setGeneros(generos);
+        }
+        
         repo.save(libro);
         return mapToLibroDTO(libro);
     }
@@ -55,6 +112,57 @@ public class LibrosService {
             libro.setSinopsisLib(dto.getSinopsis());
             libro.setUrlImagen(dto.getUrlImagen());
             libro.setEstadoLib(EstadoLibro.valueOf(dto.getEstado()));
+            
+            // Actualizar autor
+            if (dto.getAutor() != null && !dto.getAutor().trim().isEmpty()) {
+                Set<autor> autores = new HashSet<>();
+                String[] nombresParte = dto.getAutor().trim().split("\\s+");
+                if (nombresParte.length >= 2) {
+                    String nom = nombresParte[0];
+                    String ape = String.join(" ", java.util.Arrays.copyOfRange(nombresParte, 1, nombresParte.length));
+                    
+                    autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nom, ape)
+                        .orElseGet(() -> {
+                            autor nuevoAutor = new autor();
+                            nuevoAutor.setNomAutor1(nom);
+                            nuevoAutor.setApeAutor1(ape);
+                            return autorRepo.save(nuevoAutor);
+                        });
+                    autores.add(autorEntity);
+                } else if (nombresParte.length == 1) {
+                    autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nombresParte[0], "")
+                        .orElseGet(() -> {
+                            autor nuevoAutor = new autor();
+                            nuevoAutor.setNomAutor1(nombresParte[0]);
+                            nuevoAutor.setApeAutor1("");
+                            return autorRepo.save(nuevoAutor);
+                        });
+                    autores.add(autorEntity);
+                }
+                libro.setAutor(autores);
+            } else {
+                libro.setAutor(new HashSet<>());
+            }
+            
+            // Actualizar género
+            if (dto.getGenero() != null && !dto.getGenero().trim().isEmpty()) {
+                Set<genero> generos = new HashSet<>();
+                String[] nombresGenero = dto.getGenero().split(",");
+                for (String gen : nombresGenero) {
+                    String generoNombre = gen.trim();
+                    genero generoEntity = generoRepo.findByGeneroLib(generoNombre)
+                        .orElseGet(() -> {
+                            genero nuevoGenero = new genero();
+                            nuevoGenero.setGeneroLib(generoNombre);
+                            return generoRepo.save(nuevoGenero);
+                        });
+                    generos.add(generoEntity);
+                }
+                libro.setGeneros(generos);
+            } else {
+                libro.setGeneros(new HashSet<>());
+            }
+            
             repo.save(libro);
             return mapToLibroDTO(libro);
         }).orElse(null);
@@ -76,6 +184,27 @@ public class LibrosService {
         dto.setSinopsis(l.getSinopsisLib());
         dto.setEstado(l.getEstadoLib() != null ? l.getEstadoLib().name() : "");
         dto.setUrlImagen(l.getUrlImagen());
+        
+        // Mapear autores
+        if (l.getAutor() != null && !l.getAutor().isEmpty()) {
+            String autores = l.getAutor().stream()
+                .map(a -> safe(a.getNomAutor1()) + " " + safe(a.getApeAutor1()))
+                .collect(Collectors.joining(", "));
+            dto.setAutor(autores.trim());
+        } else {
+            dto.setAutor("");
+        }
+        
+        // Mapear géneros
+        if (l.getGeneros() != null && !l.getGeneros().isEmpty()) {
+            String generos = l.getGeneros().stream()
+                .map(g -> safe(g.getGeneroLib()))
+                .collect(Collectors.joining(", "));
+            dto.setGenero(generos);
+        } else {
+            dto.setGenero("");
+        }
+        
         return dto;
     }
 

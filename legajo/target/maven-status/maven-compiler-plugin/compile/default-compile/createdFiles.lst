@@ -1,4 +1,6 @@
+proyecto_legajo\legajo\Repository\GeneroRepository.class
 proyecto_legajo\legajo\Service\JpaUserDetailsService.class
+proyecto_legajo\legajo\Repository\AutorRepository.class
 proyecto_legajo\legajo\controller\LibrosController.class
 proyecto_legajo\legajo\Service\EncabezadoPiePagina.class
 proyecto_legajo\legajo\Entity\intercambios.class

@@ -204,5 +204,50 @@
         }
         }
     </script>
+    <script>
+        // Modal para libros en dashboard usuario
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('closeModal');
+        
+        // Cerrar modal al hacer clic en X
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                if (modal) modal.style.display = 'none';
+            });
+        }
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', (event) => {
+            if (modal && event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Evento para botones "Ver" en carruseles
+        document.addEventListener('DOMContentLoaded', () => {
+            const botonesVer = document.querySelectorAll('.ver-libro');
+            botonesVer.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const libroDiv = btn.closest('.libro');
+                    if (libroDiv) {
+                        const titulo = libroDiv.dataset.titulo || '';
+                        const autor = libroDiv.dataset.autor || '';
+                        const descripcion = libroDiv.dataset.descripcion || '';
+                        const imagen = libroDiv.dataset.imagen || '/imgs/default-book.jpg';
+                        
+                        // Rellenar modal
+                        document.getElementById('modalImg').src = imagen;
+                        document.getElementById('modalTitulo').textContent = titulo;
+                        document.getElementById('modalAutor').textContent = autor;
+                        document.getElementById('modalDescripcion').textContent = descripcion;
+                        
+                        // Mostrar modal
+                        if (modal) modal.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

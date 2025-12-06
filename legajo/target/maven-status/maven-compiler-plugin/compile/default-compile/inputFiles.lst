@@ -22,6 +22,8 @@ C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\reportesU
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\roles.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\usuarios.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\LegajoApplication.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\AutorRepository.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\GeneroRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\LibrosRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\reportesUsuarioRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\usuarioRepository.java
