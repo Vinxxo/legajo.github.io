@@ -10,14 +10,17 @@ async function cargarInventario() {
     const res = await fetch(API);
     if (!res.ok) throw new Error('Error al cargar libros');
     const libros = await res.json();
+
     if (!libros.length) {
       grid.innerHTML = '<p>No hay libros en tu inventario.</p>';
       return;
     }
+
     libros.forEach(libro => {
       const item = document.createElement('div');
       item.className = 'item-inventario';
       const libroId = libro.idLibro || libro.id || '';
+
       item.innerHTML = `
         <img src="${libro.urlImagen || '/imgs/libro_de_la_selva.jpg'}" alt="Libro">
         <h3>${libro.titulo || ''}</h3>
@@ -28,26 +31,57 @@ async function cargarInventario() {
         <button class="btn-amarillo" onclick="editarLibro('${libroId}')"><i class="fas fa-edit"></i> Editar</button>
         <button class="btn-rojo" onclick="eliminarLibro('${libroId}')"><i class="fas fa-trash"></i> Eliminar</button>
       `;
+
       grid.appendChild(item);
     });
+
   } catch (e) {
     grid.innerHTML = '<p>Error cargando inventario.</p>';
   }
 }
 
 async function eliminarLibro(id) {
-  if (!confirm('¿Seguro que deseas eliminar este libro?')) return;
+
+  // 🔥 Reemplazo confirm() por SweetAlert2
+  const result = await Swal.fire({
+    title: "¿Eliminar libro?",
+    text: "Esta acción no se puede deshacer.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar"
+  });
+
+  if (!result.isConfirmed) return;
+
   const token = localStorage.getItem('jwtToken');
   const headers = {};
+
   if (token) {
     headers['Authorization'] = 'Bearer ' + token;
   }
+
   const res = await fetch(`${API}/${id}`, { 
     method: 'DELETE',
     headers: headers
   });
-  if (res.ok) cargarInventario();
-  else alert('No se pudo eliminar');
+
+  if (res.ok) {
+    Swal.fire({
+      icon: "success",
+      title: "Eliminado",
+      text: "El libro ha sido eliminado correctamente",
+      timer: 1800,
+      showConfirmButton: false
+    });
+    cargarInventario();
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "No se pudo eliminar el libro."
+    });
+  }
 }
 
 // Modal para mostrar detalles del libro
@@ -70,6 +104,7 @@ async function verLibro(id) {
   try {
     const res = await fetch(`${API}/${id}`);
     if (!res.ok) throw new Error('Error al cargar libro');
+
     const libro = await res.json();
     
     // Rellenar modal con datos del libro
@@ -80,9 +115,15 @@ async function verLibro(id) {
     
     // Mostrar modal
     if (modal) modal.style.display = 'block';
+
   } catch (e) {
     console.error('Error:', e);
-    alert('No se pudo cargar el libro');
+
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "No se pudo cargar el libro."
+    });
   }
 }
 

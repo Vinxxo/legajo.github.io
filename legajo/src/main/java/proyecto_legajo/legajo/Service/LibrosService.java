@@ -225,6 +225,7 @@ public class LibrosService {
             }
         }
 
+        // Obtener lista base del repositorio
         List<libros> lista = repo.buscarPorFiltros(
             empty(usuario) ? null : usuario,
             empty(titulo) ? null : titulo,
@@ -232,6 +233,24 @@ public class LibrosService {
             empty(genero) ? null : genero,
             estado
         );
+
+        // Filtrar por autor y género en memoria
+        lista = lista.stream()
+            .filter(l -> {
+                if (autor != null && !autor.isBlank()) {
+                    boolean coincideAutor = l.getAutor() != null && l.getAutor().stream()
+                        .anyMatch(a -> (safe(a.getNomAutor1()) + " " + safe(a.getApeAutor1()))
+                            .toLowerCase().contains(autor.toLowerCase()));
+                    if (!coincideAutor) return false;
+                }
+                if (genero != null && !genero.isBlank()) {
+                    boolean coincideGenero = l.getGeneros() != null && l.getGeneros().stream()
+                        .anyMatch(g -> safe(g.getGeneroLib()).toLowerCase().contains(genero.toLowerCase()));
+                    if (!coincideGenero) return false;
+                }
+                return true;
+            })
+            .toList();
 
         return lista.stream()
                     .map(this::mapToDto)
@@ -261,7 +280,7 @@ public class LibrosService {
             String autores = l.getAutor().stream()
                 .map(a -> safe(a.getNomAutor1()) + " " + safe(a.getApeAutor1()))
                 .collect(Collectors.joining(", "));
-            dto.setAutor(autores);
+            dto.setAutor(autores.trim());
         } else {
             dto.setAutor("");
         }

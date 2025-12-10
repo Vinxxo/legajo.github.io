@@ -289,8 +289,15 @@ footer .contenedor{
 }
 
 form a{
-    text-decoration: none;
-    color: var(--fondo-principal);
+    text-decoration: underline;
+    color: var(--color-primario);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+form a:hover {
+    color: var(--color-secundario);
+    text-decoration: underline dotted;
 }
 
 /* FORMULARIO DE CREAR CUENTA */

@@ -77,6 +77,8 @@ public class SecurityConfig {
                 "/login",
                 "/crear_cuenta.html",
                 "/crear_cuenta",
+                "/forgot-password",
+                "/reset-password",
                 "/dashboard_usuario.html",
                 "/dashboard_admin.html",
                 "/perfil.html",

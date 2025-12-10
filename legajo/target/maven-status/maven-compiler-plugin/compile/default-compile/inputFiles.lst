@@ -1,9 +1,12 @@
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Config\MailConfig.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Config\MvcConfig.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Config\WebConfig.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\AuthController.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\GlobalExceptionHandler.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\ImageController.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\LibrosController.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\LibrosRestController.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\PasswordResetController.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\UsuarioController.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\controller\ViewController.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Dto\LibroDTO.java
@@ -18,6 +21,7 @@ C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\EstadoRep
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\genero.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\intercambios.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\libros.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\PasswordResetToken.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\reportesUsuario.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\roles.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Entity\usuarios.java
@@ -25,6 +29,7 @@ C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\LegajoApplicatio
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\AutorRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\GeneroRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\LibrosRepository.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\PasswordResetTokenRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\reportesUsuarioRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Repository\usuarioRepository.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Security\AdminInitializer.java
@@ -33,8 +38,10 @@ C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Security\JwtUtil
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Security\SecurityConfig.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Security\UsuarioPrincipal.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Security\UtilidadJwt.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\EmailService.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\EncabezadoPiePagina.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\JpaUserDetailsService.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\LibrosService.java
+C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\PasswordResetService.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\PdfService.java
 C:\legajo.github.io\legajo\src\main\java\proyecto_legajo\legajo\Service\UsuarioService.java
