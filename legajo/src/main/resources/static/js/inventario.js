@@ -191,16 +191,13 @@ async function verLibro(id) {
             }
             
             if (dataCalif.cantidad > 0) {
-                calificacionEl.innerHTML = `
-                    <div style="margin-bottom:10px;">
-                        <strong>Calificación promedio:</strong> ${generarEstrellasDisplay(Math.round(dataCalif.promedio))} (${dataCalif.cantidad} evaluaciones)
-                    </div>
-                    <button onclick="mostrarHistorialCalificaciones(${id})" class="btn-azul" style="padding:8px 12px; font-size:0.9em;">
-                        <i class="fas fa-history"></i> Ver Historial
-                    </button>
-                `;
+              calificacionEl.innerHTML = `
+                <div style="margin-bottom:10px;">
+                  <strong>Calificación promedio:</strong> ${generarEstrellasDisplay(Math.round(dataCalif.promedio))} (${dataCalif.cantidad} evaluaciones)
+                </div>
+              `;
             } else {
-                calificacionEl.innerHTML = `<div><strong>Sin calificaciones aún</strong></div>`;
+              calificacionEl.innerHTML = `<div><strong>Sin calificaciones aún</strong></div>`;
             }
         }
     } catch (err) {

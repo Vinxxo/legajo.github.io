@@ -223,9 +223,6 @@ async function cargarCalificacionEnModal(idLibro) {
                     <div style="margin-bottom:10px;">
                         <strong>Calificación promedio:</strong> ${generarEstrellasDisplay(Math.round(data.promedio))} (${data.cantidad} evaluaciones)
                     </div>
-                    <button onclick="mostrarHistorialCalificaciones(${idLibro})" class="btn-azul" style="padding:8px 12px; font-size:0.9em;">
-                        <i class="fas fa-history"></i> Ver Historial
-                    </button>
                 `;
             } else {
                 calificacionEl.innerHTML = `<div><strong>Sin calificaciones aún</strong></div>`;
