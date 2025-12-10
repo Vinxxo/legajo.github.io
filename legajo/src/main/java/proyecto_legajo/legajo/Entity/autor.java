@@ -44,11 +44,6 @@ public class autor {
     /* Relaciones */
 
     // Autor - Autor_Libros - Libros
-    @ManyToMany
-    @JoinTable(
-        name = "autor_libros",
-        joinColumns = @JoinColumn(name = "FK_idAutor"),
-        inverseJoinColumns = @JoinColumn(name = "FK_idLibro")
-    )
+    @ManyToMany(mappedBy = "autor")
     private Set<libros> libros;
 }

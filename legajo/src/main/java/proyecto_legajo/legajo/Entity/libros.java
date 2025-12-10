@@ -49,7 +49,12 @@ public class libros {
     private Set<genero> generos;
 
     // Libros - Autor_Libros - Autor
-    @ManyToMany (mappedBy = "libros")
+    @ManyToMany
+    @JoinTable(
+        name = "autor_libros",
+        joinColumns = @JoinColumn(name = "FK_idLibro"),
+        inverseJoinColumns = @JoinColumn(name = "FK_idAutor")
+    )
     private Set<autor> autor;
 
     // Libros - Usuarios

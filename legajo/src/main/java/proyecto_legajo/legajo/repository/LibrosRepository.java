@@ -11,6 +11,9 @@ import proyecto_legajo.legajo.Entity.EstadoLibro;
 
 public interface LibrosRepository extends JpaRepository<libros, Integer> {
 
+    // Obtener libros por ID del usuario propietario
+    List<libros> findByUsuarioPropietario_IdUsuario(int usuarioId);
+
     @Query("""
         SELECT DISTINCT l FROM libros l
         LEFT JOIN FETCH l.usuarioPropietario u

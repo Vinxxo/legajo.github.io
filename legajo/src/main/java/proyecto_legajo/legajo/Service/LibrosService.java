@@ -209,6 +209,14 @@ public class LibrosService {
     }
 
     @Transactional(readOnly = true)
+    public List<LibroResponseDTO> obtenerLibrosPorUsuarioId(int usuarioId) {
+        List<libros> lista = repo.findByUsuarioPropietario_IdUsuario(usuarioId);
+        return lista.stream()
+                    .map(this::mapToDto)
+                    .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
     public List<LibroResponseDTO> buscarPorFiltros(
             String usuario,
             String titulo,
@@ -244,6 +252,11 @@ public class LibrosService {
         // ID
         dto.setIdLibro(l.getIdLibro());
 
+        // ID DEL USUARIO PROPIETARIO
+        if (l.getUsuarioPropietario() != null) {
+            dto.setUsuarioPropietarioId(l.getUsuarioPropietario().getIdUsuario());
+        }
+
         // USUARIO
         if (l.getUsuarioPropietario() != null) {
             String nombre = safe(l.getUsuarioPropietario().getPrimerNombre());
@@ -255,6 +268,9 @@ public class LibrosService {
 
         // TITULO
         dto.setTitulo(safe(l.getTituloLib()));
+
+        // DESCRIPCION (SINOPSIS)
+        dto.setDescripcion(safe(l.getSinopsisLib()));
 
         // AUTOR
         if (l.getAutor() != null && !l.getAutor().isEmpty()) {
