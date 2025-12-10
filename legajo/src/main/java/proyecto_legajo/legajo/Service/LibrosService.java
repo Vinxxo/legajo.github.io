@@ -62,7 +62,7 @@ public class LibrosService {
                 String nom = nombresParte[0];
                 String ape = String.join(" ", java.util.Arrays.copyOfRange(nombresParte, 1, nombresParte.length));
                 
-                autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nom, ape)
+                autor autorEntity = autorRepo.findFirstByNomAutor1AndApeAutor1(nom, ape)
                     .orElseGet(() -> {
                         autor nuevoAutor = new autor();
                         nuevoAutor.setNomAutor1(nom);
@@ -71,7 +71,7 @@ public class LibrosService {
                     });
                 autores.add(autorEntity);
             } else if (nombresParte.length == 1) {
-                autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nombresParte[0], "")
+                autor autorEntity = autorRepo.findFirstByNomAutor1AndApeAutor1(nombresParte[0], "")
                     .orElseGet(() -> {
                         autor nuevoAutor = new autor();
                         nuevoAutor.setNomAutor1(nombresParte[0]);
@@ -89,7 +89,7 @@ public class LibrosService {
             String[] nombresGenero = dto.getGenero().split(",");
             for (String gen : nombresGenero) {
                 String generoNombre = gen.trim();
-                genero generoEntity = generoRepo.findByGeneroLib(generoNombre)
+                genero generoEntity = generoRepo.findFirstByGeneroLib(generoNombre)
                     .orElseGet(() -> {
                         genero nuevoGenero = new genero();
                         nuevoGenero.setGeneroLib(generoNombre);
@@ -121,7 +121,7 @@ public class LibrosService {
                     String nom = nombresParte[0];
                     String ape = String.join(" ", java.util.Arrays.copyOfRange(nombresParte, 1, nombresParte.length));
                     
-                    autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nom, ape)
+                    autor autorEntity = autorRepo.findFirstByNomAutor1AndApeAutor1(nom, ape)
                         .orElseGet(() -> {
                             autor nuevoAutor = new autor();
                             nuevoAutor.setNomAutor1(nom);
@@ -130,7 +130,7 @@ public class LibrosService {
                         });
                     autores.add(autorEntity);
                 } else if (nombresParte.length == 1) {
-                    autor autorEntity = autorRepo.findByNomAutor1AndApeAutor1(nombresParte[0], "")
+                    autor autorEntity = autorRepo.findFirstByNomAutor1AndApeAutor1(nombresParte[0], "")
                         .orElseGet(() -> {
                             autor nuevoAutor = new autor();
                             nuevoAutor.setNomAutor1(nombresParte[0]);
@@ -150,7 +150,7 @@ public class LibrosService {
                 String[] nombresGenero = dto.getGenero().split(",");
                 for (String gen : nombresGenero) {
                     String generoNombre = gen.trim();
-                    genero generoEntity = generoRepo.findByGeneroLib(generoNombre)
+                    genero generoEntity = generoRepo.findFirstByGeneroLib(generoNombre)
                         .orElseGet(() -> {
                             genero nuevoGenero = new genero();
                             nuevoGenero.setGeneroLib(generoNombre);

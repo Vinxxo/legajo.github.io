@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.controller;
+package proyecto_legajo.legajo.Controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

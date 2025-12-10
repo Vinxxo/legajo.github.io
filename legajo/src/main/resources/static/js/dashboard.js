@@ -32,6 +32,10 @@ async function cargarTodosLosLibros() {
         const resp = await fetch('/api/libros');
         if (!resp.ok) throw new Error('Error al cargar libros');
         const libros = await resp.json();
+        console.debug('📚 LIBROS CARGADOS DEL API:', libros);
+        if (libros && libros.length > 0) {
+            console.debug('Primer libro estructura:', libros[0]);
+        }
         return libros || [];
     } catch (e) {
         console.error('Error cargando libros:', e);
@@ -41,14 +45,28 @@ async function cargarTodosLosLibros() {
 
 // Filtrar libros que NO sean del usuario actual
 function filtrarLibrosOtrosUsuarios(libros, usuarioId) {
-    if (!usuarioId) return libros; // Si no hay usuario autenticado, mostrar todos
+    if (!usuarioId) {
+        console.debug('Sin usuarioId, mostrando todos los libros');
+        return libros;
+    }
+    
+    console.debug('=== FILTRADO DE LIBROS ===');
+    console.debug('usuarioId actual:', usuarioId);
+    console.debug('Total de libros:', libros.length);
     
     // Filtrar: solo mostrar libros que NO sean del usuario actual
-    return libros.filter(libro => {
+    const resultado = libros.filter(libro => {
         // Intentar obtener el ID del propietario de diferentes formas
         const propietarioId = libro.usuarioPropietarioId || libro.propietarioId;
-        return propietarioId !== usuarioId;
+        const esDelUsuario = propietarioId === usuarioId;
+        
+        console.debug(`Libro: "${libro.titulo}", propietarioId:${propietarioId}, esDelUsuario:${esDelUsuario}`);
+        
+        return propietarioId !== usuarioId && propietarioId > 0; // Solo mostrar si es diferente Y tiene ID válido
     });
+    
+    console.debug('Libros que se mostrarán:', resultado.length);
+    return resultado;
 }
 
 // Crear elementos HTML para los libros dinámicos
@@ -68,7 +86,7 @@ function crearElementoLibro(libro) {
         <img src="${libro.urlImagen || '/imgs/libro_de_la_selva.jpg'}" alt="${libro.titulo || 'Libro'}">
         <h3>${libro.titulo || 'Sin título'}</h3>
         <p>${libro.autor || 'Autor desconocido'}</p>
-        <p>⭐⭐⭐⭐⭐</p>
+        <div class="estrellas-display" data-libro-id="${libro.idLibro || libro.id}">⭐⭐⭐⭐⭐</div>
         <button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
     `;
     
@@ -115,8 +133,106 @@ async function inicializarDashboard() {
         // Reattach event listeners para los nuevos botones
         attachVerLibroListeners();
         
+        // Cargar calificaciones de todos los libros
+        librosOtrosUsuarios.forEach(libro => {
+            cargarPromedioLibroDashboard(libro.idLibro || libro.id);
+        });
+        
     } catch (e) {
         console.error('Error inicializando dashboard:', e);
+    }
+}
+
+// Generar estrellas para mostrar calificación
+function generarEstrellasDisplay(calificacion) {
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= calificacion) {
+            html += '<span style="color:#ffc107;">★</span>';
+        } else {
+            html += '<span style="color:#ddd;">☆</span>';
+        }
+    }
+    return html + ` <span style="margin-left:5px; color:#666; font-size:0.9em;">${calificacion}/5</span>`;
+}
+
+// Cargar promedio de calificación en dashboard
+async function cargarPromedioLibroDashboard(idLibro) {
+    try {
+        const token = localStorage.getItem('jwtToken');
+        const headers = {};
+        if (token) {
+            headers['Authorization'] = 'Bearer ' + token;
+        }
+        
+        const res = await fetch(`/api/calificaciones/libros/${idLibro}/promedio`, {
+            headers: headers
+        });
+        if (res.ok) {
+            const data = await res.json();
+            const elemento = document.querySelector(`.estrellas-display[data-libro-id="${idLibro}"]`);
+            if (elemento) {
+                const promedio = data.promedio;
+                const cantidad = data.cantidad;
+                if (cantidad > 0) {
+                    elemento.innerHTML = generarEstrellasDisplay(Math.round(promedio)) + 
+                                        ` <span style="font-size:0.8em; color:#999;">(${cantidad})</span>`;
+                } else {
+                    elemento.innerHTML = '☆☆☆☆☆ <span style="font-size:0.8em; color:#999;">(sin calificaciones)</span>';
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Error cargando promedio:', error);
+    }
+}
+
+// Cargar calificación actual y mostrar historial en modal
+async function cargarCalificacionEnModal(idLibro) {
+    try {
+        const token = localStorage.getItem('jwtToken');
+        const headers = {};
+        if (token) {
+            headers['Authorization'] = 'Bearer ' + token;
+        }
+        
+        const res = await fetch(`/api/calificaciones/libros/${idLibro}/promedio`, {
+            headers: headers
+        });
+        if (res.ok) {
+            const data = await res.json();
+            let calificacionEl = document.getElementById('modalCalificacion');
+            if (!calificacionEl) {
+                calificacionEl = document.createElement('div');
+                calificacionEl.id = 'modalCalificacion';
+                calificacionEl.style.marginTop = '12px';
+                calificacionEl.style.padding = '10px';
+                calificacionEl.style.backgroundColor = '#f5f5f5';
+                calificacionEl.style.borderRadius = '5px';
+                const modalText = document.querySelector('#modal .modal-content .modal-text');
+                if (modalText) {
+                    const h4Autor = modalText.querySelector('h4');
+                    if (h4Autor) {
+                        modalText.insertBefore(calificacionEl, h4Autor.nextSibling);
+                    }
+                }
+            }
+            
+            if (data.cantidad > 0) {
+                calificacionEl.innerHTML = `
+                    <div style="margin-bottom:10px;">
+                        <strong>Calificación promedio:</strong> ${generarEstrellasDisplay(Math.round(data.promedio))} (${data.cantidad} evaluaciones)
+                    </div>
+                    <button onclick="mostrarHistorialCalificaciones(${idLibro})" class="btn-azul" style="padding:8px 12px; font-size:0.9em;">
+                        <i class="fas fa-history"></i> Ver Historial
+                    </button>
+                `;
+            } else {
+                calificacionEl.innerHTML = `<div><strong>Sin calificaciones aún</strong></div>`;
+            }
+        }
+    } catch (error) {
+        console.error('Error cargando calificación en modal:', error);
     }
 }
 
@@ -131,7 +247,7 @@ function attachVerLibroListeners() {
         // Remover listeners anteriores para evitar duplicados
         btn.onclick = null;
         
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
             e.preventDefault();
             const libroDiv = btn.closest('.libro');
             if (libroDiv) {
@@ -167,6 +283,10 @@ function attachVerLibroListeners() {
                 }
                 propietarioEl.textContent = `Propietario: ${usuario}`;
 
+                // Cargar calificación del libro
+                const libroId = libroDiv.dataset.id;
+                await cargarCalificacionEnModal(libroId);
+                
                 // Añadir botón de solicitar intercambio en modal
                 let acciones = document.getElementById('modalAcciones');
                 if (!acciones) {

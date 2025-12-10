@@ -54,9 +54,32 @@
                 <a href="registrar_libro.html"><button class="btn-agregar">+</button></a>
             </div>
         </section>
+
+        <!-- Modal de Calificación -->
+        <div id="modalCalificacion" class="modal-calificacion">
+            <div class="modal-calificacion-content">
+                <button onclick="cerrarModalCalificacion()" class="btn-cerrar-modal">×</button>
+                <h2>Califica tu libro</h2>
+                <p class="subtitulo-modal">Selecciona las estrellas</p>
+                
+                <div class="contenedor-estrellas">
+                    <span class="estrella" onclick="seleccionarEstrella(1)" onmouseover="previewEstrella(1)" onmouseout="limpiarPreviewEstrella()">★</span>
+                    <span class="estrella" onclick="seleccionarEstrella(2)" onmouseover="previewEstrella(2)" onmouseout="limpiarPreviewEstrella()">★</span>
+                    <span class="estrella" onclick="seleccionarEstrella(3)" onmouseover="previewEstrella(3)" onmouseout="limpiarPreviewEstrella()">★</span>
+                    <span class="estrella" onclick="seleccionarEstrella(4)" onmouseover="previewEstrella(4)" onmouseout="limpiarPreviewEstrella()">★</span>
+                    <span class="estrella" onclick="seleccionarEstrella(5)" onmouseover="previewEstrella(5)" onmouseout="limpiarPreviewEstrella()">★</span>
+                </div>
+                
+                <div class="botones-modal">
+                    <button onclick="enviarCalificacion()" class="btn-enviar-calificacion">Enviar Calificación</button>
+                    <button onclick="cerrarModalCalificacion()" class="btn-cancelar-calificacion">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="/js/script.js"></script>
     <script src="/js/inventario.js"></script>
+    <script src="/js/calificaciones.js"></script>
     
 </body>
 </html>

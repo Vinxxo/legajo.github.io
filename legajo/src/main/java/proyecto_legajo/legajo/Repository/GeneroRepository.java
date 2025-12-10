@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface GeneroRepository extends JpaRepository<genero, Integer> {
-    @Query("SELECT g FROM genero g WHERE g.GeneroLib = ?1")
-    Optional<genero> findByGeneroLib(String GeneroLib);
+    @Query(value = "SELECT * FROM genero WHERE GeneroLib = :generoLib ORDER BY idGenero LIMIT 1", nativeQuery = true)
+    Optional<genero> findFirstByGeneroLib(String generoLib);
 }

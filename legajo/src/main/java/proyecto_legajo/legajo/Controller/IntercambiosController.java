@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.controller;
+package proyecto_legajo.legajo.Controller;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;

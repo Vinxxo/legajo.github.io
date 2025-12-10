@@ -2,6 +2,19 @@
 // CRUD para inventario.html (usuario)
 const API = '/api/libros';
 
+// Generar estrellas para mostrar calificación
+function generarEstrellasDisplay(calificacion) {
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= calificacion) {
+            html += '<span style="color:#ffc107;">★</span>';
+        } else {
+            html += '<span style="color:#ddd;">☆</span>';
+        }
+    }
+    return html + ` <span style="margin-left:5px; color:#666; font-size:0.9em;">${calificacion}/5</span>`;
+}
+
 // Obtener usuario actual y cargar su inventario
 async function obtenerUsuarioActual() {
   try {
@@ -52,17 +65,26 @@ async function cargarInventario() {
       const item = document.createElement('div');
       item.className = 'item-inventario';
       const libroId = libro.idLibro || libro.id || '';
+      item.setAttribute('data-libro-id', libroId);
+      console.log('📚 Creando item para libro:', libro.titulo, 'ID:', libroId);
+      
       item.innerHTML = `
         <img src="${libro.urlImagen || '/imgs/libro_de_la_selva.jpg'}" alt="Libro">
         <h3>${libro.titulo || ''}</h3>
         <h4>${libro.autor || ''}</h4>
-        <div class="estrellas">★★★★★</div>
+        <div class="estrellas" data-libro-id="${libroId}"></div>
+        <div class="promedio-calificacion"></div>
         <p class="descripcion">${libro.sinopsis || ''}</p>
         <button class="btn-verde" onclick="verLibro('${libroId}')"><i class="fas fa-eye"></i> Ver</button>
         <button class="btn-amarillo" onclick="editarLibro('${libroId}')"><i class="fas fa-edit"></i> Editar</button>
+        <button class="btn-azul" onclick="abrirModalCalificacion(${libroId})"><i class="fas fa-star"></i> Calificar</button>
         <button class="btn-rojo" onclick="eliminarLibro('${libroId}')"><i class="fas fa-trash"></i> Eliminar</button>
       `;
       grid.appendChild(item);
+      
+      // Cargar promedio de calificación después de crear el elemento
+      console.log('⏳ Llamando cargarPromedioCalificacion para:', libroId);
+      cargarPromedioCalificacion(libroId);
     });
   } catch (e) {
     console.error('Error cargando inventario:', e);
@@ -112,6 +134,45 @@ async function verLibro(id) {
     document.getElementById('modalTitulo').textContent = libro.titulo || '';
     document.getElementById('modalAutor').textContent = libro.autor || '';
     document.getElementById('modalDescripcion').textContent = libro.sinopsis || '';
+    
+    // Cargar y mostrar calificación promedio
+    try {
+        const resCalif = await fetch(`/api/calificaciones/libros/${id}/promedio`);
+        if (resCalif.ok) {
+            const dataCalif = await resCalif.json();
+            let calificacionEl = document.getElementById('modalCalificacionDisplay');
+            if (!calificacionEl) {
+                calificacionEl = document.createElement('div');
+                calificacionEl.id = 'modalCalificacionDisplay';
+                calificacionEl.style.marginTop = '12px';
+                calificacionEl.style.padding = '10px';
+                calificacionEl.style.backgroundColor = '#f5f5f5';
+                calificacionEl.style.borderRadius = '5px';
+                const modalText = document.querySelector('#modal .modal-content .modal-text');
+                if (modalText) {
+                    const h4Autor = modalText.querySelector('h4');
+                    if (h4Autor) {
+                        modalText.insertBefore(calificacionEl, h4Autor.nextSibling);
+                    }
+                }
+            }
+            
+            if (dataCalif.cantidad > 0) {
+                calificacionEl.innerHTML = `
+                    <div style="margin-bottom:10px;">
+                        <strong>Calificación promedio:</strong> ${generarEstrellasDisplay(Math.round(dataCalif.promedio))} (${dataCalif.cantidad} evaluaciones)
+                    </div>
+                    <button onclick="mostrarHistorialCalificaciones(${id})" class="btn-azul" style="padding:8px 12px; font-size:0.9em;">
+                        <i class="fas fa-history"></i> Ver Historial
+                    </button>
+                `;
+            } else {
+                calificacionEl.innerHTML = `<div><strong>Sin calificaciones aún</strong></div>`;
+            }
+        }
+    } catch (err) {
+        console.error('Error cargando calificación:', err);
+    }
     
     // Añadir botón de solicitar intercambio dentro del modal (si no existe)
     let acciones = document.getElementById('modalAcciones');
@@ -171,6 +232,50 @@ async function verLibro(id) {
 
 function editarLibro(id) {
   window.location.href = `/libros/editar.html?id=${id}`;
+}
+
+// Función para cargar el promedio de calificación de un libro
+async function cargarPromedioCalificacion(idLibro) {
+  try {
+    console.log('🔵 Cargando promedio para libro:', idLibro);
+    
+    const token = localStorage.getItem('jwtToken');
+    const headers = {};
+    if (token) {
+      headers['Authorization'] = 'Bearer ' + token;
+    }
+    
+    const res = await fetch(`/api/calificaciones/libros/${idLibro}/promedio`, {
+      headers: headers
+    });
+    console.log('Respuesta status:', res.status);
+    
+    if (res.ok) {
+      const data = await res.json();
+      console.log('Datos recibidos:', data);
+      
+      const elemento = document.querySelector(`[data-libro-id="${idLibro}"] .estrellas`);
+      console.log('Elemento encontrado:', elemento ? 'SÍ' : 'NO');
+      
+      if (elemento) {
+        if (data.cantidad > 0) {
+          const html = generarEstrellasDisplay(Math.round(data.promedio)) + 
+                       ` <span class="cantidad-resenas" style="font-size:0.8em; color:#999;">(${data.cantidad})</span>`;
+          elemento.innerHTML = html;
+          console.log('✅ Estrellas insertadas:', html);
+        } else {
+          elemento.innerHTML = '☆☆☆☆☆ <span style="font-size:0.8em; color:#999;">(sin calificaciones)</span>';
+          console.log('📭 Sin calificaciones aún');
+        }
+      } else {
+        console.error('❌ No se encontró elemento .estrellas para libro', idLibro);
+      }
+    } else {
+      console.error('Error en respuesta:', res.status, res.statusText);
+    }
+  } catch (error) {
+    console.error('❌ Error cargando promedio:', error);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', cargarInventario);

@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.controller;
+package proyecto_legajo.legajo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
