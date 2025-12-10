@@ -1,4 +1,4 @@
-package proyecto_legajo.legajo.Controller;
+package proyecto_legajo.legajo.controller;
 
 import java.util.List;
 import java.util.Map;
