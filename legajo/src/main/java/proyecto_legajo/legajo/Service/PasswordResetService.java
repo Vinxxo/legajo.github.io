@@ -1,8 +1,8 @@
 package proyecto_legajo.legajo.Service;
 
 import java.util.Optional;
-import java.util.UUID;
-import java.util.Calendar;
+import java.util.Date;
+import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,9 +13,12 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import proyecto_legajo.legajo.Entity.PasswordResetToken;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import javax.crypto.SecretKey;
+
 import proyecto_legajo.legajo.Entity.usuarios;
-import proyecto_legajo.legajo.Repository.PasswordResetTokenRepository;
 import proyecto_legajo.legajo.Repository.usuarioRepository;
 
 @Service
@@ -26,9 +29,6 @@ public class PasswordResetService {
     @Autowired
     private usuarioRepository usuarioRepo;
 
-    @Autowired
-    private PasswordResetTokenRepository tokenRepo;
-
     @Autowired(required = false)
     private JavaMailSender mailSender;
 
@@ -38,43 +38,46 @@ public class PasswordResetService {
     @Value("${app.mail.enabled:false}")
     private boolean mailEnabled;
 
+    @Value("${jwt.secret}")
+    private String jwtSecret;
+
+    @Value("${jwt.expiration-ms}")
+    private long jwtExpirationMs;
+
     // ------------------------------------------
-    // 1. Crear token
+    // 1. Crear token JWT para recuperar contraseña
     // ------------------------------------------
     public String createToken(String email) {
         Optional<usuarios> userOpt = usuarioRepo.findByCorreo(email);
 
         if (!userOpt.isPresent()) {
+            logger.warn("Usuario con correo " + email + " no encontrado");
             return null;
         }
 
         usuarios user = userOpt.get();
 
-        // Eliminar token anterior si existe para este usuario
-        PasswordResetToken existingToken = tokenRepo.findByUsuario(user);
-        if (existingToken != null) {
-            tokenRepo.delete(existingToken);
-            logger.info("Token anterior eliminado para usuario: " + email);
+        try {
+            // Decodificar la clave secreta Base64
+            SecretKey key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtSecret));
+
+            // Crear token JWT con el ID del usuario como subject
+            String token = Jwts.builder()
+                    .setSubject(String.valueOf(user.getIdUsuario()))
+                    .setIssuedAt(new Date())
+                    .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+                    .signWith(key, SignatureAlgorithm.HS256)
+                    .compact();
+
+            logger.info("Token JWT creado para usuario: " + email);
+
+            sendResetEmail(email, token);
+
+            return token;
+        } catch (Exception e) {
+            logger.error("Error creando token JWT: " + e.getMessage(), e);
+            return null;
         }
-
-        // Generar token único
-        String token = UUID.randomUUID().toString();
-
-        // Crear token con expiración
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR, 1); // expira en 1 hora
-
-        PasswordResetToken resetToken = new PasswordResetToken();
-        resetToken.setToken(token);
-        resetToken.setUsuario(user);
-        resetToken.setExpiracion(calendar.getTime());
-
-        tokenRepo.save(resetToken);
-        logger.info("Token creado para usuario: " + email);
-
-        sendResetEmail(email, token);
-
-        return token;
     }
 
     // ------------------------------------------
@@ -116,21 +119,42 @@ public class PasswordResetService {
     }
 
     // ------------------------------------------
-    // 3. Cambiar contraseña si el token es válido
+    // 3. Cambiar contraseña si el token JWT es válido
     // ------------------------------------------
     public boolean resetPassword(String token, String newPassword) {
-        PasswordResetToken prt = tokenRepo.findByToken(token);
+        try {
+            // Decodificar la clave secreta Base64
+            SecretKey key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtSecret));
 
-        if (prt == null || prt.isExpired()) {
+            // Validar y extraer el subject (userId) del token JWT
+            String userIdStr = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .getSubject();
+
+            Integer userId = Integer.parseInt(userIdStr);
+
+            // Buscar el usuario por ID
+            Optional<usuarios> userOpt = usuarioRepo.findById(userId);
+
+            if (!userOpt.isPresent()) {
+                logger.warn("Usuario con ID " + userId + " no encontrado");
+                return false;
+            }
+
+            // Actualizar contraseña
+            usuarios user = userOpt.get();
+            user.setClave(passwordEncoder.encode(newPassword));
+            usuarioRepo.save(user);
+
+            logger.info("Contraseña actualizada exitosamente para usuario ID: " + userId);
+            return true;
+
+        } catch (Exception e) {
+            logger.error("Error validando token JWT o reseteando contraseña: " + e.getMessage(), e);
             return false;
         }
-
-        usuarios user = prt.getUsuario();
-        user.setClave(passwordEncoder.encode(newPassword));
-        usuarioRepo.save(user);
-
-        tokenRepo.delete(prt); // Token usado = token eliminado
-
-        return true;
     }
 }

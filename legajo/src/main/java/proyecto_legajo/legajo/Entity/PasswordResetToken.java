@@ -3,8 +3,8 @@ package proyecto_legajo.legajo.Entity;
 import jakarta.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "password_reset_token")
+// @Entity - Comentada: no usamos tabla de tokens, usamos JWT en PasswordResetService
+// @Table(name = "password_reset_token")
 public class PasswordResetToken {
 
     @Id

@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface IntercambiosRepository extends JpaRepository<intercambios, Integer> {
-    @Query("SELECT i FROM intercambios i WHERE i.usuarioReceptor.idUsuario = ?1 AND i.EstadoInter = ?2")
+    @Query("SELECT i FROM intercambios i WHERE i.usuarioReceptor.idUsuario = ?1 AND i.estadoInter = ?2")
     List<intercambios> findByUsuarioReceptorIdUsuarioAndEstadoInter(int receptorId, EstadoIntercambio estado);
 }
