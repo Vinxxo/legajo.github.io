@@ -61,3 +61,18 @@ function validarEmail(correo) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(correo);
 }
+
+//función del ojo
+function verClave(idCampo, icono) {
+    const campo = document.getElementById(idCampo);
+
+    if (campo.type === "password") {
+        campo.type = "text";
+        icono.classList.remove("fa-eye");
+        icono.classList.add("fa-eye-slash");
+    } else {
+        campo.type = "password";
+        icono.classList.remove("fa-eye-slash");
+        icono.classList.add("fa-eye");
+    }
+}

@@ -12,8 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const libroId = params.get('id');
   
   if (!libroId) {
-    alert('ID de libro no proporcionado');
-    window.location.href = '../inventario.html';
+    Swal.fire({
+      icon: "error",
+      title: "ID faltante",
+      text: "No se proporcionó un ID de libro."
+    }).then(() => {
+      window.location.href = '../inventario.html';
+    });
     return;
   }
   
@@ -53,7 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         urlImagen = uploadData.url;
       } catch (err) {
         console.error('Error subiendo imagen:', err);
-        alert('Advertencia: No se pudo subir la nueva imagen, se mantendrá la actual');
+        Swal.fire({
+          icon: "warning",
+          title: "Advertencia",
+          text: "No se pudo subir la nueva imagen. Se mantendrá la actual."
+        });
       }
     }
     
@@ -84,10 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
       estadoActualInput.id = 'estadoActual';
       estadoActualInput.value = libro.estado || 'Publicado';
       form.appendChild(estadoActualInput);
+
     } catch (err) {
       console.error('Error:', err);
-      alert('No se pudo cargar el libro: ' + err.message);
-      window.location.href = '../inventario.html';
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "No se pudo cargar el libro: " + err.message
+      }).then(() => {
+        window.location.href = '../inventario.html';
+      });
     }
   }
   
@@ -112,11 +127,22 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error('Error al actualizar libro: ' + error);
       }
       
-      alert('Libro actualizado con éxito');
-      window.location.href = '../inventario.html';
+      Swal.fire({
+        icon: "success",
+        title: "¡Actualizado!",
+        text: "El libro ha sido actualizado con éxito.",
+        confirmButtonText: "Aceptar"
+      }).then(() => {
+        window.location.href = '../inventario.html';
+      });
+
     } catch (err) {
       console.error('Error:', err);
-      alert('No se pudo actualizar el libro: ' + err.message);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "No se pudo actualizar el libro: " + err.message
+      });
     }
   }
 });

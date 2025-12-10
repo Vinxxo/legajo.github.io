@@ -30,26 +30,26 @@ public class intercambios {
     private int idIntercambio;
 
     @Column(name = "FechaSolicitud", insertable = true, updatable = false)
-    private LocalDateTime FechaSolicitud;
+    private LocalDateTime fechaSolicitud;
 
     @Column(name = "FechaConfirmacion")
-    private LocalDateTime FechaConfirmacion;
+    private LocalDateTime fechaConfirmacion;
 
     @Column(name = "FechaCompletado")
-    private LocalDateTime FechaCompletado;
+    private LocalDateTime fechaCompletado;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "EstadoInter")
-    private EstadoIntercambio EstadoInter = EstadoIntercambio.pendiente;
+    private EstadoIntercambio estadoInter = EstadoIntercambio.pendiente;
 
     @Column(name = "Activo", nullable = false)
-    private boolean Activo = true;
+    private boolean activo = true;
 
-    // Hook para fijar FechaSolicitud automáticamente al crear
+    // Hook para fijar fechaSolicitud automáticamente al crear
     @PrePersist
     protected void onCreate() {
-        if (this.FechaSolicitud == null) {
-            this.FechaSolicitud = LocalDateTime.now();
+        if (this.fechaSolicitud == null) {
+            this.fechaSolicitud = LocalDateTime.now();
         }
     }
 

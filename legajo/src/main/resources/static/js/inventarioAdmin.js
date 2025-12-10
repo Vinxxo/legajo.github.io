@@ -12,10 +12,12 @@ async function cargarInventarioAdmin() {
     const res = await fetch(API);
     if (!res.ok) throw new Error('Error al cargar libros');
     const libros = await res.json();
+
     if (!libros.length) {
       grid.innerHTML = '<p>No hay libros en el inventario.</p>';
       return;
     }
+
     libros.forEach(libro => {
       const item = document.createElement('div');
       item.className = 'item-inventario-admin';
@@ -35,21 +37,60 @@ async function cargarInventarioAdmin() {
       grid.appendChild(item);
     });
   } catch (e) {
-    grid.innerHTML = '<p>Error cargando inventario.</p>';
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'No se pudo cargar el inventario'
+    });
   }
 }
 
 async function eliminarLibroAdmin(id) {
-  if (!confirm('¿Seguro que deseas eliminar este libro?')) return;
+  const result = await Swal.fire({
+    title: '¿Eliminar libro?',
+    text: 'Esta acción no se puede deshacer',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  });
+
+  if (!result.isConfirmed) return;
+
   const res = await fetch(`${API}/${id}`, { method: 'DELETE' });
-  if (res.ok) cargarInventarioAdmin();
-  else alert('No se pudo eliminar');
+
+  if (res.ok) {
+    Swal.fire({
+      icon: 'success',
+      title: 'Eliminado',
+      text: 'El libro ha sido eliminado correctamente',
+      timer: 1500,
+      showConfirmButton: false
+    });
+    cargarInventarioAdmin();
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'No se pudo eliminar el libro'
+    });
+  }
 }
 
 function verLibroAdmin(id) {
-  alert('Ver libro: ' + id);
+  Swal.fire({
+    icon: 'info',
+    title: 'Ver libro',
+    text: `ID: ${id}`
+  });
 }
 
 function editarLibroAdmin(id) {
-  alert('Editar libro: ' + id);
+  Swal.fire({
+    icon: 'warning',
+    title: 'Editar libro',
+    text: `ID: ${id}`
+  });
 }

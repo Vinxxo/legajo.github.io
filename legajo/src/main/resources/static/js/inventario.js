@@ -68,6 +68,7 @@ async function cargarInventario() {
       item.setAttribute('data-libro-id', libroId);
       console.log('📚 Creando item para libro:', libro.titulo, 'ID:', libroId);
       
+
       item.innerHTML = `
         <img src="${libro.urlImagen || '/imgs/libro_de_la_selva.jpg'}" alt="Libro">
         <h3>${libro.titulo || ''}</h3>
@@ -80,12 +81,14 @@ async function cargarInventario() {
         <button class="btn-azul" onclick="abrirModalCalificacion(${libroId})"><i class="fas fa-star"></i> Calificar</button>
         <button class="btn-rojo" onclick="eliminarLibro('${libroId}')"><i class="fas fa-trash"></i> Eliminar</button>
       `;
+
       grid.appendChild(item);
       
       // Cargar promedio de calificación después de crear el elemento
       console.log('⏳ Llamando cargarPromedioCalificacion para:', libroId);
       cargarPromedioCalificacion(libroId);
     });
+
   } catch (e) {
     console.error('Error cargando inventario:', e);
     grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">Error cargando tu inventario.</p>';
@@ -93,18 +96,47 @@ async function cargarInventario() {
 }
 
 async function eliminarLibro(id) {
-  if (!confirm('¿Seguro que deseas eliminar este libro?')) return;
+
+  // 🔥 Reemplazo confirm() por SweetAlert2
+  const result = await Swal.fire({
+    title: "¿Eliminar libro?",
+    text: "Esta acción no se puede deshacer.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar"
+  });
+
+  if (!result.isConfirmed) return;
+
   const token = localStorage.getItem('jwtToken');
   const headers = {};
+
   if (token) {
     headers['Authorization'] = 'Bearer ' + token;
   }
+
   const res = await fetch(`${API}/${id}`, { 
     method: 'DELETE',
     headers: headers
   });
-  if (res.ok) cargarInventario();
-  else alert('No se pudo eliminar');
+
+  if (res.ok) {
+    Swal.fire({
+      icon: "success",
+      title: "Eliminado",
+      text: "El libro ha sido eliminado correctamente",
+      timer: 1800,
+      showConfirmButton: false
+    });
+    cargarInventario();
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "No se pudo eliminar el libro."
+    });
+  }
 }
 
 // Modal para mostrar detalles del libro
@@ -127,6 +159,7 @@ async function verLibro(id) {
   try {
     const res = await fetch(`${API}/${id}`);
     if (!res.ok) throw new Error('Error al cargar libro');
+
     const libro = await res.json();
     
     // Rellenar modal con datos del libro
@@ -224,9 +257,15 @@ async function verLibro(id) {
     
     // Mostrar modal
     if (modal) modal.style.display = 'block';
+
   } catch (e) {
     console.error('Error:', e);
-    alert('No se pudo cargar el libro');
+
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "No se pudo cargar el libro."
+    });
   }
 }
 
