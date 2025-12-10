@@ -6,8 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -44,11 +42,6 @@ public class autor {
     /* Relaciones */
 
     // Autor - Autor_Libros - Libros
-    @ManyToMany
-    @JoinTable(
-        name = "autor_libros",
-        joinColumns = @JoinColumn(name = "FK_idAutor"),
-        inverseJoinColumns = @JoinColumn(name = "FK_idLibro")
-    )
+    @ManyToMany(mappedBy = "autor")
     private Set<libros> libros;
 }

@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,7 @@ public class intercambios {
     @Column(name = "idIntercambio")
     private int idIntercambio;
 
-    @Column(name = "FechaSolicitud", insertable = false, updatable = false)
+    @Column(name = "FechaSolicitud", insertable = true, updatable = false)
     private LocalDateTime FechaSolicitud;
 
     @Column(name = "FechaConfirmacion")
@@ -43,6 +44,14 @@ public class intercambios {
 
     @Column(name = "Activo", nullable = false)
     private boolean Activo = true;
+
+    // Hook para fijar FechaSolicitud automáticamente al crear
+    @PrePersist
+    protected void onCreate() {
+        if (this.FechaSolicitud == null) {
+            this.FechaSolicitud = LocalDateTime.now();
+        }
+    }
 
     /* Relaciones */
 

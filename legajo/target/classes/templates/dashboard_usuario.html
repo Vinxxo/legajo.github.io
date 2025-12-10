@@ -85,22 +85,7 @@
             <div class="contenedor-carrusel">
                 <button class="flecha izquierda" onclick="moverCarrusel('recomendados', -1)">❮</button>
                 <div class="carrusel-libros" id="recomendados">
-                <div class="libro" 
-                    data-titulo="Hábitos Atómicos" data-autor="James Clear" data-descripcion="Un libro sobre cómo pequeños hábitos generan cambios gigantes." data-imagen="/imgs/libro_de_la_selva.jpg">
-                    <img src="/imgs/libro_de_la_selva.jpg"><h3>Hábitos Atómicos</h3><p>James Clear</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
-                </div>
-                <div class="libro"
-                    data-titulo="Pensar rápido" data-autor="Daniel Kahneman" data-descripcion="Presenta los dos sistemas con los que pensamos: uno rápido e intuitivo y otro lento y analítico, revelando cómo nuestras decisiones no siempre son tan racionales como creemos." data-imagen="/imgs/libro_de_la_selva.jpg">
-                    <img src="/imgs/libro_de_la_selva.jpg"><h3>Pensar rápido</h3><p>Daniel Kahneman</p><p>⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
-                </div>
-                <div class="libro"
-                    data-titulo="El poder de los hábitos" data-autor="Charles Duhigg" data-descripcion="Explora cómo se forman los hábitos, cómo funcionan en la vida diaria y cómo cambiarlos para mejorar productividad, salud y bienestar." data-imagen="/imgs/libro_de_la_selva.jpg">
-                    <img src="/imgs/libro_de_la_selva.jpg"><h3>El poder de los hábitos</h3><p>Charles Duhigg</p><p>⭐⭐⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
-                </div>
-                <div class="libro"
-                    data-titulo="Padre Rico" data-autor="Robert Kiyosaki" data-descripcion="Una guía sobre educación financiera que rompe mitos tradicionales y enseña cómo construir riqueza a través de la mentalidad correcta y la inversión inteligente." data-imagen="/imgs/libro_de_la_selva.jpg">
-                    <img src="/imgs/libro_de_la_selva.jpg"><h3>Padre Rico</h3><p>Robert Kiyosaki</p><p>⭐⭐⭐</p><button class="ver-libro"><i class="fa fa-eye"></i> Ver</button>
-                </div>
+                    <!-- Los libros se cargarán dinámicamente aquí -->
                 </div>
                 <button class="flecha derecha" onclick="moverCarrusel('recomendados', 1)">❯</button>
             </div>
@@ -114,6 +99,10 @@
                          <h4 id="modalAutor"></h4>
                          <h3>Sipnosis del libro</h3>
                          <p id="modalDescripcion"></p>
+                         <!-- Contenedor de acciones (botón solicitar intercambio) -->
+                         <div id="modalAcciones" style="margin-top:12px;">
+                             <button id="btnSolicitarIntercambio" class="btn-amarillo"><i class="fas fa-exchange-alt"></i> Solicitar intercambio</button>
+                         </div>
                      </div>
                 </div>
             </div>
@@ -166,7 +155,6 @@
                 </div>
             </div>
         </section>
-
 
         <section class="seccion-carrusel">
             <h2 class="titulo-seccion">Géneros</h2>
@@ -248,6 +236,119 @@
                 });
             });
         });
+
+        // Función para mostrar detalles completos del libro (con ID) y permitir intercambio
+        async function verLibroCompleto(libroId) {
+          try {
+            const res = await fetch(`/api/libros/${libroId}`);
+            if (!res.ok) throw new Error('Error al cargar libro');
+            const libro = await res.json();
+            
+            // Rellenar modal con datos del libro
+            document.getElementById('modalImg').src = libro.urlImagen || '/imgs/default-book.jpg';
+            document.getElementById('modalTitulo').textContent = libro.titulo || '';
+            document.getElementById('modalAutor').textContent = libro.autor || '';
+            document.getElementById('modalDescripcion').textContent = libro.sinopsis || '';
+            
+            // Añadir botón de solicitar intercambio
+            let acciones = document.getElementById('modalAcciones');
+            if (!acciones) {
+              acciones = document.createElement('div');
+              acciones.id = 'modalAcciones';
+              acciones.style.marginTop = '12px';
+              const btn = document.createElement('button');
+              btn.id = 'btnSolicitarIntercambio';
+              btn.className = 'btn-amarillo';
+              btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Solicitar intercambio';
+              acciones.appendChild(btn);
+              const modalContent = document.querySelector('#modal .modal-content .modal-text');
+              if (modalContent) modalContent.appendChild(acciones);
+            }
+
+            // Asignar handler del botón
+            const btnSolicitar = document.getElementById('btnSolicitarIntercambio');
+            if (btnSolicitar) {
+              btnSolicitar.onclick = async () => {
+                try {
+                  const token = localStorage.getItem('jwtToken');
+                  const headers = { 'Content-Type': 'application/json' };
+                  if (token) headers['Authorization'] = 'Bearer ' + token;
+                  const r = await fetch('/api/intercambios/request', {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify({ libroId: libro.idLibro })
+                  });
+                  if (r.status === 201) {
+                    alert('Solicitud de intercambio enviada al propietario');
+                    if (modal) modal.style.display = 'none';
+                  } else if (r.status === 400) {
+                    const data = await r.json();
+                    alert(data.error || 'No se pudo enviar la solicitud');
+                  } else if (r.status === 401) {
+                    alert('Inicia sesión para solicitar intercambios');
+                    window.location.href = '/login.html';
+                  } else {
+                    const data = await r.json();
+                    alert(data.error || 'Error al solicitar intercambio');
+                  }
+                } catch (err) {
+                  console.error('Error solicitando intercambio', err);
+                  alert('Error solicitando intercambio');
+                }
+              };
+            }
+            
+            // Mostrar modal
+            if (modal) modal.style.display = 'block';
+          } catch (e) {
+            console.error('Error:', e);
+            alert('No se pudo cargar el libro');
+          }
+        }
     </script>
+    <script>
+        // Modal para autores
+        const modalAutor = document.getElementById('modalAutor');
+        const cerrarAutor = document.getElementById('cerrarAutor');
+        
+        if (cerrarAutor) {
+            cerrarAutor.addEventListener('click', () => {
+                if (modalAutor) modalAutor.style.display = 'none';
+            });
+        }
+        
+        window.addEventListener('click', (event) => {
+            if (modalAutor && event.target === modalAutor) {
+                modalAutor.style.display = 'none';
+            }
+        });
+        
+        // Evento para botones "Ver" en carrusel de autores
+        document.addEventListener('DOMContentLoaded', () => {
+            const botonesVerAutores = document.querySelectorAll('#autores .ver-libro');
+            botonesVerAutores.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const autorDiv = btn.closest('.libro');
+                    if (autorDiv) {
+                        const nombre = autorDiv.querySelector('h3').textContent;
+                        const libro = autorDiv.querySelector('p').textContent;
+                        const descripcion = autorDiv.dataset.descripcion || '';
+                        const imagen = autorDiv.dataset.imagen || '/imgs/gabo.jpg';
+                        
+                        // Rellenar modal de autor
+                        document.getElementById('autorImg').src = imagen;
+                        document.getElementById('autorNombre').textContent = nombre;
+                        document.getElementById('autorLibros').textContent = libro;
+                        document.getElementById('autorDescripcion').textContent = descripcion;
+                        
+                        // Mostrar modal
+                        if (modalAutor) modalAutor.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="/js/dashboard.js"></script>
 </body>
 </html>

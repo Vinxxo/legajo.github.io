@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Legajo</title>
+    <link rel="stylesheet" href="/css/estilos_error.css">
+</head>
+<body>
+    <button id="toggleModo" class="modo-toggle">☀️ Modo Claro</button>
+    <div class="contenedor-error">
+        <h1>⚠️ Error</h1>
+        <h2>Algo salió mal</h2>
+        <p id="errorMsg" th:text="${error} ?: 'Ocurrió un error inesperado. Intenta de nuevo más tarde.'"></p>
+        <a href="/login.html" class="boton">Volver al login</a>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

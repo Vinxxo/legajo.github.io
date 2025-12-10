@@ -1,0 +1,3203 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2025-12-09T17:38:31.052-05:00  INFO 21296 --- [legajo] [           main] p.legajo.LegajoApplication               : Starting LegajoApplication v0.0.1-SNAPSHOT using Java 17.0.16 with PID 21296 (C:\legajo.github.io\legajo\target\legajo-0.0.1-SNAPSHOT.jar started by david in C:\legajo.github.io\legajo)
+2025-12-09T17:38:31.056-05:00  INFO 21296 --- [legajo] [           main] p.legajo.LegajoApplication               : No active profile set, falling back to 1 default profile: "default"
+2025-12-09T17:38:32.670-05:00  INFO 21296 --- [legajo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-09T17:38:32.818-05:00  INFO 21296 --- [legajo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 125 ms. Found 6 JPA repository interfaces.
+2025-12-09T17:38:34.424-05:00  INFO 21296 --- [legajo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-12-09T17:38:34.456-05:00  INFO 21296 --- [legajo] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-09T17:38:34.457-05:00  INFO 21296 --- [legajo] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-12-09T17:38:34.511-05:00  INFO 21296 --- [legajo] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-09T17:38:34.515-05:00  INFO 21296 --- [legajo] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3362 ms
+2025-12-09T17:38:34.784-05:00  INFO 21296 --- [legajo] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-09T17:38:34.903-05:00  INFO 21296 --- [legajo] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-12-09T17:38:34.969-05:00  INFO 21296 --- [legajo] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-09T17:38:35.750-05:00  INFO 21296 --- [legajo] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-09T17:38:35.879-05:00  INFO 21296 --- [legajo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-09T17:38:36.538-05:00  INFO 21296 --- [legajo] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@224e6e88
+2025-12-09T17:38:36.542-05:00  INFO 21296 --- [legajo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-09T17:38:36.630-05:00  WARN 21296 --- [legajo] [           main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 10.4.0. Check the community dialects project for available legacy versions.
+2025-12-09T17:38:36.640-05:00  WARN 21296 --- [legajo] [           main] org.hibernate.orm.deprecation            : HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-09T17:38:36.689-05:00  INFO 21296 --- [legajo] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-09T17:38:38.245-05:00  INFO 21296 --- [legajo] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-09T17:38:38.384-05:00  INFO 21296 --- [legajo] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-09T17:38:39.313-05:00  INFO 21296 --- [legajo] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-09T17:38:42.791-05:00  INFO 21296 --- [legajo] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-12-09T17:38:42.793-05:00  WARN 21296 --- [legajo] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-09T17:38:42.933-05:00  WARN 21296 --- [legajo] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-09T17:38:43.158-05:00  INFO 21296 --- [legajo] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-09T17:38:43.613-05:00 DEBUG 21296 --- [legajo] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-12-09T17:38:44.384-05:00  INFO 21296 --- [legajo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-12-09T17:38:44.428-05:00  INFO 21296 --- [legajo] [           main] p.legajo.LegajoApplication               : Started LegajoApplication in 14.449 seconds (process running for 15.215)
+2025-12-09T17:40:10.138-05:00  INFO 21296 --- [legajo] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-09T17:40:10.138-05:00  INFO 21296 --- [legajo] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-09T17:40:10.143-05:00  INFO 21296 --- [legajo] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-12-09T17:40:10.194-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:40:10.218-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:10.224-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:40:17.289-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T17:40:17.290-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.290-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T17:40:17.658-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:40:17.659-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.660-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:40:17.666-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:40:17.667-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.669-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T17:40:17.670-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:40:17.671-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.672-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T17:40:17.796-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T17:40:17.796-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:17.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.798-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T17:40:17.798-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:17.817-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T17:40:17.818-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.819-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T17:40:17.819-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+2025-12-09T17:40:17.820-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T17:40:17.821-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:17.823-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:18.373-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:40:18.523-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:18.539-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:40:18.734-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T17:40:18.735-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:18.737-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:18.941-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:40:18.941-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:40:18.944-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:40:18.941-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:40:18.944-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:18.944-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:18.946-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:18.947-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:18.948-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:40:18.950-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:40:18.949-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:40:18.949-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:40:24.755-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /inventario.html
+2025-12-09T17:40:24.755-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:24.756-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /inventario.html
+2025-12-09T17:40:24.796-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:40:24.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:24.798-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:40:24.803-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:24.804-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:40:24.806-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:24.806-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:24.807-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:40:24.807-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:24.829-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /js/inventario.js
+2025-12-09T17:40:24.830-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:24.831-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /js/inventario.js
+2025-12-09T17:40:24.841-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:24.861-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:40:24.988-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T17:40:24.989-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:24.989-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:27.913-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /perfil.html
+2025-12-09T17:40:27.914-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:27.915-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /perfil.html
+2025-12-09T17:40:27.951-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:40:27.952-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:27.954-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:40:27.957-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:27.957-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:40:27.958-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:27.958-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:27.959-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:27.960-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:40:27.983-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:40:27.984-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:27.986-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:40:29.221-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /index.html
+2025-12-09T17:40:29.222-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.223-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /index.html
+2025-12-09T17:40:29.261-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /css/styles.css
+2025-12-09T17:40:29.263-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.264-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /css/styles.css
+2025-12-09T17:40:29.267-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/whatsapp.png
+2025-12-09T17:40:29.267-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /imgs/Libro-abierto.jpg
+2025-12-09T17:40:29.269-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.271-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.271-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/whatsapp.png
+2025-12-09T17:40:29.272-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /imgs/Libro-abierto.jpg
+2025-12-09T17:40:29.297-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/email.png
+2025-12-09T17:40:29.297-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/telefono.png
+2025-12-09T17:40:29.297-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:29.298-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.298-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.298-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.299-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/telefono.png
+2025-12-09T17:40:29.299-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/email.png
+2025-12-09T17:40:29.299-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:29.311-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/logo_oscuro1.jpg
+2025-12-09T17:40:29.313-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/bibliotecas.jpg
+2025-12-09T17:40:29.314-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.315-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.313-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/fondo_ayuda.jpg
+2025-12-09T17:40:29.315-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/logo_oscuro1.jpg
+2025-12-09T17:40:29.318-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/bibliotecas.jpg
+2025-12-09T17:40:29.319-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:29.335-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/fondo_ayuda.jpg
+2025-12-09T17:40:32.531-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /login.html
+2025-12-09T17:40:32.533-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:32.534-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /login.html
+2025-12-09T17:40:32.567-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /css/styles.css
+2025-12-09T17:40:32.569-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:32.569-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /js/validaciones.js
+2025-12-09T17:40:32.569-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:32.570-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:32.571-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:32.571-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /css/styles.css
+2025-12-09T17:40:32.571-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:32.572-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /js/validaciones.js
+2025-12-09T17:40:38.454-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+2025-12-09T17:40:38.475-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:38.476-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+2025-12-09T17:40:38.492-05:00  INFO 21296 --- [legajo] [nio-8081-exec-9] p.legajo.controller.AuthController       : Intento de login para usuario: paola@gmail.com
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:38.645-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.a.dao.DaoAuthenticationProvider    : Failed to authenticate since password does not match stored value
+2025-12-09T17:40:38.645-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.authentication.ProviderManager     : Authentication failed with provider DaoAuthenticationProvider since Bad credentials
+2025-12-09T17:40:38.646-05:00 ERROR 21296 --- [legajo] [nio-8081-exec-9] p.legajo.controller.AuthController       : Error autenticando usuario paola@gmail.com
+
+org.springframework.security.authentication.BadCredentialsException: Bad credentials
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.additionalAuthenticationChecks(DaoAuthenticationProvider.java:107) ~[spring-security-core-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:150) ~[spring-security-core-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.5.6.jar!/:6.5.6]
+	at proyecto_legajo.legajo.controller.AuthController.login(AuthController.java:51) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at proyecto_legajo.legajo.Security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:38) ~[!/:0.0.1-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.6.jar!/:6.5.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.6.jar!/:6.5.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.6.jar!/:6.5.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.12.jar!/:6.2.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.48.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-12-09T17:40:43.893-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+2025-12-09T17:40:43.894-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:43.895-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+2025-12-09T17:40:43.898-05:00  INFO 21296 --- [legajo] [nio-8081-exec-7] p.legajo.controller.AuthController       : Intento de login para usuario: paola@gmail.com
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:43.971-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-12-09T17:40:43.993-05:00  INFO 21296 --- [legajo] [nio-8081-exec-7] p.legajo.controller.AuthController       : Token generado (preview) para paola@gmail.com: eyJhbGci...
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+2025-12-09T17:40:44.031-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T17:40:44.032-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.034-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T17:40:44.077-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:40:44.078-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.079-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:40:44.085-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:40:44.087-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.088-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T17:40:44.089-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:40:44.090-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.092-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T17:40:44.109-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T17:40:44.109-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:44.111-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.112-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.112-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T17:40:44.113-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:44.125-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T17:40:44.127-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.130-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T17:40:44.143-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+2025-12-09T17:40:44.147-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+2025-12-09T17:40:44.172-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.175-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:44.196-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:40:44.220-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:44.258-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:40:44.333-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T17:40:44.345-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.348-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:44.391-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:40:44.391-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:40:44.392-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.392-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:44.393-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:40:44.393-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:40:49.719-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /inventario.html
+2025-12-09T17:40:49.720-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:49.721-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /inventario.html
+2025-12-09T17:40:49.761-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:40:49.764-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:49.766-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:40:49.770-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:40:49.778-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:49.780-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:40:49.780-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:49.782-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:49.783-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:49.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /js/inventario.js
+2025-12-09T17:40:49.798-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:49.800-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /js/inventario.js
+2025-12-09T17:40:49.817-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:49.838-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:40:49.968-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T17:40:49.968-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:49.970-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:40:50.017-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:40:50.017-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:40:50.019-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:50.020-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:50.021-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:40:50.021-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:40:52.484-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /libros/editar.html?id=5
+2025-12-09T17:40:52.484-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:52.486-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /libros/editar.html?id=5
+2025-12-09T17:40:52.520-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /css/styles.css
+2025-12-09T17:40:52.521-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:52.521-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /css/styles.css
+2025-12-09T17:40:52.527-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:40:52.527-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /js/editarLibro.js
+2025-12-09T17:40:52.529-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:52.529-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:52.530-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:40:52.530-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /js/editarLibro.js
+2025-12-09T17:40:52.553-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/libros/5
+2025-12-09T17:40:52.554-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:40:52.554-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/libros/5
+Hibernate: 
+    select
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        r1_0.idRol,
+        r1_0.rol,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        roles r1_0 
+            on r1_0.idRol=up1_0.FK_rolUsuario 
+    where
+        l1_0.idLibro=?
+Hibernate: 
+    select
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2 
+    from
+        autor_libros a1_0 
+    join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    where
+        a1_0.FK_idLibro=?
+Hibernate: 
+    select
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib 
+    from
+        genero_libros g1_0 
+    join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        g1_0.FK_idLibro=?
+2025-12-09T17:41:02.384-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing PUT /api/libros/5
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:41:02.395-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured PUT /api/libros/5
+Hibernate: 
+    select
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        r1_0.idRol,
+        r1_0.rol,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        roles r1_0 
+            on r1_0.idRol=up1_0.FK_rolUsuario 
+    where
+        l1_0.idLibro=?
+Hibernate: 
+    select
+        a1_0.idAutor,
+        a1_0.ApeAutor1,
+        a1_0.ApeAutor2,
+        a1_0.ApodoAutor,
+        a1_0.NomAutor1,
+        a1_0.NomAutor2 
+    from
+        autor a1_0 
+    where
+        a1_0.NomAutor1=? 
+        and a1_0.ApeAutor1=?
+Hibernate: 
+    select
+        g1_0.idGenero,
+        g1_0.GeneroLib 
+    from
+        genero g1_0 
+    where
+        g1_0.GeneroLib=?
+Hibernate: 
+    delete 
+    from
+        autor_libros 
+    where
+        FK_idLibro=?
+Hibernate: 
+    delete 
+    from
+        genero_libros 
+    where
+        FK_idLibro=?
+Hibernate: 
+    insert 
+    into
+        autor_libros
+        (FK_idLibro, FK_idAutor) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        genero_libros
+        (FK_idLibro, FK_idGenero) 
+    values
+        (?, ?)
+2025-12-09T17:41:04.140-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /inventario.html
+2025-12-09T17:41:04.141-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.142-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /inventario.html
+2025-12-09T17:41:04.178-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:41:04.179-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.180-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:41:04.180-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:41:04.180-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:41:04.180-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.180-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.181-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:41:04.182-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:41:04.209-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /js/inventario.js
+2025-12-09T17:41:04.210-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.210-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /js/inventario.js
+2025-12-09T17:41:04.218-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:41:04.233-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:41:04.397-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T17:41:04.398-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.399-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:41:04.444-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:41:04.444-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:41:04.446-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.446-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:41:04.447-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:41:04.447-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:43:15.597-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /perfil.html
+2025-12-09T17:43:15.598-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:15.599-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /perfil.html
+2025-12-09T17:43:15.629-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:43:15.630-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:15.631-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:43:15.637-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:43:15.638-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:43:15.638-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:15.640-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:15.640-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:43:15.640-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:43:15.764-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:43:15.764-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:15.765-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:43:17.629-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /index.html
+2025-12-09T17:43:17.630-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.631-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /index.html
+2025-12-09T17:43:17.658-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /css/styles.css
+2025-12-09T17:43:17.660-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/whatsapp.png
+2025-12-09T17:43:17.660-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.660-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/Libro-abierto.jpg
+2025-12-09T17:43:17.661-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.661-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /css/styles.css
+2025-12-09T17:43:17.662-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.662-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/whatsapp.png
+2025-12-09T17:43:17.663-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/Libro-abierto.jpg
+2025-12-09T17:43:17.691-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/email.png
+2025-12-09T17:43:17.691-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/telefono.png
+2025-12-09T17:43:17.692-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:43:17.692-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.692-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.692-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.692-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/email.png
+2025-12-09T17:43:17.694-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/telefono.png
+2025-12-09T17:43:17.696-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:43:17.702-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/bibliotecas.jpg
+2025-12-09T17:43:17.711-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.702-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /imgs/logo_oscuro1.jpg
+2025-12-09T17:43:17.713-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/bibliotecas.jpg
+2025-12-09T17:43:17.714-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.714-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/fondo_ayuda.jpg
+2025-12-09T17:43:17.715-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /imgs/logo_oscuro1.jpg
+2025-12-09T17:43:17.716-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:17.718-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/fondo_ayuda.jpg
+2025-12-09T17:43:20.160-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /login.html
+2025-12-09T17:43:20.162-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:20.162-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /login.html
+2025-12-09T17:43:20.186-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /css/styles.css
+2025-12-09T17:43:20.187-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:20.189-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /css/styles.css
+2025-12-09T17:43:20.192-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:43:20.193-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /js/validaciones.js
+2025-12-09T17:43:20.193-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:20.195-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:20.195-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:43:20.196-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /js/validaciones.js
+2025-12-09T17:43:27.570-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+2025-12-09T17:43:27.572-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.573-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+2025-12-09T17:43:27.576-05:00  INFO 21296 --- [legajo] [nio-8081-exec-8] p.legajo.controller.AuthController       : Intento de login para usuario: duransantiago003@gmail.com
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:43:27.645-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-12-09T17:43:27.647-05:00  INFO 21296 --- [legajo] [nio-8081-exec-8] p.legajo.controller.AuthController       : Token generado (preview) para duransantiago003@gmail.com: eyJhbGci...
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+2025-12-09T17:43:27.663-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T17:43:27.664-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.664-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T17:43:27.696-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:43:27.697-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.698-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:43:27.704-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:43:27.704-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T17:43:27.706-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.706-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.707-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:43:27.707-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T17:43:27.725-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T17:43:27.725-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:43:27.726-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.726-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.726-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:43:27.727-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T17:43:27.736-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T17:43:27.738-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T17:43:27.739-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.740-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T17:43:27.740-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+2025-12-09T17:43:27.741-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.742-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:43:27.767-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:43:27.788-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:43:27.803-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:43:27.926-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T17:43:27.927-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.927-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:43:27.969-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:43:27.969-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:43:27.970-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.969-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:43:27.969-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:43:27.971-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:43:27.971-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.971-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.972-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:27.973-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:43:27.974-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:43:27.974-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:43:36.218-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:43:36.220-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:43:36.221-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:44:00.605-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:44:00.606-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:44:00.607-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:44:02.857-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:44:02.860-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:44:02.860-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:44:06.378-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:44:06.379-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:44:06.380-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:50:07.111-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:50:07.119-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:07.121-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:50:08.886-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T17:50:08.887-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:08.888-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T17:50:08.919-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T17:50:08.922-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:08.923-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T17:50:08.930-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T17:50:08.930-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T17:50:08.931-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:08.931-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:08.933-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T17:50:08.933-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T17:50:08.989-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T17:50:08.989-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T17:50:08.989-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:08.989-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:08.991-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T17:50:08.991-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T17:50:09.002-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T17:50:09.003-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:09.003-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T17:50:09.003-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T17:50:09.004-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+2025-12-09T17:50:09.007-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:09.010-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:50:09.072-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:50:09.091-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:50:09.105-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T17:50:09.304-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T17:50:09.305-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:09.306-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T17:50:09.361-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:50:09.362-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:09.363-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:50:09.363-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:50:09.364-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T17:50:09.365-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:09.364-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:50:09.364-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:09.366-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T17:50:09.366-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:09.369-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:50:09.371-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:50:11.083-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:50:11.084-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:11.085-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T17:50:15.355-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T17:50:15.357-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T17:50:15.357-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:05:55.549-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:05:55.559-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:55.560-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:05:57.120-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T18:05:57.121-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.121-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T18:05:57.170-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T18:05:57.171-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.172-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T18:05:57.172-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:05:57.172-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T18:05:57.173-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.174-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.174-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T18:05:57.180-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T18:05:57.310-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T18:05:57.311-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T18:05:57.311-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.312-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.312-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T18:05:57.313-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T18:05:57.331-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T18:05:57.332-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:05:57.333-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.334-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T18:05:57.333-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:57.334-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T18:05:57.335-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:05:57.404-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:05:57.424-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:05:57.444-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:05:58.081-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T18:05:58.083-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:58.084-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:05:58.138-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:05:58.138-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:05:58.139-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:58.139-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:58.139-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:05:58.139-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:05:58.139-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:05:58.139-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:05:58.140-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:58.140-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:58.140-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:05:58.142-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:05:59.366-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:05:59.367-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:05:59.368-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:06:04.527-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:06:04.528-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:06:04.529-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:08:09.681-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T18:08:09.682-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.683-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T18:08:09.712-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T18:08:09.712-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.714-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T18:08:09.718-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:08:09.718-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T18:08:09.718-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.720-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.722-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T18:08:09.722-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T18:08:09.779-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T18:08:09.779-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T18:08:09.779-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.779-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.780-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T18:08:09.780-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T18:08:09.800-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T18:08:09.801-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.801-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T18:08:09.802-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:08:09.803-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+2025-12-09T18:08:09.804-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:09.805-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:08:09.831-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:08:09.852-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:08:09.883-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:08:10.091-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T18:08:10.093-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:10.094-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:08:10.147-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:08:10.147-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:08:10.147-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:10.147-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:10.149-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:08:10.149-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:08:10.149-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:08:10.149-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:08:10.150-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:10.150-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:10.150-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:08:10.151-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:08:13.082-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:08:13.085-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:08:13.085-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:18:58.426-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T18:18:58.429-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.429-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T18:18:58.466-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T18:18:58.468-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.469-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T18:18:58.473-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:18:58.473-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T18:18:58.474-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.474-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.475-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T18:18:58.475-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T18:18:58.605-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T18:18:58.606-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T18:18:58.606-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.607-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T18:18:58.607-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.609-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T18:18:58.626-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T18:18:58.627-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.628-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+2025-12-09T18:18:58.629-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:18:58.630-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T18:18:58.630-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:58.632-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:18:58.695-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:18:58.755-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:18:58.772-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:18:59.342-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T18:18:59.343-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:59.343-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:18:59.385-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:18:59.385-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:18:59.385-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:18:59.387-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:59.387-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:59.388-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:59.388-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:18:59.388-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:18:59.388-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:18:59.390-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:18:59.390-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:18:59.391-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:19:02.101-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:19:02.102-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:19:02.103-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:20:00.396-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /dashboard_usuario.html
+2025-12-09T18:20:00.397-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.398-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /dashboard_usuario.html
+2025-12-09T18:20:00.432-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /css/dashboard.css
+2025-12-09T18:20:00.434-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.435-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:20:00.436-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /css/dashboard.css
+2025-12-09T18:20:00.436-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.438-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+2025-12-09T18:20:00.442-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/profile.png
+2025-12-09T18:20:00.443-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.445-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/profile.png
+2025-12-09T18:20:00.476-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /js/script.js
+2025-12-09T18:20:00.476-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /js/dashboard.js
+2025-12-09T18:20:00.476-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.478-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.479-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /js/script.js
+2025-12-09T18:20:00.480-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /js/dashboard.js
+2025-12-09T18:20:00.494-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /imgs/terror.jpeg
+2025-12-09T18:20:00.498-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.504-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /imgs/gabo.jpg
+2025-12-09T18:20:00.505-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /imgs/terror.jpeg
+2025-12-09T18:20:00.506-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.508-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2025-12-09T18:20:00.508-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /imgs/gabo.jpg
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:20:00.545-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:20:00.567-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:20:00.585-05:00 DEBUG 21296 --- [legajo] [io-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+Hibernate: 
+    select
+        u1_0.idUsuario,
+        u1_0.Activo,
+        u1_0.CiudadUsu,
+        u1_0.Clave,
+        u1_0.CorreoUsu,
+        u1_0.DireccionUsu,
+        u1_0.ApeUsu1,
+        u1_0.NomUsu1,
+        u1_0.FK_rolUsuario,
+        u1_0.ApeUsu2,
+        u1_0.NomUsu2,
+        u1_0.TelefonoUsu 
+    from
+        usuarios u1_0 
+    where
+        u1_0.CorreoUsu=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        l1_0.FK_UsuarioPropietario,
+        l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen 
+    from
+        libros l1_0 
+    where
+        l1_0.FK_UsuarioPropietario=?
+2025-12-09T18:20:00.745-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/libros
+2025-12-09T18:20:00.746-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.747-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/libros
+Hibernate: 
+    select
+        distinct l1_0.idLibro,
+        l1_0.Activo,
+        l1_0.EstadoLib,
+        l1_0.SinopsisLib,
+        l1_0.TituloLib,
+        l1_0.UrlImagen,
+        a1_0.FK_idLibro,
+        a1_1.idAutor,
+        a1_1.ApeAutor1,
+        a1_1.ApeAutor2,
+        a1_1.ApodoAutor,
+        a1_1.NomAutor1,
+        a1_1.NomAutor2,
+        g1_0.FK_idLibro,
+        g1_1.idGenero,
+        g1_1.GeneroLib,
+        up1_0.idUsuario,
+        up1_0.Activo,
+        up1_0.CiudadUsu,
+        up1_0.Clave,
+        up1_0.CorreoUsu,
+        up1_0.DireccionUsu,
+        up1_0.ApeUsu1,
+        up1_0.NomUsu1,
+        up1_0.FK_rolUsuario,
+        up1_0.ApeUsu2,
+        up1_0.NomUsu2,
+        up1_0.TelefonoUsu 
+    from
+        libros l1_0 
+    left join
+        usuarios up1_0 
+            on up1_0.idUsuario=l1_0.FK_UsuarioPropietario 
+    left join
+        autor_libros a1_0 
+            on l1_0.idLibro=a1_0.FK_idLibro 
+    left join
+        autor a1_1 
+            on a1_1.idAutor=a1_0.FK_idAutor 
+    left join
+        genero_libros g1_0 
+            on l1_0.idLibro=g1_0.FK_idLibro 
+    left join
+        genero g1_1 
+            on g1_1.idGenero=g1_0.FK_idGenero 
+    where
+        (
+            ? is null 
+            or lower(concat(coalesce(up1_0.NomUsu1, ''), ' ', coalesce(up1_0.ApeUsu1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(l1_0.TituloLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(concat(coalesce(a1_1.NomAutor1, ''), ' ', coalesce(a1_1.ApeAutor1, ''))) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or lower(coalesce(g1_1.GeneroLib, '')) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or l1_0.EstadoLib=?
+        )
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+Hibernate: 
+    select
+        r1_0.idRol,
+        r1_0.rol 
+    from
+        roles r1_0 
+    where
+        r1_0.idRol=?
+2025-12-09T18:20:00.796-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:20:00.796-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:20:00.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:20:00.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:20:00.797-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/d150329e-b7c0-439f-b85f-72d1d85a6f4d.png
+2025-12-09T18:20:00.798-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/56b76920-5e05-4ee1-9471-ccf64f3bdd0c.png
+2025-12-09T18:20:00.798-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.798-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:00.800-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/48bce07a-57bc-4095-88fa-315c4b66fb9b.png
+2025-12-09T18:20:00.800-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:20:03.837-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
+2025-12-09T18:20:03.839-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-09T18:20:03.840-05:00 DEBUG 21296 --- [legajo] [nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /imgs/libros/a1a6ff14-464c-4e09-95e8-a181ca80833e.png
