@@ -4,9 +4,14 @@ proyecto_legajo\legajo\controller\LibrosController.class
 proyecto_legajo\legajo\Repository\usuarioRepository.class
 proyecto_legajo\legajo\Repository\LibrosRepository.class
 proyecto_legajo\legajo\Entity\EstadoIntercambio.class
+<<<<<<< HEAD
 proyecto_legajo\legajo\Service\PdfService.class
 proyecto_legajo\legajo\Service\EmailService.class
 proyecto_legajo\legajo\Entity\PasswordResetToken.class
+=======
+proyecto_legajo\legajo\Repository\IntercambiosRepository.class
+proyecto_legajo\legajo\Service\PdfService.class
+>>>>>>> 9d3b4684f708b7484f9544305555e845e5bc68fc
 proyecto_legajo\legajo\Service\LibrosService.class
 proyecto_legajo\legajo\Dto\LibroResponseDTO.class
 proyecto_legajo\legajo\Security\UtilidadJwt.class
@@ -16,7 +21,10 @@ proyecto_legajo\legajo\Security\JwtAuthenticationFilter.class
 proyecto_legajo\legajo\Security\JwtUtil.class
 proyecto_legajo\legajo\controller\PasswordResetController.class
 proyecto_legajo\legajo\Entity\usuarios.class
+<<<<<<< HEAD
 proyecto_legajo\legajo\Config\MailConfig.class
+=======
+>>>>>>> 9d3b4684f708b7484f9544305555e845e5bc68fc
 proyecto_legajo\legajo\controller\ImageController.class
 proyecto_legajo\legajo\Entity\roles.class
 proyecto_legajo\legajo\Service\UsuarioService.class
@@ -24,7 +32,11 @@ proyecto_legajo\legajo\Entity\reportesUsuario.class
 proyecto_legajo\legajo\controller\ViewController.class
 proyecto_legajo\legajo\Dto\UsuarioDTO.class
 proyecto_legajo\legajo\Entity\autor.class
+<<<<<<< HEAD
 proyecto_legajo\legajo\controller\GlobalExceptionHandler.class
+=======
+proyecto_legajo\legajo\controller\IntercambiosController.class
+>>>>>>> 9d3b4684f708b7484f9544305555e845e5bc68fc
 proyecto_legajo\legajo\Security\UsuarioPrincipal.class
 proyecto_legajo\legajo\LegajoApplication.class
 proyecto_legajo\legajo\Service\JpaUserDetailsService.class
@@ -39,9 +51,17 @@ proyecto_legajo\legajo\Security\SecurityConfig.class
 proyecto_legajo\legajo\Config\WebConfig.class
 proyecto_legajo\legajo\controller\UsuarioController.class
 proyecto_legajo\legajo\Security\AdminInitializer.class
+<<<<<<< HEAD
 proyecto_legajo\legajo\controller\AuthController.class
 proyecto_legajo\legajo\Entity\calificacionLibro.class
 proyecto_legajo\legajo\Repository\PasswordResetTokenRepository.class
 proyecto_legajo\legajo\Config\MvcConfig.class
 proyecto_legajo\legajo\Repository\reportesUsuarioRepository.class
 proyecto_legajo\legajo\Service\PasswordResetService.class
+=======
+proyecto_legajo\legajo\Dto\IntercambioDTO.class
+proyecto_legajo\legajo\controller\AuthController.class
+proyecto_legajo\legajo\Entity\calificacionLibro.class
+proyecto_legajo\legajo\Config\MvcConfig.class
+proyecto_legajo\legajo\Repository\reportesUsuarioRepository.class
+>>>>>>> 9d3b4684f708b7484f9544305555e845e5bc68fc
