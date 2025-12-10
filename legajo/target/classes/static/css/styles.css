@@ -252,10 +252,13 @@ footer .contenedor{
 .formulario h2 {
     margin-bottom: 20px;
     font-size: 2rem;
+    margin-top: 10px;   
+    margin-bottom: 30px;
+    padding: 0;   
 }
 
-.formulario input, #genero {
-    width: 100%;
+.formulario input {
+    width: 96%;
     padding: 10px;
     margin-bottom: 15px;
     border: 2px solid #ccc;
@@ -272,7 +275,7 @@ footer .contenedor{
 }
 
 .formulario button {
-    width: 105%;
+    width: 102%;
     padding: 12px;
     font-size: 1rem;
     background-color: var(--color-texto);
@@ -308,10 +311,15 @@ form a{
     grid-column: span 2;
     text-align: center;
 }
+.formulario-crear h2 {
+    margin-top: auto;   
+    margin-bottom: 20px;
+    padding: 0;        
+}
 
 /* Inputs normales */
 .form-crear input {
-    width: 96%;
+    width: 95%;
 }
 
 /* Botón ocupa dos columnas */
@@ -322,7 +330,7 @@ form a{
 
 /* Estilo uniforme del select */
 .formulario select {
-    width: 100%;
+    width: 102%;
     padding: 10px;
     margin-bottom: 15px;
     border: 2px solid #ccc;
@@ -352,7 +360,7 @@ form a{
 
 /* SINOPSIS textarea */
 .formulario textarea {
-    width: 100%;
+    width: 96%;
     padding: 10px;
     margin-bottom: 15px;
     border: 2px solid #ccc;
@@ -379,7 +387,8 @@ form a{
 /* Estilo del botón personalizado */
 .label-file {
     display: inline-block;  
-    padding: 10px 15px;
+    padding: 12px 15px;
+    width: 95%;
     background-color: var(--color-texto);
     color: var(--fondo-principal);
     border-radius: 5px;
@@ -396,4 +405,67 @@ form a{
 /* Ocultamos el input original */
 .form-grupo input[type="file"] {
     display: none;
+}
+
+/*logo crear cuenta y login*/
+.logo-form {
+    background: var(--logo);
+    width: 140px;
+    height: 120px;
+    margin: 0 auto 0 auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.logo-crear {
+    background: var(--logo);
+    width: 140px;
+    height: 120px;
+    margin: 0 auto 0 auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    grid-column: span 2;
+}
+
+/*flecha para salir*/
+.btn-volver {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--color-texto);
+    background-color: var(--fondo-principal);
+    padding: 4px 6px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    z-index: 2000;
+}
+
+.btn-volver:hover {
+    background-color: var(--color-texto);
+    color: var(--fondo-principal);
+}
+
+/*ojo contraseñas*/
+.input-pass {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 25px;
+    top: 36%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #555;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-pass:hover {
+    color: var(--color-acento);
 }

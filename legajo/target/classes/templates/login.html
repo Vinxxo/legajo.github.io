@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+<a href="index.html" class="btn-volver">←</a>
 <body>
     <button id="toggleModo" class="modo-toggle">☀️ Modo Claro</button>
     <section class="formulario">
         <form id="loginForm">
+            <div class="logo-form"></div>
             <h2>Iniciar sesión</h2>
             <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required />
-            <input type="password" id="clave" name="clave" placeholder="Contraseña" required />
+             <div class="input-pass">
+                <input type="password" id="clave" name="clave" placeholder="Contraseña" required />
+                <i class="toggle-pass fas fa-eye" onclick="verClave('clave', this)"></i>
+            </div>
             <button type="submit">Ingresar</button>
         </form>
         <div id="loginMensaje" style="margin-top:10px;color:red"></div>
