@@ -1,6 +1,7 @@
 package proyecto_legajo.legajo.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +14,14 @@ public interface LibrosRepository extends JpaRepository<libros, Integer> {
 
     // Obtener libros por ID del usuario propietario
     List<libros> findByUsuarioPropietario_IdUsuario(int usuarioId);
+
+    // Obtener libro por ID con usuarioPropietario cargado
+    @Query("""
+        SELECT l FROM libros l
+        LEFT JOIN FETCH l.usuarioPropietario
+        WHERE l.idLibro = :id
+    """)
+    Optional<libros> findByIdWithPropietario(@Param("id") int id);
 
     @Query("""
         SELECT DISTINCT l FROM libros l

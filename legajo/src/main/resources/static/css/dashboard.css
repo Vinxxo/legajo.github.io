@@ -9,6 +9,16 @@
     --card-bg: #f7f7f7;
 }
 
+.modo-claro {
+    --fondo-principal: #FFFFFF;
+    --color-texto: #091326;
+    --color-secundario: #D9B596;
+    --logo: url(../imgs/logo_claro1.jpg) center / cover no-repeat;
+
+    --color-acento: #BF5B04;
+    --color-acento-sec: #F2AE2E;
+}
+
 /* Reset básico */
 * {
     margin: 0;
@@ -1155,31 +1165,51 @@ button.btn-rojo {
 .filtros select,
 .filtros button {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    font-size: 1rem;
+}
+
+.filtros input,
+.filtros select {
+    background: var(--fondo-principal);
+    color: var(--color-texto);
 }
 
 .filtros button {
-    background: #222;
-    color: white;
+    background: var(--color-acento);
+    color: var(--fondo-principal);
     cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filtros button:hover {
+    background: var(--color-acento-sec);
+    transform: translateY(-2px);
 }
 
 .tabla-reportes table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: var(--fondo-principal);
 }
 
 .tabla-reportes th,
 .tabla-reportes td {
     padding: 12px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--color-texto);
 }
 
 .tabla-reportes th {
-    background: #333;
-    color: white;
+    background: var(--color-secundario);
+    color: var(--color-texto);
+    font-weight: 600;
+}
+
+.tabla-reportes tr:hover {
+    background: rgba(242, 174, 46, 0.08);
 }
 
 .btn-ver {

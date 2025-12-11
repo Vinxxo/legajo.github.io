@@ -94,9 +94,31 @@ public class LibrosRestController {
 
     // Eliminar libro
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarLibro(@PathVariable int id) {
-        boolean eliminado = service.eliminarLibro(id);
-        if (!eliminado) return ResponseEntity.notFound().build();
+    public ResponseEntity<?> eliminarLibro(@PathVariable int id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        
+        // Verificar autenticación
+        if (auth == null || !auth.isAuthenticated() || auth.getPrincipal().equals("anonymousUser")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("error", "Se requiere autenticación para eliminar un libro"));
+        }
+        
+        // Obtener usuario actual
+        String correo = auth.getName();
+        usuarios usuario = usuarioRepository.findByCorreo(correo).orElse(null);
+        
+        if (usuario == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("error", "Usuario no encontrado"));
+        }
+        
+        // Verificar que el usuario sea propietario del libro
+        boolean eliminado = service.eliminarLibroPorUsuario(id, usuario.getIdUsuario());
+        if (!eliminado) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(Map.of("error", "No tienes permiso para eliminar este libro"));
+        }
+        
         return ResponseEntity.noContent().build();
     }
 }
