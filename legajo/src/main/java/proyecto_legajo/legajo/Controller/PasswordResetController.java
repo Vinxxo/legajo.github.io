@@ -49,6 +49,23 @@ public class PasswordResetController {
         return "forgot-password";
     }
 
+    // Endpoint para actualizar contraseña directamente por correo (sin token)
+    @PostMapping("/forgot-password/update")
+    public String processForgotUpdate(@RequestParam String email, @RequestParam String password, Model model) {
+        try {
+            boolean ok = passwordResetService.updatePasswordByEmail(email, password);
+            if (!ok) {
+                model.addAttribute("error", "Correo no encontrado o error al actualizar");
+            } else {
+                model.addAttribute("message", "Contraseña actualizada correctamente.");
+            }
+        } catch (Exception e) {
+            model.addAttribute("error", "Error al procesar la solicitud. Intenta más tarde.");
+            e.printStackTrace();
+        }
+        return "forgot-password";
+    }
+
     @GetMapping("/reset-password")
     public String showResetForm(@RequestParam String token, Model model) {
         model.addAttribute("token", token);

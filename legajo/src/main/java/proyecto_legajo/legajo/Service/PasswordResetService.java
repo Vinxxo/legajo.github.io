@@ -157,4 +157,26 @@ public class PasswordResetService {
             return false;
         }
     }
+
+    // ------------------------------------------
+    // Actualizar contraseña por correo (sin token)
+    // ------------------------------------------
+    public boolean updatePasswordByEmail(String email, String newPassword) {
+        if (email == null || email.isBlank()) return false;
+        Optional<usuarios> userOpt = usuarioRepo.findByCorreoIgnoreCase(email);
+        if (!userOpt.isPresent()) {
+            logger.warn("Usuario con correo " + email + " no encontrado");
+            return false;
+        }
+        try {
+            usuarios user = userOpt.get();
+            user.setClave(passwordEncoder.encode(newPassword));
+            usuarioRepo.save(user);
+            logger.info("Contraseña actualizada por correo para: " + email);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error actualizando contraseña por correo: " + e.getMessage(), e);
+            return false;
+        }
+    }
 }
