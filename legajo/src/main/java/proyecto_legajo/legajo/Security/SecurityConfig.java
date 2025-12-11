@@ -100,11 +100,15 @@ public class SecurityConfig {
                 "/registrar_libro.html",
                 "/reporte_libros.html",
                 "/libros/**",
-                "/api/libros",
                 "/api/upload/**")
                 .permitAll()
                 // GET para libros es público
                 .requestMatchers(HttpMethod.GET, "/api/libros/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/libros").permitAll()
+                // POST/PUT/DELETE para libros requiere autenticación
+                .requestMatchers(HttpMethod.POST, "/api/libros/**").authenticated()
+                .requestMatchers(HttpMethod.PUT, "/api/libros/**").authenticated()
+                .requestMatchers(HttpMethod.DELETE, "/api/libros/**").authenticated()
                 // Usuarios
                 .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
                 .requestMatchers("/api/usuarios/**").authenticated()

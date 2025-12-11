@@ -176,6 +176,20 @@ public class LibrosService {
         return true;
     }
 
+    // Eliminar libro solo si el usuario es el propietario
+    @Transactional
+    public boolean eliminarLibroPorUsuario(int id, int idUsuario) {
+        return repo.findById(id).map(libro -> {
+            // Verificar que el usuario sea el propietario
+            if (libro.getUsuarioPropietario() == null || 
+                libro.getUsuarioPropietario().getIdUsuario() != idUsuario) {
+                return false;
+            }
+            repo.deleteById(id);
+            return true;
+        }).orElse(false);
+    }
+
     // Mapear entidad a DTO para CRUD
     private LibroDTO mapToLibroDTO(libros l) {
         LibroDTO dto = new LibroDTO();
