@@ -177,10 +177,6 @@ async function verLibro(id) {
             if (!calificacionEl) {
                 calificacionEl = document.createElement('div');
                 calificacionEl.id = 'modalCalificacionDisplay';
-                calificacionEl.style.marginTop = '12px';
-                calificacionEl.style.padding = '10px';
-                calificacionEl.style.backgroundColor = '#f5f5f5';
-                calificacionEl.style.borderRadius = '5px';
                 const modalText = document.querySelector('#modal .modal-content .modal-text');
                 if (modalText) {
                     const h4Autor = modalText.querySelector('h4');
@@ -192,8 +188,8 @@ async function verLibro(id) {
             
             if (dataCalif.cantidad > 0) {
               calificacionEl.innerHTML = `
-                <div style="margin-bottom:10px;">
-                  <strong>Calificación promedio:</strong> ${generarEstrellasDisplay(Math.round(dataCalif.promedio))} (${dataCalif.cantidad} evaluaciones)
+                <div>
+                  <strong>Calificación promedio:</strong> ${generarEstrellasDisplay(Math.round(dataCalif.promedio))} <span style="margin-left: 8px;">(${dataCalif.cantidad} evaluaciones)</span>
                 </div>
               `;
             } else {
