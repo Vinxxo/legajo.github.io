@@ -97,6 +97,7 @@
                      <div class="modal-text">
                          <h2 id="modalTitulo"></h2>
                          <h4 id="modalAutor"></h4>
+                         <div id="modalCalificacion" class="rating-badge">⭐⭐⭐⭐⭐</div>
                          <h3>Sipnosis del libro</h3>
                          <p id="modalDescripcion"></p>
                          <!-- Contenedor de acciones (botón solicitar intercambio) -->
@@ -229,6 +230,7 @@
                         document.getElementById('modalTitulo').textContent = titulo;
                         document.getElementById('modalAutor').textContent = autor;
                         document.getElementById('modalDescripcion').textContent = descripcion;
+                        document.getElementById('modalCalificacion').textContent = '⭐⭐⭐⭐⭐';
                         
                         // Mostrar modal
                         if (modal) modal.style.display = 'block';

@@ -628,23 +628,129 @@ INVENTARIO
     margin-top: auto;
 }
 
+/* ===== ESTILOS DE BOTONES MEJORADOS ===== */
+
+/* Botones generales */
+button.btn-verde,
+button.btn-amarillo,
+button.btn-azul,
+button.btn-rojo {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón VERDE - Aceptar/Ver (verde esmeralda) */
+.btn-verde {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    color: white;
+}
+
+.btn-verde:hover {
+    background: linear-gradient(135deg, #229954 0%, #1e8449 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
+}
+
+.btn-verde:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(39, 174, 96, 0.2);
+}
+
+.btn-verde i {
+    margin-right: 4px;
+}
+
+/* Botón AMARILLO - Solicitar/Editar (oro, tema app) */
+.btn-amarillo {
+    background: linear-gradient(135deg, var(--color-acento) 0%, #E8A81E 100%);
+    color: var(--fondo-principal);
+    font-weight: 600;
+}
+
+.btn-amarillo:hover {
+    background: linear-gradient(135deg, #E8A81E 0%, #D99C0B 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(242, 174, 46, 0.4);
+    color: var(--fondo-principal);
+}
+
+.btn-amarillo:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(242, 174, 46, 0.2);
+}
+
+/* Botón AZUL - Información (azul profesional) */
+.btn-azul {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+}
+
+.btn-azul:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #1f618d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn-azul:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2);
+}
+
+/* Botón ROJO - Rechazar/Eliminar (rojo oscuro) */
+.btn-rojo {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+}
+
+.btn-rojo:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
+}
+
+.btn-rojo:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+/* Botones pequeños (admin) */
 .acciones-admin button {
     width: 42px;
     height: 42px;
     font-size: 18px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     color: white;
-    transition: 0.2s;
+    transition: all 0.3s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.btn-azul     { background-color: #007bff; }
-.btn-amarillo { background-color: #ffc107; }
-.btn-rojo     { background-color: #dc3545; }
+.btn-azul     { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); }
+.btn-amarillo { background: linear-gradient(135deg, var(--color-acento) 0%, #E8A81E 100%); }
+.btn-rojo     { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
 
 .acciones-admin button:hover {
-    transform: scale(1.12);
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.acciones-admin button:active {
+    transform: scale(1.05);
 }
 
 
@@ -992,6 +1098,26 @@ INVENTARIO
 
 .close:hover {
     color: var(--color-acento);
+}
+
+/* Estilos para la calificación en el modal */
+.rating-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-acento) 0%, var(--color-acento-sec) 100%);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 12px 0;
+    box-shadow: 0 4px 12px rgba(242, 174, 46, 0.3);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.rating-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(242, 174, 46, 0.5);
 }
 
 /* ventana modales */

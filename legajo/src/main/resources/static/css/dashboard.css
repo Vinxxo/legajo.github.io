@@ -1100,6 +1100,26 @@ button.btn-rojo {
     color: var(--color-acento);
 }
 
+/* Estilos para la calificación en el modal */
+.rating-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-acento) 0%, var(--color-acento-sec) 100%);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 12px 0;
+    box-shadow: 0 4px 12px rgba(242, 174, 46, 0.3);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.rating-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(242, 174, 46, 0.5);
+}
+
 /* ventana modales */
 @media (max-width: 768px) {
     .modal-content {
