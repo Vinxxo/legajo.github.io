@@ -179,7 +179,7 @@ public class LibrosService {
     // Eliminar libro solo si el usuario es el propietario
     @Transactional
     public boolean eliminarLibroPorUsuario(int id, int idUsuario) {
-        return repo.findById(id).map(libro -> {
+        return repo.findByIdWithPropietario(id).map(libro -> {
             // Verificar que el usuario sea el propietario
             if (libro.getUsuarioPropietario() == null || 
                 libro.getUsuarioPropietario().getIdUsuario() != idUsuario) {
